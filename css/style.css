@@ -1,0 +1,33 @@
+/* #pgr {
+    border: 1px solid black;
+} */
+main {
+    display: flex;
+    justify-content: center;
+}
+#header {
+    margin-top: 20px;
+    text-align: center;
+}
+#pgr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 14px; 
+}
+#pgr td {
+    border: 1px solid black;
+    height: fit-content;
+    width: fit-content;
+    vertical-align: top;
+}
+.class {
+    text-align: center;
+}
+.menesis td {
+    border: none !important;
+    padding: 5px;
+}
+.colorRed {
+    color: red;
+}

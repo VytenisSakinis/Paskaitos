@@ -4,6 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pirmasis puslapis</title>
+    <style>
+    +h1 {
+        color:black
+    }
+        table {
+            /*
+            border-left
+            border-top
+            border-right
+            border-bottom
+            */
+            
+            /* border krastines, collapse sujungimas */
+            border: 1px solid black;
+            border-collapse: collapse;
+            /* width plotis lenteles */
+            width: 100%;
+            /* height aukstis */
+        }
+        /* border-spacing tarpai tarp stulpeliu
+        border-collapse: stulpeliu sujungimas */
+        th,
+        td {
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+
+        /* table tr:nth-child(1) {
+            height: 300px;
+        }
+        table tr:nth-child(2) {
+            height: 200px;
+        }
+        table tr:nth-child(3) {
+            height: 100px;
+        }
+        table tr:nth-child(4) {
+            height: 50px;
+        } */
+        .row1 {
+            height: 100px;
+            
+        }
+
+        .colorBlack {
+            color: red;
+        }
+
+        .row2 {
+            height: 50px;
+        }
+
+        .row3 {
+            height: 150px;
+        }
+
+        .row4 {
+            height: 200px;
+        }
+
+        .colorRed {
+            color: purple
+        }
+    
+</style>
 </head>
 <body>
     <!-- Antraštės žymėjimas -->
@@ -48,5 +113,253 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br><br><br>Dicta odit vitae quaerat aliquam quo dolorem modi, doloremque nobis obcaecati nesciunt.
     <p>Lorem ipsum dolor sit amet <hr>consectetur adipisicing elit. Ex esse cumque adipisci quae? Nesciunt corporis perferendis, ipsa itaque in perspiciatis.</p>
     </p>
+    <!--Lentelės-->
+    <!--<table> lentelė-->
+    <!--<tr></tr>eilute-->
+    <!--<td> table data-->
+    <!--border=1 old school-->
+<!-- rowspan= stulpeliu sujungimas -->
+<table>
+    <thead>
+        <tr>
+            <!-- Table Heading -->
+            <th>Pirmas</th>
+            <th>Antras</th>
+            <th>Trecias</th>
+            <th>Ketvirtas</th>
+            <th>Penktas</th>
+            <th>Šeštas</th>
+        </tr>
+    <tbody>
+    <tr class="row1 red colorBlack">
+        <td rowspan="2">1</td>
+        <td class="colorRed">2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr class="row2">
+        <!-- <td>1</td> -->
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr class="row3">
+        <td class="colorRed">1</td>
+        <td>2</td>
+        <td>3</td>
+        <!-- <td colspan="3">4</td> sujungimas -->
+        <td colspan="3">4</td>
+    </tr>
+    <tr class="row4">
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+
+    <!-- style= stilius, color: ; 
+    <h1 style="color:blueviolet">Lorem ipsum dolor sit amet consectetur.</h1>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, fugiat!</h2>
+    <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h3> -->
+        <!-- internal stilius 
+    <style>
+        h2 {
+            color:aquamarine
+        }
+    </style>
+     external stilius -->
+    <!-- stylesheet priskirtas css sintaksei -->
+    <!-- <link> skirtas isoriniam linkui su .css -->
+    <!-- rel= nurodo css 
+    <link href="css/style.css" rel="stylesheet">-->
+</tbody>
+</thead>
+</table>
 </body>
 </html>
+
+
+
+<!-- </tr>
+<tbody>
+    <tr>
+        <table>
+        <td>S</td>
+        <td>M</td>
+        <td>T</td>
+        <td>W</td>
+        <td>T</td>
+        <td>F</td>
+        <td>S</td>
+        
+    </tr>
+    <tr>
+        <td class="colorRed">1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+    </tr>
+    <tr>
+        <td>29</td>
+        <td>30</td>
+        <td colspan="4">31</td>
+    </tr>
+</tbody>
+</thead>
+</table>
+
+<table class="row2">
+<table>
+<thead>
+    <tbody>
+<tr>
+    <th colspan="7">May</th>
+</tr>
+
+    <tr>
+        <td>S</td>
+        <td>M</td>
+        <td>T</td>
+        <td>W</td>
+        <td>T</td>
+        <td>F</td>
+        <td>S</td>
+    </tr>
+    <tr>
+        <td colspan="2" text-align="right">1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+        <td>17</td>
+        <td>18</td>
+        <td>19</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td>24</td>
+        <td>25</td>
+        <td>26</td>
+    </tr>
+    <tr>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+        <td colspan="3">31</td>
+    </tr>
+</tbody>
+</thead>
+</table>
+
+<table>
+<thead>
+    <tr>
+        <th colspan="7">May</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>S</td>
+            <td>M</td>
+            <td>T</td>
+            <td>W</td>
+            <td>T</td>
+            <td>F</td>
+            <td>S</td>
+        </tr>
+        <tr>
+            <td colspan="2" text-align="right">1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+        </tr>
+        <tr>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td colspan="3">31</td>
+        </tr>
+    </tbody>
+    </thead>
+</table> -->
