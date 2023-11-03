@@ -1,0 +1,19 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+table td {
+    border: 1px solid black;
+    padding: 5px;
+}
+#raudona {
+    color: red;
+}
+.row {
+    background-color: grey;
+}
+#lentele {
+    border: 1px solid black;
+    border-style: dotted;
+}
