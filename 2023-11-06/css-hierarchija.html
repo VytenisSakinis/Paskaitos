@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css stiliu herarchija</title>
+    <style>
+        h1 {
+            color: red;
+            font-size: 20px;
+        }
+
+        /* CSS stilius ims virsu visada kai jis bus parasytas zemiau */
+        /* CSS stilius priskiriamas pagal selektoriaus pozicija sarase bei selektoriaus individualuma class>h1 */
+
+        h1.purple {
+            color: purple;
+        }
+        
+        .blue {
+            color: blue !important;
+            font-family: Arial, Helvetica, sans-serif
+        }
+       /* id hierarchijos virsuje */
+       #potato {
+        color: tomato;
+       }
+
+       h1#potato {
+        color: black;
+       }
+
+       .green {
+        color: rgb(121, 231, 121);
+       }
+        /* pats unikaliausias variantas is visos herarchijos yra in-line stilius */
+
+    </style>
+</head>
+<body>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat.</h1>
+    <h1 class="blue">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+    <h1 class="blue purple" id="potato" style="color: yellow">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+    <div class="blue purple">Lorem ipsum dolor sit amet.</div>
+    <h1 class="green">Lorem, ipsum.</h1>
+</body>
+</html>
