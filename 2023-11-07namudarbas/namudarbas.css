@@ -235,8 +235,8 @@ footer {
 
 table {
     width: 1000px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid rgba(0, 0, 0, 0.224);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.228);
     border-collapse: collapse;
     background-color: white;
     margin-top: 50px;
@@ -244,13 +244,13 @@ table {
 
 table th {
     padding: 15px;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.504);
     color: white;
 }
 
 table td {
     text-align: center;
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(0, 0, 0, 0.503);
     padding: 15px;
 }
 
