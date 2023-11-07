@@ -16,7 +16,7 @@ body {
 table {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  width: 40%;
+  width: 800px;
 }
 
 .padding {
@@ -35,7 +35,7 @@ table {
 .table {
   border: 1px solid black;
   border-collapse: collapse;
-  width: 50%;
+  width: 800px;
 }
 
 th {
@@ -50,9 +50,7 @@ th {
 
 #totals {
   border: none;
-  width: 25%;
-  align-self: flex-end;
-  margin-right: 25%;
+  width: 800px;
 }
 
 #totals tr :nth-child(1) {
