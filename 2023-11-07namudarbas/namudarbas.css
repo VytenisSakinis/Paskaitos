@@ -9,11 +9,30 @@ body {
 
 header {
   background-color: rgb(191, 122, 191);
-  height: 100px;
+  height: 70px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* overflow: hidden; */
+  /* opacity: .8; */
+  /* border-collapse: collapse; */
+  /* position: fixed; */
 }
+
+/* navigacijos apipavidalinimas */
+
+/* .boxH {
+  height: 60px;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.567);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 1px 1px black; 
+} */
 
 ul {
   display: flex;
@@ -29,20 +48,20 @@ ul {
   margin-left: 50px;
 }
 
-a {
+nav a {
   text-decoration: none;
   font-size: 28px;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
-a:hover {
+/* nav a:hover {
   color: grey;
   font-size: 30px;
-}
+} */
 
-a:hover {
-  font-size: 32px;
-  color: grey;
+nav a:hover {
+  /* font-size: 32px; */
+  color: rgb(135, 80, 116);
 }
 
 section {
@@ -60,6 +79,7 @@ section {
 
 .section4 {
   background-color: rgb(191, 122, 191);
+  height: 650px;
 }
 .section5 {
   height: 400px;
@@ -77,6 +97,7 @@ section {
 
 .box1 {
   background-color: #6f6f6f79;
+  border-radius: 15px;
   color: white;
   margin-left: 100px;
 }
@@ -95,6 +116,16 @@ section {
   font-size: 26px;
   margin-left: 40px;
   font-weight: bold;
+}
+
+.playbutton::before {
+  content: "\F4F0";
+  font-family: bootstrap-icons;
+  color: black;
+}
+
+.playbutton {
+  text-decoration: none;
 }
 
 .vertical {
@@ -144,10 +175,10 @@ footer {
 
 .images {
   background-image: url(https://wallpapercrafter.com/desktop/37554-Yoga-beach-sea-blue-sky.jpg);
-  background-size: 600px 500px;
+  background-size: cover;
   width: 600px;
   height: 500px;
-  background-position: center;
+  background-position: center center;
 }
 
 .textbk {
@@ -240,6 +271,7 @@ table {
     border-collapse: collapse;
     background-color: white;
     margin-top: 50px;
+    opacity: .7;
 }
 
 table th {
@@ -265,11 +297,12 @@ tr:nth-child(5) {
 }
 
 .reception1 {
-    display: flex;
-  justify-content: flex-start;
+  display: flex;
+  justify-content: start;
   flex-direction: row;
   gap: 30px;
   margin-top: 50px;
+  margin-left: 100px;
   align-items: center;
   margin-bottom: 50px;
 }
@@ -279,8 +312,10 @@ tr:nth-child(5) {
     background-size: 300px 250px;
     width: 400px;
     height: 250px;
-    background-position: center;
+    background-position: start;
     margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 1px black;
 }
 
 .text5 {
