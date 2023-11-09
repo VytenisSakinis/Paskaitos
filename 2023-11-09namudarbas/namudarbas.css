@@ -1,0 +1,245 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: url(images/background.png) no-repeat center center;
+  background-size: cover;
+}
+
+.contact {
+  position: relative;
+  background-color: white;
+  max-width: 1440px;
+  width: 100%;
+  margin: 100px auto;
+  border-radius: 40px;
+  height: 800px;
+  padding: 30px 50px;
+  overflow: hidden;
+}
+
+.contact::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #6de1c2;
+  height: 100%;
+  width: 419px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.contact-inner {
+  height: 750px;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.left {
+  background-color: rgb(255, 255, 255);
+  width: 50%;
+  height: 100%;
+}
+
+.right {
+  background-image: url(images/slice2.png);
+  width: 45%;
+  margin-left: 3%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-inner {
+    flex-direction: column;
+  }
+  .left,
+  .right {
+    width: 100%;
+  }
+}
+h1,
+p {
+  font-family: "Montserrat", sans-serif;
+}
+.touch::after {
+  content: " touch";
+  color: #6de1c2;
+}
+.text {
+  margin-top: 5%;
+  margin-left: 5%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input {
+  display: block;
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid grey;
+  background: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  height: 40px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.upload {
+  margin-top: 5%;
+  background-color: white;
+  height: 10%;
+  width: 90%;
+  border: 1px dotted grey;
+}
+
+.upload p {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+  margin-top: 5%;
+}
+
+.file {
+  font-size: 10px;
+  color: rgb(174, 174, 174);
+  margin-top: 0;
+}
+
+.checkbox {
+  display: flex;
+  width: fit-content;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
+
+.checkbox label {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.checkbox input {
+  font-size: 15px;
+  height: 15px;
+  width: fit-content;
+}
+
+button {
+  width: 90%;
+  height: 5%;
+  border: 1px solid #0982fe;
+  background-color: #0982fe;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+/* font-family: bootstrap-icons; */
+
+/* .info {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 90%;
+  gap: 2%;
+  margin-top: 1%;
+} */
+
+/* .phone::after {
+  content: "\F5B4";
+  font-family: bootstrap-icons;
+  color: black;
+  font-size: 20px;
+} */
+
+.rectangle {
+  background: url(images/Rectangle.png);
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  z-index: 2;
+  margin-top: 2%;
+  margin-left: 2%;
+  border-radius: 5%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+/* .rectangle p {
+    font-family: 'Montserrat', sans-serif;
+    color: #0982FE;
+  } */
+
+.rectangle p {
+  color: #0982fe;
+  font-family: Montserrat;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 180%;
+  letter-spacing: 1%;
+  display: flex;
+  justify-content: fit-content;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-left: 2%;
+}
+
+.p {
+    font-weight: 800;
+}
+
+
+.p::after {
+  content: " Street. 51 100 00 Prague";
+  font-weight: 100;
+}
+
+.row7 {
+    width: 97%;
+    height: 12%;
+    padding-top: 9%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .phone {
+    display: flex;
+  }
+  
+  .phone-nr {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+  }
+  
+  .phone-nr h5 {
+    margin: 0;
+  }
+  
+  .phone-nr p {
+    color: #dd5471;
+    font-family: Montserrat;
+    font-size: 10px;
+    margin: 0;
+    margin-top: 5%;
+    white-space: nowrap;
+  }
+
