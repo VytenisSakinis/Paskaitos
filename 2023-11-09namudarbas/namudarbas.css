@@ -78,6 +78,23 @@ p {
   gap: 20px;
 }
 
+.city {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+}
+
+.city1 {
+  display: flex;
+  width: 60%;
+}
+
+.postcode {
+  display: flex;
+  width: 35%;
+  margin-left: 5%;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
