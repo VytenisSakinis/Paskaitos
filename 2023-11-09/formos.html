@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+    <style>
+      label {
+        display: block;
+      }
+      input {
+        width:100%;
+        border: none;
+        border-bottom: 1px solid #cccccc;
+        
+      }
+      /* Filtracija palei atributa */
+      input[type="checkbox"],
+      input[type=radio] {
+        width:auto;
+        
+      }
+
+      .flex {
+        display: flex;
+      }
+      /* input[type="checkbox"] {
+        width: auto;
+      }
+
+      input[type=radio] {
+        width: auto;
+      } */
+    </style>
+  </head>
+  <body>
+    <form>
+      <!-- Input savaime užsidarinėjantis elementas -->
+      <label>Jusu vardas</label>
+      <input type="text" placeholder="Vardenis pavardenis" required />
+      <label>Produktu kiekis</label>
+      <input
+        type="number"
+        placeholder="Įveskite kiekį"
+        min="1"
+        max="50"
+        value="1"
+        required
+      />
+      <label>Jusu el. pasto adresas</label>
+      <input type="email" placeholder="email@gmail.com" required />
+      <label>Jusu slaptazodis</label>
+      <input type="password" required />
+      <label>Pasirinkite spalva</label>
+      <input type="color" />
+      <label>Pasirinkite fiksuota spalva</label>
+      <input type="color" list="spalvos" required />
+      <datalist id="spalvos">
+        <option value="#ffffff">Balta</option>
+        <option value="#000000">Juoda</option>
+        <option value="#CCCCCC">Pilka</option>
+      </datalist>
+      <label>Pasirinkite datą</label>
+      <input type="date" />
+      <label>Pasirinkite datą ir laiką</label>
+      <input type="datetime-local" />
+      <label>Pasirinkite failą</label>
+      <input type="file" />
+      <label>Pasirinkite failus</label>
+      <input type="file" multiple />
+      <h3>Checkboxes</h3>
+      <label>
+        <div class="flex">
+        <input type="checkbox" />
+        Susipazinau su privatumo politika
+      </label>
+      <input type="checkbox">
+      <label>Norėčiau gauti naujienų</label>
+    </div>
+      <h3>Radio</h3>
+      <label>
+        <input type="radio" name="options">
+        <span>Saskaitos</span>
+      </label>
+      <label>
+        <input type="radio" name="options">
+        <span>Klientu informacija</span>
+      </label>
+      <label>
+        <input type="radio" name="options">
+        <span>Garantines paslaugos</span>
+      </label>
+      <h3>Select</h3>
+      <select>
+        <option>Saskaitos</option>
+        <option>Pinigai</option>
+        <option>Garantines</option>
+      </select>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
