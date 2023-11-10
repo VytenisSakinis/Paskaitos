@@ -1,0 +1,101 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.headertxt ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    font-family: 'Jost', sans-serif;
+}
+
+.icons ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    font-family: 'Jost', sans-serif;
+    margin-right: 10px;
+}
+
+.icons {
+    margin-top: -5px;
+}
+
+.logo {
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.text {
+    background-color: transparent;
+    position: absolute;
+    z-index: 1;
+    width: 30%;
+    height: 90%;
+    margin-top: 8%;
+    margin-left: 25%;
+}
+
+.text h3 {
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Figure out the gaps */
+
+.text p {
+    font-family: 'Jost', sans-serif;
+    font-size: 60px;
+    margin-top: -15px;
+    gap: 2px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+
+button {
+    background-color: white;
+    width: 150px;
+    height: 40px;
+    border: 1px solid var(--primary-dark, #111);
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: 18px;
+    margin-top: -20px;
+}
+
+.shoe {
+    margin-top: 2%;
+    margin-left: 40%;
+}
+
+
+
+.left {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 300px;
+    position: absolute;
+    z-index: 2;
+}
+
+.right {
+    float: right;
+    margin-top: 300px;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
