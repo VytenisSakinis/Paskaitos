@@ -1,0 +1,179 @@
+body {
+    background: linear-gradient(63deg, #370353 -2.05%, #62005F 112.81%);
+    background-repeat: no-repeat cover;
+    width:
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+ul {
+    list-style: none;
+}
+
+.navigation ul {
+    font-family: Inter;
+    color: white;
+    display: flex;
+    align-items: row;
+    gap: 50px;
+    font-size: 18px;
+}
+
+.logo {
+    margin-top: -5px;
+    margin-left: 50px;
+}
+
+.logo ul {
+    font-family: Inter;
+    color: white;
+    display: flex;
+    align-items: row; 
+    gap: 10px;  
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.contact {
+    margin-right: 50px;
+}
+
+.contact ul {
+    font-family: Inter;
+    color: white;
+    display: flex;
+    align-items: row;
+    gap: 15px;
+    font-size: 18px;
+}
+
+.doggo {
+background: linear-gradient(31deg, #140119 1.55%, #5B0E4E 88.54%);
+background-size: 716px 836px;
+height: 836px;
+width: 716px;
+position: absolute;
+display: flex;
+margin-top: 1%;
+margin-left: 55%;
+border-radius: 360px 360px 0px 0px;
+}
+
+.dogimg {
+    background-image: url(images/ideogram\ 1\ 1.png);
+    margin-top: 17.8%;
+    background-size: 713px 713px;
+    width: 713px;
+    height: 713px;
+    flex-shrink: 0;
+}
+
+.welcome {
+    display: block;
+    margin-left: 5%;
+    margin-top: 5%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+}
+
+.welcome1 {
+    position: absolute;
+    z-index: 1;
+
+}
+
+h1 {
+    font-family: Inter;
+    background: linear-gradient(101deg, #FD7452 18.7%, #FF4265 102.73%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+
+.welcome2 {
+    position: absolute;
+    width: 40%;
+    z-index: 1;
+}
+
+.welcome2 p {
+    color: white;
+    font-family: Inter;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.welcome2 p::after {
+    content: " your furry friends";
+    background: linear-gradient(121deg, #FD653D 28.54%, #FF4167 68.18%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: inter;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+.welcome3 {
+    position: absolute;
+    width: 30%;
+    height: 48px;
+    z-index: 1;
+    margin-top: 13%;
+}
+
+.welcome3 p {
+    font-family: inter;
+    color: white;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    margin-top: 18%;
+    gap: 12px;
+}
+
+button {
+    display: flex;
+    width: 159px;
+    height: 48px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    background: linear-gradient(86deg, #FF5A37 0.61%, #FF3778 127.62%);
+    border-radius: 40px;
+    border: none;
+}
+
+.call {
+    margin-top: -5px;
+}
+
+.links p {
+    color: white;
+    font-family: inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 28px;
+    text-decoration-line: underline;
+}
