@@ -1,179 +1,308 @@
 body {
-    background: linear-gradient(63deg, #370353 -2.05%, #62005F 112.81%);
-    background-repeat: no-repeat cover;
-    width:
+  background: white;
+  background-repeat: no-repeat cover;
+  position: fixed;
 }
 
+main {
+  background: linear-gradient(63deg, #370353 -2.05%, #62005f 112.81%);
+  background-repeat: no-repeat cover;
+  display: block;
+  width: 1280px;
+  height: 832px;
+  align-items: center;
+  justify-content: center;
+}
 header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  width: 100%;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 .navigation ul {
-    font-family: Inter;
-    color: white;
-    display: flex;
-    align-items: row;
-    gap: 50px;
-    font-size: 18px;
+  font-family: Inter;
+  color: white;
+  display: flex;
+  align-items: row;
+  gap: 50px;
+  font-size: 18px;
 }
 
 .logo {
-    margin-top: -5px;
-    margin-left: 50px;
+  margin-top: -5px;
+  margin-left: 4.2%;
 }
 
 .logo ul {
-    font-family: Inter;
-    color: white;
-    display: flex;
-    align-items: row; 
-    gap: 10px;  
-    font-size: 24px;
-    font-weight: bold;
+  font-family: Inter;
+  color: white;
+  display: flex;
+  align-items: row;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .contact {
-    margin-right: 50px;
+  margin-right: 8%;
 }
 
 .contact ul {
-    font-family: Inter;
-    color: white;
-    display: flex;
-    align-items: row;
-    gap: 15px;
-    font-size: 18px;
+  font-family: Inter;
+  color: white;
+  display: flex;
+  align-items: row;
+  gap: 5px;
+  font-size: 18px;
 }
 
 .doggo {
-background: linear-gradient(31deg, #140119 1.55%, #5B0E4E 88.54%);
-background-size: 716px 836px;
-height: 836px;
-width: 716px;
-position: absolute;
-display: flex;
-margin-top: 1%;
-margin-left: 55%;
-border-radius: 360px 360px 0px 0px;
+  background: linear-gradient(31deg, #140119 1.55%, #5b0e4e 88.54%);
+  background-size: 516px 636px;
+  height: 636px;
+  width: 516px;
+  position: absolute;
+  display: flex;
+  margin-top: 9.2%;
+  margin-left: 50%;
+  border-radius: 360px 360px 0px 0px;
 }
 
 .dogimg {
-    background-image: url(images/ideogram\ 1\ 1.png);
-    margin-top: 17.8%;
-    background-size: 713px 713px;
-    width: 713px;
-    height: 713px;
-    flex-shrink: 0;
+  background-image: url(images/ideogram\ 1\ 1.png);
+  margin-top: 24%;
+  background-size: 513px 513px;
+  width: 513px;
+  height: 513px;
+  flex-shrink: 0;
 }
 
 .welcome {
-    display: block;
-    margin-left: 5%;
-    margin-top: 5%;
-    width: 100%;
-    position: absolute;
-    z-index: 2;
+  display: block;
+  margin-left: 7.5%;
+  margin-top: 7%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
 }
 
 .welcome1 {
-    position: absolute;
-    z-index: 1;
-
+  position: absolute;
+  z-index: 1;
 }
 
 h1 {
-    font-family: Inter;
-    background: linear-gradient(101deg, #FD7452 18.7%, #FF4265 102.73%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 30px;
-    font-weight: bold;
-    
+  font-family: Inter;
+  background: linear-gradient(101deg, #fd7452 18.7%, #ff4265 102.73%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .welcome2 {
-    position: absolute;
-    width: 40%;
-    z-index: 1;
+  position: absolute;
+  width: 40.25%;
+  margin-top: 1%;
+  z-index: 1;
 }
 
 .welcome2 p {
-    color: white;
-    font-family: Inter;
-    font-size: 72px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
+  color: white;
+  font-family: Inter;
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
 .welcome2 p::after {
-    content: " your furry friends";
-    background: linear-gradient(121deg, #FD653D 28.54%, #FF4167 68.18%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: inter;
-    font-size: 72px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
+  content: " your furry friends";
+  background: linear-gradient(121deg, #fd653d 28.54%, #ff4167 68.18%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: inter;
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
 }
 
 .welcome3 {
-    position: absolute;
-    width: 30%;
-    height: 48px;
-    z-index: 1;
-    margin-top: 13%;
+  position: absolute;
+  width: 40%;
+  height: 16px;
+  z-index: 1;
+  margin-top: 16%;
 }
 
 .welcome3 p {
-    font-family: inter;
-    color: white;
-    font-style: normal;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 28px;
+  font-family: inter;
+  color: white;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
 }
 
 .links {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    margin-top: 18%;
-    gap: 12px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin-top: 25%;
+  gap: 12px;
 }
 
 button {
-    display: flex;
-    width: 159px;
-    height: 48px;
-    padding: 8px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    color: white;
-    background: linear-gradient(86deg, #FF5A37 0.61%, #FF3778 127.62%);
-    border-radius: 40px;
-    border: none;
+  display: flex;
+  width: 159px;
+  height: 48px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background: linear-gradient(86deg, #ff5a37 0.61%, #ff3778 127.62%);
+  border-radius: 40px;
+  border: none;
 }
 
 .call {
-    margin-top: -5px;
+  margin-top: -5px;
 }
 
 .links p {
-    color: white;
-    font-family: inter;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 28px;
-    text-decoration-line: underline;
+  color: white;
+  font-family: inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 28px;
+  text-decoration-line: underline;
+}
+
+.bottom {
+  margin-top: 32%;
+  margin-left: 7.5%;
+}
+
+.rectangle {
+  background: linear-gradient(180deg, #ff583d 0%, #ff4364 100%);
+  width: 4px;
+  height: 50px;
+  display: flex;
+  position: absolute;
+  z-index: 3;
+}
+
+.image2 {
+  background-image: url(images/Ellipse\ 6.png);
+  display: flex;
+  position: absolute;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-left: 1%;
+  margin-top: -2%;
+}
+
+.image3 {
+  background-image: url(images/Ellipse\ 7.png);
+  display: flex;
+  position: absolute;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-left: 3%;
+  margin-top: -2%;
+}
+
+.imgtext {
+  display: flex;
+  position: absolute;
+  z-index: 3;
+  width: 284px;
+  height: 48px;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+.imgtext p {
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.smallimg {
+  display: flex;
+  margin-top: 15.8%;
+}
+
+.bulldog {
+  background-image: url(images/Ellipse\ 9.png);
+  z-index: 3;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 1px solid #BA92A7;
+  margin-left: 87%;
+  margin-top: -15%;
+}
+
+.bulldog1 {
+  background-image: url(images/Ellipse\ 8.png);
+  position: absolute;
+  z-index: 3;
+  height: 86px;
+  width: 86px;
+  border-radius: 50%;
+  margin-left: 72%;
+  margin-top: -9%;
+}
+
+.bulldog2 {
+  background-image: url(images/Ellipse\ 11.png);
+  position: absolute;
+  z-index: 3;
+  height: 52px;
+  width: 52px;
+  border-radius: 50%;
+  margin-left: 55%;
+  margin-top:-12%;
+}
+
+.bulldog3 {
+  background-image: url(images/Ellipse\ 12.png);
+  position: absolute;
+  z-index: 3;
+  height: 67px;
+  width: 67px;
+  border-radius: 50%;
+  margin-left: 48%;
+  margin-top: 5%;
+}
+
+.bulldog4 {
+  background-image: url(images/Ellipse\ 10.png);
+  position: absolute;
+  z-index: 3;
+  height: 57px;
+  width: 57px;
+  border-radius: 50%;
+  margin-left: 48%;
+  margin-top: 29.5%;
 }
