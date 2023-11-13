@@ -121,7 +121,7 @@ input:focus {
   background-color: white;
   height: 10%;
   width: 90%;
-  border: 1px dotted grey;
+  border: 1px dashed grey;
 }
 
 .upload p {
