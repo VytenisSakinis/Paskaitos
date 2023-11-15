@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      /* taisyti: 
+      left side - čia foto, ne group of items,
+      Fogot password - bolder,
+      lygiavimas parp eiluciu'
+      @box size
+      */
+
+         *{
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            background: white, center center;
+            font-family: 'Open Sans' ;
+            font-size: 12px;
+            margin: 0;
+        }
+        .login {
+            position: relative;
+            background-color: white;
+            max-width: 1440px;
+            width: 100%;
+            display: block;
+            margin: 0;
+            padding: 0;
+          /*  overflow: hidden; */
+        }
+        .login::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: auto;
+        }
+        .grid-container-element {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+        .left {
+            display: flex;  
+        }
+        .right {
+            width: 60%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 0 0 0;
+            align-self: stretch;
+        }
+        .box {
+            width: 100%;
+            height: auto;
+            position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            gap: 10px;
+        }
+        .txt {
+          width: 100%;
+          height: 49px ;
+          margin-bottom: 30px;
+        }
+        .password {
+            color: #1F2937;
+            font-size: 18px;
+            font-style: bold;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: -4%;
+        }
+        .desktop {
+            color: #6B7280;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+        }
+        .file-upload {
+            width: 310px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed #8E8E8E;
+            color: #8E8E8E;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .upload-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .submit-button {
+            width: 340px;
+            height: 48px;
+            display: flex;
+            align-items: flex-start;
+            align-self: stretch;
+        }
+        .box2 {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            gap: 0 12px; /* bet tada ir gale pasidaro gap, jei dedu 0 0 0 12px tai nieko */
+        }
+        .box2 .icon {
+            width: 100%;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            background: #F3F4F6;
+            padding: 12px;
+             /* gap: 0 12px 0 0; */ 
+        }
+        .box2 .button {
+            width: 200%;
+            height: 48px;
+            background: #724DFF;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+        }
+        .under-button-caption {
+            color: #6B7280;
+            text-align: left;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 26px; /* 185.714% */
+            letter-spacing: 1px;
+        }
+        .under-button-caption .span {
+            color: #6D58BA;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 26px; /* 185.714% */
+        }
+
+       @media screen and (max-width: 1440px) {
+            .contact {
+                align-items: center;
+            }
+
+            .contact .contact-details {
+                flex-direction: column;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+            .contact {
+                margin: 0;
+                border-radius: 0;
+                padding: 15px 15px 0;
+            }
+
+            .contact::after {
+                width: 6px;
+            }
+
+            .contact h1 {
+                font-size: 32px;
+                text-align: center;
+            }
+
+            .contact-inner {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .contact .left,
+            .contact .right {
+                width: 100%;
+                padding: 0;
+            }
+
+            .contact .right iframe {
+                height: 415px;
+            }
+
+            .contact .submit-button,
+            .contact .agreement,
+            .contact .contact-details {
+                padding: 0 33px;
+            }
+
+            .contact p.mobile {
+                display: block;
+                font-size: 24px;
+                text-align: center;
+                margin: 15px 0 0;
+            }
+
+            .contact p.desktop {
+                display: none;
+            }
+        }*/
+    </style>
+</head>
+<body>
+    <div class="login">
+        <div class="grid-container-element">
+            <div class="grid-child-element left"><img src="icons and pictures/left.png"></img></div>
+            <div class="grid-child-element right">
+                <div class="box">
+                    <div class="txt">
+                      <h1 class="password">Forgot Password</h1>
+                      <p class="desktop">Enter Username, Email or Phone Number</p>
+                    </div>
+                    <div class="file-upload">
+                        <div class="upload-icon">
+                            <img src="icons and pictures/at-symbol.svg"/>
+                        </div>
+                        <span>Username, Email or Phone Number</span>
+                    </div>
+                    <div class="submit-button">
+                        <div class="box2">
+                            <div class="icon">
+                                <img src="icons and pictures/Arrow left.svg">
+                            </div>
+                            <div class="text">
+                                <div class="button">
+                                    <button class="button">Confirm</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="under-button-caption">Questions? Email us at <span>@pixelonium.com</span></div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
