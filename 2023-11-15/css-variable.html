@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css variable</title>
+    <style>
+        body {
+            --background-color: white; 
+            --input-background-color: white;
+            --input-border-color: rgb(191, 190, 190);
+            --button-background-color:rgb(190, 190, 190) ;
+            --button-color: rgb(190, 190, 190);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--background-color);
+        }
+
+        body.dark {
+            --background-color: rgb(34, 34, 34); 
+            --input-background-color: rgb(90, 90, 90);
+            --input-border-color: rgb(87, 87, 87);
+            --button-background-color:rgb(69, 68, 68) ;
+            --button-color: rgb(255, 255, 255);
+        }
+
+        form {
+            text-align: center; 
+        }
+
+        input {
+            max-width: 768px;
+            margin: 0 auto;
+            border: 1px solid var(--input-border-color);
+            border-radius: 25px;
+            padding: 10px 25px;
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background-color: var(--input-background-color);
+        }
+
+        button {
+            background-color: var(--button-background-color);
+            color: var(--button-color);
+            border: none;
+            padding: 8px 10px;
+        }
+    </style>
+</head>
+<body class="dark">
+   <form>
+    <input type="text">
+   <button>Search</button>
+</form>
+</body>
+</html>
