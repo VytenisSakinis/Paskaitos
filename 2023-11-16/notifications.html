@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+   <style>
+        :root {
+            --bs-body-bg: #ebe8e8;
+        }
+
+        .page-heading {
+            position: relative;
+        }
+
+        .page-heading::after {
+            content: "";
+            height: 6px;
+            width: 100px;
+            background-color: #29b6f6;
+            position: absolute;
+            left: 12px;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-light-subtle">
+        <div class="container d-flex justify-content-between align-items-center py-3">
+        <h3 class="mb-0">Navbar</h3>
+        <nav>
+            <ul class="nav fs-5 gap-3">
+                <li><a href="#" class="nav-link px2 link-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px2 link-secondary">About</a></li>
+                <li><a href="#" class="nav-link px2 link-secondary">Contact</a></li>
+                <li><a href="#" class="nav-link px2 link-secondary">Login</a></li>
+                <li><a href="#" class="nav-link px2 link-secondary">Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container pt-5 page-heading">
+            <div class="d-flex">
+            <h1 class="fw-normal">Notifications</h1>
+            <i class="bi bi-bell-fill ms-2 text-secondary" style="font-size: 38px;"></i>
+        </div>
+        </div>
+        <div class="mt-5">
+            <div class="bg-white"></div>
+            <div class="bg-white"></div>
+            <div class="bg-white"></div>
+            <div class="bg-white"></div>
+            <div class="bg-white"></div>
+            <div class="bg-white"></div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
