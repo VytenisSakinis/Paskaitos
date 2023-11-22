@@ -1,140 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landing page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="assets/css/style.css" rel="stylesheet">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
     <header>
-        <div class="container-lg d-flex justify-content-between align-items-center flex-row-reverse flex-md-row">
-            <div class="d-block d-lg-none menu">
-                <label class="hamburger" for="nav-toggler"></label>
-            </div>
-            <div class="logo">
-                <img src="assets/images/logo.png" alt="Logotipas" />
-            </div>
-            <input type="checkbox" id="nav-toggler" name="nav-toggler" class="d-none">
-            <nav class="navbar navbar-expand">
-                <label class="close-offcanvas fs-1 position-absolute top-0 d-lg-none" for="nav-toggler" style="right: 1rem">
-                    <i class="bi bi-x"></i>
-                </label>
-                <ul class="navbar-nav flex-column flex-lg-row gap-lg-5 gap-4">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Discover</a></li>
-                    <li><a href="#">Special deals</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            <ul class="navbar-nav flex-row d-none d-md-flex">
-                <li><a href="#" class="btn btn-empty">Log in</a></li>
-                <li><a href="#" class="btn btn-primary">Sign Up</a></li>
-            </ul>
+      <div
+        class="container-lg d-flex justify-content-between align-items-center flex-row-reverse flex-md-row"
+      >
+        <div class="d-block d-lg-none menu">
+          <label class="hamburger" for="nav-toggler"></label>
         </div>
+        <div class="logo">
+          <img src="assets/images/logo.png" alt="Logotipas" />
+        </div>
+        <input
+          type="checkbox"
+          id="nav-toggler"
+          name="nav-toggler"
+          class="d-none"
+        />
+        <nav class="navbar navbar-expand">
+          <label
+            class="close-offcanvas fs-1 position-absolute top-0 d-lg-none"
+            for="nav-toggler"
+            style="right: 1rem"
+          >
+            <i class="bi bi-x"></i>
+          </label>
+          <ul class="navbar-nav flex-column flex-lg-row gap-lg-5 gap-4">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Discover</a></li>
+            <li><a href="#">Special deals</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <ul class="navbar-nav flex-row d-none d-md-flex">
+          <li><a href="#" class="btn btn-empty">Log in</a></li>
+          <li><a href="#" class="btn btn-primary">Sign Up</a></li>
+        </ul>
+      </div>
     </header>
     <main>
-        <section class="home">
-            <div class="container-lg">
-                <div class="row flex-wrap-reverse flex-lg-wrap">
-                    <div class="col-lg-5 col-xl-4 col-12 pt-5 text-center text-lg-start">
-                        <div class="link">
-                            <a href="#" class="btn btn-shadow">Explore the world!</a>
-                        </div>
-                        <h2 class="mt-md-5 mt-4">Travel <span>top destination</span> of the world</h2>
-                        <p class="mt-md-5 mt-4">We always make our customer happy by providing as many choices as possible </p>
-                        <div class="buttons mt-4 mt-md-5 justify-content-center justify-content-lg-start flex-md-row flex-column">
-                            <a href="#" class="btn btn-primary">Get Started</a>
-                            <a href="#" class="btn btn-outline-primary">Watch Demo</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 col-xl-8 col-12">
-                        <img src="assets/images/home.png" alt="" style="margin-bottom: -15%;"/>
-                    </div>
-                </div>
+      <section class="home">
+        <div class="container-lg">
+          <div class="row flex-wrap-reverse flex-lg-wrap">
+            <div
+              class="col-lg-5 col-xl-4 col-12 pt-5 text-center text-lg-start"
+            >
+              <div class="link">
+                <a href="#" class="btn btn-shadow">Explore the world!</a>
+              </div>
+              <h2 class="mt-md-5 mt-4">
+                Travel <span>top destination</span> of the world
+              </h2>
+              <p class="mt-md-5 mt-4">
+                We always make our customer happy by providing as many choices
+                as possible
+              </p>
+              <div
+                class="buttons mt-4 mt-md-5 justify-content-center justify-content-lg-start flex-md-row flex-column"
+              >
+                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="#" class="btn btn-outline-primary">Watch Demo</a>
+              </div>
             </div>
-        </section>
-        <section class="clients pb-5 mt-5">
-            <div class="container-lg">
-                <div class="logos">
-                    <ul class="row gy-5 justify-content-center justify-content-lg-between flex-wrap flex-lg-nowrap align-items-lg-center">
-                        <li class="text-center col-4">
-                            <a href="#">
-                                <img src="assets/images/logos/1.png">
-                            </a>
-                        </li>
-                        <li class="text-center col-4 col-lg-auto">
-                            <a href="#">
-                                <img src="assets/images/logos/2.png">
-                            </a>
-                        </li>
-                        <li class="text-center col-4 col-lg-auto">
-                            <a href="#">
-                                <img src="assets/images/logos/3.png">
-                            </a>
-                        </li>
-                        <li class="text-center col-4 col-lg-auto">
-                            <a href="#">
-                                <img src="assets/images/logos/4.png">
-                            </a>
-                        </li>
-                        <li class="text-center col-4 col-lg-auto">
-                            <a href="#">
-                                <img src="assets/images/logos/5.png">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="col-lg-7 col-xl-8 col-12">
+              <img
+                src="assets/images/home.png"
+                alt=""
+                style="margin-bottom: -15%"
+              />
             </div>
-        </section>
-        <div class="services">
-            <div class="container-lg">
-                <div class="row py-5 gy-5">
-                    <div class="col-12 col-xl-4 d-xl-flex align-items-center text-center text-xl-start">
-                        <div class="section-heading">
-                            <h3>Services</h3>
-                            <h2>Our top value categories for you</h2>
-                        </div>
-                    </div>
-                    <div class="col-12 col-xl-8 p-custom">
-                        <div class="row py-5 text-center">
-                            <div class="col-12 col-lg-4 col-xl-6 ">
-                                <div class="border p-5 rounded-5">
-                                    <div>
-                                        <img src="assets/icons/globe.png" />
-                                    </div>
-                                    <h3> Best Tour Guide</h3>
-                                    <p>What looked like a small patch of purple grass, above five feet.</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 col-xl-6">
-                                <div class="border p-5 rounded-5">
-                                    <div>
-                                        <img src="assets/icons/app.png" />
-                                    </div>
-                                    <h3>Easy booking</h3>
-                                    <p>Square, was moving across the sand in their direction.</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 d-xl-none">
-                                <div class="border p-5 rounded-5">
-                                    <div>
-                                        <img src="assets/icons/cloudy.png" />
-                                    </div>
-                                    <h3>Weather Forecast</h3>
-                                    <p>What looked like a small patch of purple grass, above five feet.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </section>
+      <section class="clients pb-5 mt-5">
+        <div class="container-lg">
+          <div class="logos">
+            <ul
+              class="row gy-5 justify-content-center justify-content-lg-between flex-wrap flex-lg-nowrap align-items-lg-center"
+            >
+              <li class="text-center col-4">
+                <a href="#">
+                  <img src="assets/images/logos/1.png" />
+                </a>
+              </li>
+              <li class="text-center col-4 col-lg-auto">
+                <a href="#">
+                  <img src="assets/images/logos/2.png" />
+                </a>
+              </li>
+              <li class="text-center col-4 col-lg-auto">
+                <a href="#">
+                  <img src="assets/images/logos/3.png" />
+                </a>
+              </li>
+              <li class="text-center col-4 col-lg-auto">
+                <a href="#">
+                  <img src="assets/images/logos/4.png" />
+                </a>
+              </li>
+              <li class="text-center col-4 col-lg-auto">
+                <a href="#">
+                  <img src="assets/images/logos/5.png" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <div class="services">
+        <div class="container-lg">
+          <div class="row py-5 gy-5">
+            <div
+              class="col-12 col-xl-4 d-xl-flex align-items-center text-center text-xl-start"
+            >
+              <div class="section-heading">
+                <h3>Services</h3>
+                <h2>Our top value categories for you</h2>
+              </div>
+            </div>
+            <div class="col-12 col-xl-8 p-custom">
+              <div class="row py-5 text-center">
+                <div class="col-12 col-lg-4 col-xl-6">
+                  <div class="border p-5 rounded-5">
+                    <div>
+                      <img src="assets/icons/globe.png" />
+                    </div>
+                    <h3>Best Tour Guide</h3>
+                    <p>
+                      What looked like a small patch of purple grass, above five
+                      feet.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-6">
+                  <div class="border p-5 rounded-5">
+                    <div>
+                      <img src="assets/icons/app.png" />
+                    </div>
+                    <h3>Easy booking</h3>
+                    <p>
+                      Square, was moving across the sand in their direction.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4 d-xl-none">
+                  <div class="border p-5 rounded-5">
+                    <div>
+                      <img src="assets/icons/cloudy.png" />
+                    </div>
+                    <h3>Weather Forecast</h3>
+                    <p>
+                      What looked like a small patch of purple grass, above five
+                      feet.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="destination">
+        <div
+          class="container d-flex justify-content-center justify-content-lg-between flex-lg-row flex-column text-center text-lg-start"
+        >
+          <div class="section-heading">
+            <h3>TOP DESTINATION</h3>
+            <h2>Explore top destination</h2>
+          </div>
+          <div class="buttons1">
+            <button class="circle">
+              <a href="#">
+                <img
+                  src="assets/icons/3.svg"
+                  style="width: 20px; height: 20px"
+                />
+              </a>
+            </button>
+            <button class="circle1">
+              <a href="#">
+                <img
+                  src="assets/icons/4.svg"
+                  style="width: 20px; height: 20px"
+                />
+              </a>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container d-flex flex-column flex-md-row my-5 gap-3">
+          <div class="col-md-4 col-12">
+            <div class="box-image border-none shadow rounded-5 w-100">
+              <div class="boxText d-flex justify-content-between p-4">
+                <h3>Paradise Beach, Bantayan Island</h3>
+                <h2>$550.16</h2>
+              </div>
+              <div class="boxTextBot p-4">
+                <h3>Rome, Italy</h3>
+                <h2 class="mt-4">4.8 <img src="assets/icons/5.svg" /></h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-12">
+            <div class="box-image2 border-none shadow rounded-5 w-100">
+              <div class="boxText d-flex justify-content-between p-4">
+                <h3 class="me-5">Ocean with full of Colors</h3>
+                <h2>$20.99</h2>
+              </div>
+              <div class="boxTextBot p-4">
+                <h3>Maldives</h3>
+                <h2 class="mt-4">4.5 <img src="assets/icons/5.svg" /></h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-12">
+            <div class="box-image3 border-none shadow rounded-5 w-100">
+              <div class="boxText d-flex justify-content-between p-4">
+                <h3>Mount View, Above the cloud</h3>
+                <h2>$150.99</h2>
+              </div>
+              <div class="boxTextBot p-4">
+                <h3>United Arab Emiries</h3>
+                <h2 class="mt-4">5.0 <img src="assets/icons/5.svg" /></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container py-5">
+          <div class="dicount d-flex flex-lg-row flex-column">
+            <div class="col-lg-8 col-12 mt-5">
+              <div class="backgroundImg">
+                <img src="assets/images/discount.png" />
+              </div>
+            </div>
+            <div
+              class="col-lg-4 col-12 text-lg-start text-center discount-margin"
+            >
+              <div class="section-heading">
+                <h3>travel point</h3>
+                <h2>We helping you find your dream location</h2>
+              </div>
+              <p class="mt-5">
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC.
+              </p>
+              <div class="boxes">
+                <div
+                  class="row d-flex justify-content-lg-start justify-content-center flex-column flex-md-row mt-4 gap-4"
+                >
+                  <div
+                    class="col-md-5 col-12 border p-4 text-center rounded-5 holiday"
+                  >
+                    <h2>500+</h2>
+                    <h3>Holiday Package</h3>
+                  </div>
+                  <div
+                    class="col-md-5 col-12 border p-4 text-center rounded-5 holiday"
+                  >
+                    <h2>100</h2>
+                    <h3>Luxury Hotel</h3>
+                  </div>
+                </div>
+                <div
+                  class="row mt-4 d-flex justify-content-lg-start justify-content-center flex-column flex-md-row gap-4"
+                >
+                  <div
+                    class="col-md-5 col-12 border p-4 text-center rounded-5 holiday"
+                  >
+                    <h2>7</h2>
+                    <h3>Premium Airlines</h3>
+                  </div>
+                  <div
+                    class="col-md-5 col-12 border p-4 text-center rounded-5 holiday"
+                  >
+                    <h2>2k+</h2>
+                    <h3>Happy Customer</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container py-5">
+          <div class="d-flex flex-lg-nowrap flex-wrap-reverse">
+            <div class="col-12 col-lg-6 mt-5 pe-5">
+              <div class="section-heading text-center text-lg-start">
+                <h3>Key features</h3>
+                <h2>We offer best services</h2>
+                <p class="my-5">
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                  from 45 BC.
+                </p>
+              </div>
+              <div class="p-4 d-flex flex-column flex-md-row gap-5 align-items-md-center align-items-start">
+                <div class="icon">
+                    <img src="assets/icons/6.svg">
+                </div>
+                <div class="paradise">
+                    <h3>We offer best-services</h3>
+                    <p>Lorem Ipsum is not simply random text</p>
+                </div>
+              </div>
+              <div class="border rounded-5 p-4 d-flex flex-column flex-md-row gap-5 align-items-md-center align-items-start">
+                <div class="icon">
+                    <img src="assets/icons/7.svg">
+                </div>
+                <div class="paradise">
+                    <h3>We offer best-services</h3>
+                    <p>Lorem Ipsum is not simply random text</p>
+                </div>
+              </div>
+              <div class="p-4 d-flex flex-column flex-md-row gap-5 align-items-md-center align-items-start">
+                <div class="icon">
+                    <img src="assets/icons/8.svg">
+                </div>
+                <div class="paradise">
+                    <h3>We offer best-services</h3>
+                    <p>Lorem Ipsum is not simply random text</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-12 col-lg-6 p-5 surf d-flex align-items-lg-start align-items-center justify-content-lg-start justify-content-center"
+            >
+              <img src="assets/images/services.png" />
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-</body>
+  </body>
 </html>
