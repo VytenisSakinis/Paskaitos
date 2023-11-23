@@ -151,6 +151,32 @@ ul {
     padding: 0;
 }
 
+.service h3 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #191825;
+    margin-bottom: 2rem;
+}
+
+.service p {
+    font-size: 18px;
+    font-family: inter;
+    line-height: 160%;
+    color: #19182582;
+    margin-bottom: 2rem;
+}
+
+.service {
+    height: 100%;
+    transition: all .5s ease-in-out;
+    padding: 5rem 4rem 6rem 4rem !important;
+}
+
+.service:hover {
+    box-shadow: 0 0 40px 5px grey;
+    border: none !important;
+}
+
 .section-heading h3 {
     text-transform: uppercase;
     color: var(--primary-color);
@@ -166,20 +192,31 @@ ul {
     margin: 1rem 0 0;
 }
 
-.circle {
-    border-radius: 50%;
-    border: 1px solid #eeeeee;
-    background: white;
-    height: 100px;
-    width: 100px;
+
+.arrows {
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
   }
 
-  .circle1 {
-    border-radius: 50%;
-    border: 1px solid #eeeeee;
-    background: #5245b0;
-    height: 100px;
+  .arrows a {
+    display: flex;
     width: 100px;
+    height: 100px;
+    border: 1px solid rgb(25, 24, 27, .1);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .arrows svg {
+    fill: #191825;
+  }
+
+  .arrows a:hover {
+    background-color: #5d50c6;
+    border-color: #5d50c6;
+    fill: white;
   }
 
 .box-image::before {
@@ -275,6 +312,24 @@ ul {
     font-family: inter;
 }
 
+.effect {
+    transition: left .5s ease-in-out;
+}
+
+.effect:hover {
+    border: 1px solid #19182580;
+    border-radius: 2rem;
+}
+
+.background {
+    background: url(../images/backgroundblob.svg) no-repeat center center / cover;
+    display: flex;
+    width: 100%;
+    height: 958px;
+    position: relative;
+    top: 5%;
+}
+
 @media screen and (min-width: 992px) {
     nav.navbar {
         display: block;
@@ -317,6 +372,11 @@ ul {
     }
 
     .buttons1 {
+        margin-top: 2rem;
+    }
+
+    .arrows {
+        justify-content: center;
         margin-top: 2rem;
     }
 } 
