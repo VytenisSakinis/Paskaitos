@@ -277,7 +277,8 @@
             <div
               class="col-lg-4 col-12 text-lg-start text-center discount-margin"
             >
-              <div class="section-heading">
+              <div class="section-heading decoration-main">
+                <div class="decoration-icon"></div>
                 <h3>travel point</h3>
                 <h2>We helping you find your dream location</h2>
               </div>
@@ -381,8 +382,10 @@
       </section>
       <section class="">
         <div class="background"></div>
-        <div class="container d-flex justify-content-lg-between align-items-center">
-          <div class="col-xl-1 col-2 arrows">
+        <div
+          class="container d-flex justify-content-lg-between align-items-center"
+        >
+          <div class="col-xl-1 col-2 slider">
             <a href="#">
               <svg
                 width="24"
@@ -468,14 +471,19 @@
                 />
               </svg>
             </div>
-              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
-              <div class="dots d-flex align-items-center justify-content-center gap-4">
-                <a href=#></a>
-                <a href=#></a>
-                <a href=#></a>
-              </div>
+            <p>
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC.
+            </p>
+            <div
+              class="dots d-flex align-items-center justify-content-center gap-4"
+            >
+              <a href="#"></a>
+              <a href="#"></a>
+              <a href="#"></a>
+            </div>
           </div>
-          <div class="col-xl-1 col-2 arrows">
+          <div class="col-xl-1 col-2 slider">
             <a href="#">
               <svg
                 width="18"
@@ -493,23 +501,82 @@
         </div>
       </section>
       <section>
-        <div class="decoration"></div>
         <div class="container decobox">
-          <div class="d-flex flex-column text-center justify-content-center">
-            <div class="section-heading">
+          <div class="decoration"></div>
+          <div
+            class="col-12 d-flex flex-column text-center justify-content-center"
+          >
+            <div class="section-heading col-12">
               <h3>subscribe to our newsletter</h3>
-              <h2>Prepare yourself & let’s explore the beauty of the world</h2>
+              <h2>Prepare yourself & let's explore the beauty of the world</h2>
             </div>
-            <div class="inputs text-center d-flex justify-content-around align-items-center">
-            <div class="input-group">
-              <i class="bi bi-envelope"></i>
-              <input type="email" placeholder="Your Email">
+            <div
+              class="inputs text-center d-flex justify-content-around align-items-center flex-md-row flex-column"
+            >
+              <div class="input-group mt-5">
+                <i class="bi bi-envelope"></i>
+                <input type="email" placeholder="Your Email" class="rounded" />
+              </div>
+              <button class="btn btn-primary mt-5">SUBMIT</button>
             </div>
-            <button class="btn btn-primary">SUBMIT</button>
           </div>
-          </div>
+          <div class="decoration2"></div>
         </div>
       </section>
     </main>
+    <footer>
+      <div class="container mt-5">
+        <div class="row d-flex flex-md-row flex-column">
+          <div class="col-md-5 col-12 py-5 footer">
+            <img src="assets/images/logo.png" />
+            <p class="mt-4">
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC.
+            </p>
+            <ul class="d-flex gap-3 mt-4">
+              <li><img src="assets/icons/11.svg" /></li>
+              <li
+                class="icons text-center d-flex align-items-center justify-content-center"
+              >
+                <img src="assets/icons/12.svg" />
+              </li>
+              <li
+                class="icons text-center d-flex align-items-center justify-content-center"
+              >
+                <img src="assets/icons/13.svg" />
+              </li>
+            </ul>
+          </div>
+          <div class="right col-md-7 col-12 py-5 d-flex flex-md-row flex-column">
+            <div class="col-4 footer-right">
+              <h3>Company</h3>
+              <ul>
+                <li>About</li>
+                <li>Career</li>
+                <li>Mobile</li>
+              </ul>
+            </div>
+            <div class="col-4 footer-right">
+              <h3>Contact</h3>
+              <ul>
+                <li>Why travlog?</li>
+                <li>Partner with us</li>
+                <li>FAQ's</li>
+                <li>Blog</li>
+              </ul>
+            </div>
+            <div class="col-4 footer-right">
+              <h3>Meet Us</h3>
+              <ul>
+                <li>+00 92 1234 56789</li>
+                <li>info@travlog.com</li>
+                <li>205. R Street, New York</li>
+                <li>BD23200</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
