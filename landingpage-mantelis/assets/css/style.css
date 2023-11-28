@@ -1,0 +1,67 @@
+header {
+    padding: 1.5rem 2rem 1rem 2rem;
+    box-shadow: 0 1px 5px 0 rgba(135, 128, 128, 0.323);
+}
+
+header h2 {
+    font-family: Comfortaa;
+    color: #9A54BC;
+    font-weight: 500;
+    padding-left: 2rem;
+}
+
+header li {
+    list-style: none;
+    color: #2B0236;
+    font-weight: 600;
+}
+
+header li a {
+    text-decoration: none;
+    color: #2B0236;
+}
+
+header li button {
+    background-color: white;
+    border: 2px solid #9A54BC;
+    color: #9A54BC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem .5rem 1rem;
+    border-radius: .3rem;
+    font-family: roboto;
+    font-weight: 600;
+}
+
+.header-section {
+    margin-top: 4rem;
+}
+
+.header-section h3 {
+    width: 60%;
+    font-family: roboto;
+    font-weight: 500;
+    color: #2B0236;
+}
+
+.header-section button {
+    background-color: #9A54BC;
+    border: none;
+    color: white;
+    font-family: roboto;
+    font-weight: 600;
+    padding: .8rem 1.5rem .8rem 1.5rem;
+    border-radius: .3rem;
+    margin-top: 2rem;
+}
+
+.circle {
+    background: #F5E1FF;
+    width: 30%;
+    height: 500px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
