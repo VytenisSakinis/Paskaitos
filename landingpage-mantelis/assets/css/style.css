@@ -1,3 +1,13 @@
+.top {
+    background: #60267F;
+    text-align: center;
+    color: white;
+    font-family: DM sans;
+    font-size: 6px;
+    font-weight: bold;
+    padding: .2rem;
+}
+
 header {
     padding: 1.5rem 2rem 1rem 2rem;
     box-shadow: 0 1px 5px 0 rgba(135, 128, 128, 0.323);
@@ -100,3 +110,68 @@ header li button {
     border: 2px solid #9A54BC;
     color: #9A54BC;
 }
+
+.logos h3 {
+    font-family: roboto;
+    font-size: 31px;
+    font-weight: 500;
+    margin-top: 4rem;
+}
+
+.logoRow {
+    gap: 5rem;
+}
+
+.collab h3 {
+    font-family: roboto;
+    font-size: 31px;
+    margin-top: 6rem;
+}
+
+.box {
+    background: white;
+    box-shadow: 0 10px 15px 2px rgba(128, 128, 128, 0.138);
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.box button {
+    background: white;
+    border: none;
+    width: 100%;
+    font-family: roboto;
+    font-weight: 600;
+    font-size: 18px;
+    padding: .5rem;
+    border-radius: 0.2rem;
+}
+
+.box button:hover {
+    background: #60267F;
+    border: 2px solid #9A54BC;
+    padding: .5rem;
+    color: white;
+}
+
+.phone {
+    background: url(../images/Rectangle.svg) no-repeat center center / cover;
+    background-size: contain;
+    height: 700px;
+}
+
+.textBox {
+    padding: 2rem 3rem 2rem 3rem;
+    background: #F2F2F2;
+    margin-top: 2rem;
+    font-family: roboto;
+    font-weight: 300;
+}
+
+.textBox span {
+    font-weight: 600;
+}
+
+.textBox > .seeMore {
+    font-weight: 400;
+}
+
