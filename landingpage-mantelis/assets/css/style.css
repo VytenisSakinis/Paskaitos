@@ -57,11 +57,46 @@ header li button {
 }
 
 .circle {
-    background: #F5E1FF;
-    width: 30%;
-    height: 500px;
+    background: #f5e1ff52;
+    width: 399px;
+    height: 399px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 5rem;
+}
+
+.circle2 {
+    background: #f5e1ffd3;
+    width: 236px;
+    height: 236px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: 26rem;
+}
+
+.boxText {
+    background: white;
+    border: 2px solid #9A54BC;
+    border-radius: .5rem;
+    width: 121px;
+    height: 236px;
+    z-index: 2;
+    position: absolute;
+    top: 27rem;
+    font-family: Comfortaa;
+    color: #9A54BC;
+    font-weight: 500;
+    font-size: 27px;
+}
+
+.header-section .button {
+    position: absolute;
+    top: 42rem;
+    z-index: 3;
+    background: white;
+    border: 2px solid #9A54BC;
+    color: #9A54BC;
 }
