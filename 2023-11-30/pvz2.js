@@ -21,14 +21,14 @@ function login()
     let prisijungimoVardas = prisijungimoVardoIvestis.value;
     let prisijungimoSlaptazodis = prisijungimoSlaptazodzioIvestis.value;
 
-    if(prisijungimoVardas === loginName && password === prisijungimoSlaptazodis)
+    if(/[A-Z]/.test(prisijungimoSlaptazodzioIvestis) && /[0-9]/.test[prisijungimoSlaptazodzioIvestis])
     {
-        console.log('Prisijungete sekmingai')
+        console.log('Slaptažodis geras')
     }
     else
     {
-        console.log('Prisijungimo duomenys yra blogi')
+        console.log('Pridėkite į slaptažodį (Aa#1) elementus')
     }
 }
 
-/[0-9]/.test(text);
+// /[0-9]/.test(text);
