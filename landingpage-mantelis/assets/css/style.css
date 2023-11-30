@@ -175,3 +175,255 @@ header li button {
     font-weight: 400;
 }
 
+.textBoxSecond h3 {
+    font-size: 31px;
+    font-family: roboto;
+    font-weight: 500;
+    margin-top: 3rem;
+}
+
+.textBoxSecond p {
+    font-family: 16px;
+    font-family: roboto;
+    font-weight: 400;
+    width: 70%;
+}
+
+.videoImage {
+    background: url(../images/video.svg) no-repeat center center / cover;
+    width: 75%;
+    height: 400px;
+    position: relative;
+}
+
+.playButton {
+    background: url(../icons/PlayCircle.png) no-repeat;
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 50%;
+    left: 45%;
+}
+
+.collabSecond {
+    margin-top: 5rem;
+    font-size: 31px;
+    font-family: roboto;
+    font-weight: 500;
+}
+
+.imagesSize img {
+    width: 100%;
+    height: 200px;
+}
+
+.imagesSize h4 {
+    color: #60267F;
+    font-size: 16px;
+    font-family: roboto;
+    font-weight: 500;
+    margin: 1rem 0 0 1rem;
+}
+
+.imagesSize p {
+    font-size: 16px;
+    font-family: roboto;
+    font-weight: 500;
+    margin: .2rem 0 0 1rem;
+}
+
+.designBackground {
+    background: #e2bdf21f no-repeat center center / cover;
+    padding: 12rem 2rem 0rem 2rem;
+}
+
+
+
+.content h3 {
+    font-size: 31px;
+    font-family: roboto;
+    font-weight: 500;
+}
+
+.content p {
+    color: #A79D9D;
+    font-size: 14px;
+    font-family: roboto;
+    font-weight: 400;
+}
+
+.discount p:nth-child(2) {
+    color: #2B0236;
+    font-size: 14px;
+    font-family: roboto;
+    font-weight: 500;
+}
+
+.card h2 {
+    font-size: 22px;
+    font-family: roboto;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.card h3 {
+    font-size: 33px;
+    font-family: roboto;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.card button {
+    border: 2px solid #2B0236;
+    background: white;
+    color: #2B0236;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 1rem 0 1rem 0;
+    border-radius: .3rem;
+}
+
+.card p {
+    color: #000000c0;
+    font-size: 14px;
+    font-family: roboto;
+    font-weight: 400;
+    margin-top: 7rem;
+}
+
+.card ul {
+    list-style: none;
+    margin-top: 2rem;
+    padding: 0;
+}
+
+.card li:before {
+    content: "\F231";
+    font-family: bootstrap-icons;
+    padding-right: 1rem;
+}
+
+.card {
+    background: transparent !important;
+}
+
+.cardGreen {
+    background: #56E6A5 !important;
+}
+
+.cardGreen button {
+    margin-top: 3rem;
+}
+
+.cardGreen h3 {
+    width: 50%;
+}
+
+.review {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.joinUs button {
+    background-color: #9A54BC;
+    border: none;
+    color: white;
+    font-family: roboto;
+    font-weight: 600;
+    padding: .8rem 1.5rem .8rem 1.5rem;
+    border-radius: .3rem;
+}
+
+.joinUs h3 {
+    font-family: roboto;
+    font-size: 31px;
+    font-weight: 400;
+}
+
+.joinUs p {
+    font-family: roboto;
+    font-size: 16px;
+}
+
+.line {
+    background: url(../images/line.svg) no-repeat center;
+    width: 632px;
+    height: 158px;
+    position: absolute;
+    margin-top: 8rem;
+    
+}
+
+.face1 {
+    background: url(../images/face1.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    margin-top: -2rem;
+    margin-left: -2rem;
+}
+.face2 {
+    background: url(../images/face2.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    margin-top: 2.5rem;
+    margin-left: 2.5rem;
+    position: absolute;
+}
+.face3 {
+    background: url(../images/face3.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 10rem;
+}
+.face4 {
+    background: url(../images/face4.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin-top: 5rem;
+    margin-left: 15rem;
+}
+.face5 {
+    background: url(../images/face5.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin-top: 5.5rem;
+    margin-left: 22rem;
+}
+.face6 {
+    background: url(../images/face6.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin-top: 4.5rem;
+    margin-left: 28rem;
+}
+.face7 {
+    background: url(../images/face7.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin-top: 5rem;
+    margin-left: 34rem;
+}
+.face8 {
+    background: url(../images/face8.png) no-repeat center center / cover;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: 37.5rem;
+}
+.you {
+    background: url(../images/You_.png) no-repeat center center;
+    width: 50px;
+    height: 20px;
+    position: absolute;
+    margin-left: 32.5rem;
+    margin-top: .4rem;
+}
+
