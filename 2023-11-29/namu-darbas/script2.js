@@ -8,15 +8,14 @@ let skaicius2 = rand(5,0);
 console.log(skaicius1);
 console.log(skaicius2);
 
-if(skaicius1 > skaicius2){
-    let skaicius = skaicius1 / skaicius2;
-    let roundedSkaicius = skaicius.toFixed(2);
-    console.log(roundedSkaicius);
-}else{
-    let skaicius = skaicius2 / skaicius1;
-    let roundedSkaicius = skaicius.toFixed(2);
-    console.log(roundedSkaicius);
+if(skaicius1 === 0 || skaicius2 === 0) console.log(`Dalyba iš nulio nėra galima`);
+else{
+    if(skaicius1 > skaicius2) console.log((skaicius1 / skaicius2).toFixed(2));
+    else console.log((skaicius2 / skaicius1).toFixed(2));
 }
+
+
+
 
 
 
