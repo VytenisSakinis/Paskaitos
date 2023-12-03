@@ -472,3 +472,45 @@ header li button {
 .questions {
     background: #e2bdf223;
 }
+
+.footer {
+    width: 40% !important;
+}
+
+.footer h2 {
+    font-family: Comfortaa;
+    color: #9A54BC;
+    font-weight: 500;
+}
+
+.footer p {
+    font-family: roboto;
+}
+
+.footer h4 {
+    font-family: roboto;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.links ul {
+    list-style: none;
+    display: contents;
+}
+
+.links ul > li{
+    margin-top: 1rem;
+    padding: 0;
+}
+
+.links a {
+    text-decoration: none;
+    color: #60267F;
+    font-family: roboto;
+}
+
+.contactUs p {
+    font-family: roboto;
+    font-weight: 500;
+    
+}
