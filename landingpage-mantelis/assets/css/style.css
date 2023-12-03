@@ -427,3 +427,48 @@ header li button {
     margin-top: .4rem;
 }
 
+.purple {
+    background: #9A54BC;
+    padding: 8rem;
+}
+
+.purple h1 {
+    font-family: roboto;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+}
+
+.margin {
+    margin-top: 18rem;
+}
+
+.purple button {
+    border: 2px solid white;
+    background: transparent;
+    padding: .7rem 1.3rem .7rem 1.3rem;
+    border-radius: .3rem;
+    font-family: roboto;
+    font-weight: 600;
+    color: white;
+}
+
+.purple button:hover {
+    background: white;
+    color: #9A54BC;
+}
+
+.questionText h4{
+    font-family: roboto;
+    font-weight: 500;
+}
+
+.questionText p {
+    font-family: roboto;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.questions {
+    background: #e2bdf223;
+}
