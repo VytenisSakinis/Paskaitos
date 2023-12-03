@@ -1,12 +1,16 @@
 function testAnswer() {
     let checkbox = document.getElementById('answer1');
     let answer1 = checkbox.checked;
+
     let checkbox2 = document.getElementById('answer2');
     let answer2 = checkbox2.checked;
+
     let checkbox3 = document.getElementById('answer3');
     let answer3 = checkbox3.checked;
+
     let checkbox4 = document.getElementById('answer4');
     let answer4 = checkbox4.checked;
+
     let checkbox5 = document.getElementById('answer5');
     let answer5 = checkbox5.checked;
 
@@ -30,5 +34,5 @@ function testAnswer() {
     
     console.log(correctAnswers);
 
-    alert(`You got ${correctAnswers} out of 5`)
+    alert(`Atsakėte ${correctAnswers} klausimus iš 5`)
 }
