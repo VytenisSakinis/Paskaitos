@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Diagonal Block</title>
+</head>
+<body>
+
+<script>
+// Using document.write to create a 10x10 block with a red diagonal
+document.write('<pre>');  // Use <pre> tag for better formatting
+
+// Loop through each row
+for (let row = 0; row < 10; row++) {
+  // Loop through each column
+  for (let col = 0; col < 10; col++) {
+    // Check if the current position is on the diagonal
+    if (row === col) {
+      // Print a red '*'
+      document.write('<span style="color: red">*</span>');
+    } else {
+      // Print a regular '*'
+      document.write('*');
+    }
+  }
+  // Move to the next line after each row
+  document.write('<br>');
+}
+
+document.write('</pre>');  // Close <pre> tag
+
+</script>
+
+</body>
+</html>
