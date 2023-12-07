@@ -48,7 +48,6 @@ let nailFour = 0;
 let nailFive = 0;
 let attempts = 0;
 
-nailHammerSum = 0;
 
 while (true) 
 {
@@ -61,5 +60,6 @@ while (true)
     }
 }
 
-console.log(attempts)
-console.log(nailOne)
+console.log(attempts);
+console.log(nailOne);
+
