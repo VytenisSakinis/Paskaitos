@@ -107,12 +107,15 @@ console.log(matchingNumbers);
 
 let newArray = [];
 
+firstArray = generateArrayOfRandomNumbers(100, 999, 100);
+secondArray = generateArrayOfRandomNumbers(100, 999, 100);
+
 newArray = firstArray.map((value, index) =>
 {
     for (i = 0; i < 100; i++){
     value = secondArray[i];
     index = firstArray[i];
     }
-    return { value, index };
+    return {value, value};
 })
 console.log(newArray)
