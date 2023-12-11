@@ -116,6 +116,6 @@ newArray = firstArray.map((value, index) =>
     value = secondArray[i];
     index = firstArray[i];
     }
-    return {value, value};
+    return {value, index};
 })
 console.log(newArray)
