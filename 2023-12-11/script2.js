@@ -101,19 +101,11 @@ console.log(arrayOfStrings);
 
 // 2. Patikrinti, ar String masyve egzistuoja reikšmių, prasidedančių bei užsibaigiančių raide A. Jei taip - pranešti kokia šio string pozicija masyve bei šio elemento reikšmė;
 
-// for (let i = 0; i < arrayOfStrings.length; i++)
-// {
-//     if(arrayOfStrings[i][0] === "A" && arrayOfStrings[i][3] === "A") console.log(`Stringas turi raides A pradžioje ir pabaigoje`)
-//     else console.log(`Stringas neturi raides A pradžioje ir pabaigoje`);
-// }
-let some = arrayOfStrings.some((value) => value[0] === "A" && value[3] === "A")
+let some = arrayOfStrings.filter((value) => value[0] === "A" && value[value.length - 1] === "A")
 
 console.log(`=========`);
 console.log(some);
 
-// arrayOfStrings.filter(value => arrayOfStrings[0] === "A" && arrayOfStrings[3] === "A")
-
-// console.log(arrayOfStrings);
 
 // 3. Išfiltruokite visas masyvo reikšmes, pasidedančias raidėmis: 'X', 'M', 'K'
 
