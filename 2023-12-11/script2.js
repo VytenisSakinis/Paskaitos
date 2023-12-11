@@ -151,13 +151,27 @@ console.log(sortedArray);
 // 8. Sukurkite naują masyvą atsitiktinėms Sring'ų reikšmėms generuoti. Sugeneruokite atsitiktines String reikšmes iš 4 simbolių tol, kol jame bus žodis XMAS; Išveskite, kiek kartų reikėjo generuoti reikšmes kol buvo gautas toks žodis.
 
 let amountOfTries = 0
+let destroyThePCArray = []
 
 while (true) {
     const randomStringXMAS = generateString(4);
-    if (randomStringXMAS === "XMAS") break
-    else amountOfTries++
+    
+    if (randomStringXMAS === "XMAS") {
+        destroyThePCArray.push(randomStringXMAS) 
+       break
+    }
+    else {
+        destroyThePCArray.push(randomStringXMAS) 
+        amountOfTries++;
+    }
 }
 
 console.log(amountOfTries)
+console.log(destroyThePCArray)
+
 
 // 9. Išrikiuokite masyvą priešinga nei abecelės tvarka
+
+destroyThePCArray.sort();
+
+console.log(destroyThePCArray)
