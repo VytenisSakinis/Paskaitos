@@ -46,7 +46,6 @@ deleteButtonElement.addEventListener("click", () => {
     {
         people.splice(i, 1);
         h3.innerHTML = "";
-        break;
     }else{
         h3.innerHTML = "Skaičius neatitinka lentelėje esančių skaičių";
     }
