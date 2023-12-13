@@ -1,14 +1,68 @@
 const people = [];
 let currentNumeration = 1;
+const possibleNationalities = ['Lithuanian', 'Latvian', 'Greek', 'Estonian', 'German']
 
+const firstNameInput = document.getElementById("firstNameInput");
+const lastNameInput = document.getElementById("lastNameInput");
+const ageInput = document.getElementById("ageInput");
+const nationalityInput = document.getElementById("nationalityInput");
+const removeElementInput = document.querySelector("#deleteInput");
+
+function validateName(name)
+{
+    let isValid = true;
+
+    if(!name) isValid = false;
+    if(/[0-9]/.test(name) || /[!@#$%^&*()?/.,]/.test(name)) 
+    {
+        isValid = false;
+        console.log("Jūsų varde yra skaičių, arba specialiųjų simbolių")
+    }
+    return isValid;
+}
+
+function validateAge(age)
+{
+    let isValid = true;
+    if(!age) isValid = false
+    if(isNaN(parseInt(age))) isValid = false;
+    if (age < 0 || age > 200) isValid = false;
+
+    if(age%1 !== 0) isValid = false;
+    return isValid;
+}
+
+function isValidNationality(nationality){
+    possibleNationalities.includes(nationality);
+    return possibleNationalities.includes(nationality);
+}
+function nullifyInputValues(){
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+    ageInput.value = "";
+    nationalityInput = "";
+}
 const buttonElement = document.querySelector('#button');
 buttonElement.addEventListener("click", () => {
     const person = {};
-    person.firstName = document.getElementById("firstNameInput").value;
-    person.lastName = document.getElementById("lastNameInput").value;
-    person.age = document.getElementById("ageInput").value;
-    person.nationality = document.getElementById("nationalityInput").value;
+
+    person.firstName = firstNameInput.value;
+    person.lastName = lastNameInput.value;
+    person.age = ageInput.value;
+    person.nationality = nationalityInput.value;
     person.number = currentNumeration;
+
+    nullifyInputValues();
+
+    if (
+        !validateName(person.firstName) || 
+        !validateName(person.lastName) || 
+        !validateAge(person.age) || 
+        !isValidNationality(person.nationality)
+        ) {
+            alert("Prašome užpildyti visus laukus")
+            return;
+            }
 
     people.push(person);
 
@@ -37,20 +91,21 @@ function generateTableContent(people)
 }
 
 const deleteButtonElement = document.querySelector('#delete')
-const h3 = document.querySelector('#text')
 
 deleteButtonElement.addEventListener("click", () => {
-    let deleteInput = parseFloat(document.getElementById('deleteInput').value);
-    for(let i = 0; i < people.length; i++){
-    if (deleteInput === people[i].number)
-    {
-        people.splice(i, 1);
-        h3.innerHTML = "";
-    }else{
-        h3.innerHTML = "Skaičius neatitinka lentelėje esančių skaičių";
+    let number = +removeElementInput.value;
+    removeElementInput.value = "";
+
+    let foundIndex = people.findIndex((person) => person.number === number)
+
+    if(foundIndex === -1) {
+        alert("Žmogus su tokiu numerius neegzistuoja")
+        return;
     }
-}
-generateTableContent(people)
+    
+    people.splice(foundIndex, 1);
+
+    generateTableContent(people)
 })
 
 console.log(people)
