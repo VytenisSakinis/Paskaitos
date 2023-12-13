@@ -183,7 +183,7 @@ const objects = {
       {
         id: 16,
         title: "Hyaluronic Acid Serum",
-        description: "L'OrÃ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+        description: "L'Orial Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
         price: 19,
         discountPercentage: 13.31,
         rating: 4.83,
@@ -386,7 +386,7 @@ function generateStarRating(rating) {
   }
 
   if (halfStar) {
-    starString += '★';
+    starString += '✬';
   }
 
   const remainingStars = maxStars - fullStars - (halfStar ? 1 : 0);
@@ -402,9 +402,13 @@ function generateStarRating(rating) {
 function generateShopWindow() {
   let dynamicHTML = ``;
     let dynamicBackground = "";
+    let stockWarning = "";
 
 
   for (let index in productsArray) {
+
+    if (productsArray[index].stock < 20) stockWarning = "red";
+    else stockWarning = "green";
 
     if (productsArray[index].id % 2 === 0) dynamicBackground = "grey"
     else dynamicBackground = "shade"
@@ -420,7 +424,7 @@ function generateShopWindow() {
       <p class="brand">${productsArray[index].brand}</p>
       <p class="mb-2 stars">${generateStarRating(productsArray[index].rating)}</p>
       <p>${productsArray[index].description}</p>
-      <p class="stock mb-1">In stock: ${productsArray[index].stock}</p>
+      <p class="stock mb-1">In stock: <span class="${stockWarning}">${productsArray[index].stock}</span></p>
       </div>
       <div class="col-2 d-flexflex-column align-items-center">
       <div class="d-flex gap-3">
