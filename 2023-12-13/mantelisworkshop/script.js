@@ -39,8 +39,6 @@ function calBMI(e) {
         }
     }
 
-    
-
 }
 
 function showResults(value, color){
