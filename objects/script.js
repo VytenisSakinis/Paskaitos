@@ -382,17 +382,17 @@ function generateStarRating(rating) {
   let starString = '';
 
   for (let i = 0; i < fullStars; i++) {
-    starString += '★';
+    starString += '<img src="icons/star_full.svg" alt="icons/star_full.svg" style="height: 24px; width: 24px">';
   }
 
   if (halfStar) {
-    starString += '✬';
+    starString += '<img src="icons/star_half_full.svg" alt="icons/star_full.svg" style="height: 24px; width: 24px">';
   }
 
   const remainingStars = maxStars - fullStars - (halfStar ? 1 : 0);
 
   for (let i = 0; i < remainingStars; i++) {
-    starString += '☆';
+    starString += '<img src="icons/star_empty.svg" alt="icons/star_full.svg" style="height: 24px; width: 24px">';
   }
 
   return starString;
