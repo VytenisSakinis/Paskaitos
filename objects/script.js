@@ -440,4 +440,10 @@ function generateShopWindow() {
   container.innerHTML = dynamicHTML;
 }
 
+
+
 generateShopWindow();
+
+
+
+
