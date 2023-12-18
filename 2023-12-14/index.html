@@ -43,7 +43,14 @@
                 <option>Home-decoration</option>
               </select>
             </div>
-          
+            <div class="col-4 mt-4">
+              <label>Kaina nuo:</label>
+              <input type="number" id="priceMin" class="form-control">
+            </div>
+            <div class="col-4 mt-4">
+              <label>Kaina iki:</label>
+              <input type="number" id="priceMax" class="form-control">
+            </div>
         </div>
         <button class="btn btn-primary filter-btn mt-2">Submit</button>
       </form>
@@ -218,6 +225,8 @@
       const filteredTable = document.querySelector("#filtered");
       const categoryFilter = document.querySelector("#categoryFilter")
       const brandFilter = document.querySelector("#brandFilter")
+      const priceMin = document.querySelector('#priceMin')
+      const priceMax = document.querySelector('#priceMax')
 
       const generateFilteredTableContents = (value) => {
         let dynamicHTML = ``;
@@ -237,12 +246,25 @@
       const setFilter = (event) => {
         event.preventDefault();
         const filterValue = filterInput.value.toLowerCase();
+        const filterCategory = categoryFilter.value.toLowerCase();
+        const filterBrand = brandFilter.value.toLowerCase();
+        const filterPriceMin = parseFloat(priceMin.value);
+        const filterPriceMax = parseFloat(priceMax.value);
+
+        console.log(products.title)
+
+
+
         const filteredProducts = products.filter((product) =>
-          product.title.toLowerCase().includes(filterValue)
+          product.title.toLowerCase().includes(filterValue) &&
+          product.brand.toLowerCase().includes(filterBrand) &&
+          product.category.toLowerCase().includes(filterCategory)
+
         );
         generateFilteredTableContents(filteredProducts);
       };
-
+      // product.price >= filterPriceMin &&
+      //     product.price <= filterPriceMax
       filter.onclick = setFilter;
     </script>
   </body>
