@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            padding: 0.5rem 1.25rem;
+            font-size: small;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="iveskite varda arba jo fragmenta" id="name">
+    <ol id="list"></ol>
+        <script>
+
+            const names = ["Justinas", "Sigis", "Petras", "Kalafijoras", "Mandarinas"]
+            const nameInputElement = document.querySelector("#name")
+
+          
+
+           
+
+            function showValues(list)
+            {
+                let dynamicHTML = '';
+                for(const name of list){
+                    dynamicHTML += `<li>${name}</li>`;
+                }
+                document.querySelector('#list').innerHTML = dynamicHTML;
+            }
+            showValues(names);
+
+            nameInputElement.addEventListener('keyup', (event) => {
+                const inputValue = nameInputElement.value;
+
+                const filteredArray = names.filter((value)=> value.toLowerCase().includes(inputValue))
+
+                showValues(filteredArray)
+
+                console.log(filteredArray)
+            });
+
+            // nameInput.Element.addEventListener('keydown' (event) => {
+
+            // })
+        </script>
+    
+</body>
+</html>

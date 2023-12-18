@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            padding: 0.5rem 1.25rem;
+            font-size: small;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="text" id="value">
+    <p id="paragraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti et iste, impedit, ad ex fugit aut eius deserunt aperiam nostrum voluptates omnis cumque delectus vel soluta eum quidem tempore officiis.</p>
+    <script>
+        const inputElement = document.querySelector('#value');
+
+        inputElement.addEventListener('change', (event) =>{
+            console.log('Pildymas baigtas')
+            console.log(event);
+        })
+        inputElement.addEventListener('focusout', (event) =>{
+            console.log('Pildymas baigtas')
+            console.log(event);
+        })
+        inputElement.addEventListener('focus', (event) =>{
+            console.log('Pildymas baigtas')
+            console.log(event);
+        })
+
+        const body = document.querySelector('body');
+
+        body.addEventListener('onload', () => {
+            console.log('Pasikrove')
+        })
+
+        const paragraphElement = document.querySelector('#paragraph');
+
+        paragraphElement.addEventListener('mouseenter', () => {
+            paragraphElement.style.color = "purple"
+        })
+        paragraphElement.addEventListener('mouseleave', () => {
+            paragraphElement.style.color = "black"
+        })
+    </script>
+</body>
+</html>

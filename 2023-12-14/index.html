@@ -21,6 +21,50 @@
       <form action="">
         <div class="row">
           <div class="col-4 mt-4">
+            <label>Pavadinimas:</label>
+            <input
+              type="text"
+              id="search"
+              class="form-control"
+            />
+          </div>
+          <div class="col-4 mt-4">
+            <label for="brand">Brandas:</label>
+            <input type="text" id="brandFilter" name="brand" class="form-control" />
+          </div>
+            <div class="col-4 mt-4">
+              <label for="brand">Kategorija:</label>
+              <select name="category" id="categoryFilter" class="form-control">
+                <option>Smartphones</option>
+                <option>Laptops</option>
+                <option>Fragrances</option>
+                <option>Skin care</option>
+                <option>Groceries</option>
+                <option>Home-decoration</option>
+              </select>
+            </div>
+          
+        </div>
+        <button class="btn btn-primary filter-btn mt-2">Submit</button>
+      </form>
+      <table class="table table-striped mt-5">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Brand</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody id="filtered"></tbody>
+      </table>
+    </div>
+    <div class="container">
+      <form action="">
+        <div class="row">
+          <div class="col-4 mt-4">
             <label for="title">Pavadinimas:</label>
             <input type="text" id="title" name="title" class="form-control" />
           </div>
@@ -65,8 +109,7 @@
             <th>Update</th>
           </tr>
         </thead>
-        <tbody id="dynamicData">
-        </tbody>
+        <tbody id="dynamicData"></tbody>
       </table>
     </div>
     <script src="script.js"></script>
@@ -77,17 +120,17 @@
       //UPDATE - Atnaujinti įrašą
       //DELETE - Ištrinti įrašą
 
-        let currentProduct = undefined;
+      let currentProduct = undefined;
       let editMode = false;
       const dynamicDataElement = document.getElementById("dynamicData"),
-      titleInputElement = document.getElementById("title"),
-      priceInputElement = document.getElementById("price"),
-      stockInputElement = document.getElementById("stock"),
-      brandInputElement = document.getElementById("brand"),
-      categoryInputElement = document.getElementById("category"),
-      submitButtonElement = document.getElementById("submit");
+        titleInputElement = document.getElementById("title"),
+        priceInputElement = document.getElementById("price"),
+        stockInputElement = document.getElementById("stock"),
+        brandInputElement = document.getElementById("brand"),
+        categoryInputElement = document.getElementById("category"),
+        submitButtonElement = document.getElementById("submit");
       //Arrow function doesnt work when it's above the function, while function .. () does
-        // Automatinis funkcijos iskvietimas apskliaudus funkcija ir uz jos padejus skliaustelius
+      // Automatinis funkcijos iskvietimas apskliaudus funkcija ir uz jos padejus skliaustelius
       const generateTableContents = () => {
         let dynamicHTML = ``;
         for (const product of products) {
@@ -110,68 +153,97 @@
       const createNewRecord = (event) => {
         event.preventDefault();
         const newProduct = {
-            id: products[products.length - 1].id + 1,
-            title: titleInputElement.value,
-            price: priceInputElement.value,
-            stock: stockInputElement.value,
-            brand: brandInputElement.value,
-            category: categoryInputElement.value,
+          id: products[products.length - 1].id + 1,
+          title: titleInputElement.value,
+          price: priceInputElement.value,
+          stock: stockInputElement.value,
+          brand: brandInputElement.value,
+          category: categoryInputElement.value,
         };
-        products.push(newProduct)
+        products.push(newProduct);
 
         generateTableContents();
-      }
+      };
 
       submitButtonElement.onclick = createNewRecord;
 
       const deleteProduct = (id) => {
-        let elementIndex = products.findIndex(value => value.id === id)
+        let elementIndex = products.findIndex((value) => value.id === id);
         products.splice(elementIndex, 1);
         generateTableContents();
-      }
+      };
 
       const updateProduct = (event) => {
         event.preventDefault();
-        products[currentProduct].title = titleInputElement.value
-        products[currentProduct].price = priceInputElement.value
-        products[currentProduct].stock = stockInputElement.value
-        products[currentProduct].brand = brandInputElement.value
-        products[currentProduct].category = categoryInputElement.value
+        products[currentProduct].title = titleInputElement.value;
+        products[currentProduct].price = priceInputElement.value;
+        products[currentProduct].stock = stockInputElement.value;
+        products[currentProduct].brand = brandInputElement.value;
+        products[currentProduct].category = categoryInputElement.value;
 
         generateTableContents();
         currentProduct = undefined;
         editMode = false;
         submitButtonElement.onclick = createNewRecord;
-        submitButtonElement.innerText = "Submit"
-        submitButtonElement.classList.add('btn-primary')
-        submitButtonElement.classList.remove('btn-success')
-        titleInputElement.value = ""
-        priceInputElement.value = ""
-        stockInputElement.value = ""
-        brandInputElement.value = ""
-        categoryInputElement.value = ""
-      }
+        submitButtonElement.innerText = "Submit";
+        submitButtonElement.classList.add("btn-primary");
+        submitButtonElement.classList.remove("btn-success");
+        titleInputElement.value = "";
+        priceInputElement.value = "";
+        stockInputElement.value = "";
+        brandInputElement.value = "";
+        categoryInputElement.value = "";
+      };
 
       const setEdit = (id) => {
-        let elementIndex = products.findIndex(value => value.id === id)
-        const product = products[elementIndex]
-        titleInputElement.value = product.title
-        priceInputElement.value = product.price
-        stockInputElement.value = product.stock
-        brandInputElement.value = product.brand
-        categoryInputElement.value = product.category
+        let elementIndex = products.findIndex((value) => value.id === id);
+        const product = products[elementIndex];
+        titleInputElement.value = product.title;
+        priceInputElement.value = product.price;
+        stockInputElement.value = product.stock;
+        brandInputElement.value = product.brand;
+        categoryInputElement.value = product.category;
 
-        
-        submitButtonElement.innerText = "Update"
-        submitButtonElement.classList.add('btn-success')
-        submitButtonElement.classList.remove('btn-primary')
+        submitButtonElement.innerText = "Update";
+        submitButtonElement.classList.add("btn-success");
+        submitButtonElement.classList.remove("btn-primary");
         submitButtonElement.onclick = updateProduct;
-        
+
         currentProduct = elementIndex;
         editMode = true;
-      }
+      };
 
-      
+      const filter = document.querySelector(".filter-btn");
+      const filterInput = document.querySelector("#search");
+      const filteredTable = document.querySelector("#filtered");
+      const categoryFilter = document.querySelector("#categoryFilter")
+      const brandFilter = document.querySelector("#brandFilter")
+
+      const generateFilteredTableContents = (value) => {
+        let dynamicHTML = ``;
+        for (const product of value) {
+          dynamicHTML += `<tr>
+                <td>${product.id}</td>
+                <td>${product.title}</td>
+                <td>${product.price}</td>
+                <td>${product.stock}</td>
+                <td>${product.brand}</td>
+                <td>${product.category}</td>
+                </tr>`;
+        }
+        filteredTable.innerHTML = dynamicHTML;
+      };
+
+      const setFilter = (event) => {
+        event.preventDefault();
+        const filterValue = filterInput.value.toLowerCase();
+        const filteredProducts = products.filter((product) =>
+          product.title.toLowerCase().includes(filterValue)
+        );
+        generateFilteredTableContents(filteredProducts);
+      };
+
+      filter.onclick = setFilter;
     </script>
   </body>
 </html>
