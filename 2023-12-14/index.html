@@ -251,21 +251,19 @@
         const filterPriceMin = parseFloat(priceMin.value);
         const filterPriceMax = parseFloat(priceMax.value);
 
-        console.log(products.title)
-
-
-
         const filteredProducts = products.filter((product) =>
           product.title.toLowerCase().includes(filterValue) &&
           product.brand.toLowerCase().includes(filterBrand) &&
-          product.category.toLowerCase().includes(filterCategory)
+          product.category.toLowerCase().includes(filterCategory) &&
+          product.price >= filterPriceMin &&
+          product.price <= filterPriceMax
 
-        );
+      );
         generateFilteredTableContents(filteredProducts);
       };
-      // product.price >= filterPriceMin &&
-      //     product.price <= filterPriceMax
+      
       filter.onclick = setFilter;
+
     </script>
   </body>
 </html>
