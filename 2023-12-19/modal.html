@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .modalis-background {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+        }
+        .modalis{
+            background-color: white;
+            width: 50ch;
+            height: 50ch;
+            
+        }
+
+        .half-width {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="modalis-background">
+        <div class="modalis">
+            <div class="buttons">
+                <h3>Very Not Interesting Content</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas odit eligendi eveniet doloremque harum excepturi dignissimos molestiae earum, pariatur quisquam ea dolor enim recusandae ab hic, ex quidem cupiditate voluptatem, iusto amet obcaecati modi beatae rerum. Ullam voluptas, aliquid voluptatem tempore pariatur expedita modi nemo iure vitae! Obcaecati id ratione quaerat quod porro expedita nam tempora qui quibusdam similique, deleniti aperiam voluptatibus eveniet incidunt corrupti sunt odit cumque placeat voluptatem. Eius optio ipsam, vitae delectus provident aliquid officia nemo voluptatum atque aut deleniti necessitatibus. Rem mollitia perferendis ea quam, hic libero blanditiis officia? Aliquam maiores amet, explicabo adipisci cum illo?</p>
+                <button onclick="closeModal()">close</button></div>
+        </div>
+        
+    </div>
+    <div class="container">
+    <h3>title</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat nobis deserunt quaerat, perspiciatis porro nesciunt minus quod harum eius blanditiis voluptatum magni natus itaque fugiat voluptates odio dignissimos ea.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate eius ipsum quos facere possimus aliquam deleniti incidunt aut ad neque iusto ipsa fugiat a, modi, vero dolores tenetur asperiores facilis.</p>
+    <hr>
+    <h3>title</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quaerat repellendus dolorum libero maxime ullam vitae eius nisi neque debitis officia magni error asperiores corporis, illo aut ratione excepturi laborum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi incidunt architecto animi corrupti qui illum repellat placeat quis voluptatum. Quaerat inventore sapiente architecto. Nihil nobis quia, excepturi veritatis nam nisi.</p>
+    <button class="btn btn-primary" onclick="dialog.show">Open Modal</button>
+   
+    <dialog class="half-width">
+        <div class="modalis-background">
+            <div class="modalis">
+                <div class="buttons">
+                    <h3>Very Not Interesting Content</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas odit eligendi eveniet doloremque harum excepturi dignissimos molestiae earum, pariatur quisquam ea dolor enim recusandae ab hic, ex quidem cupiditate voluptatem, iusto amet obcaecati modi beatae rerum. Ullam voluptas, aliquid voluptatem tempore pariatur expedita modi nemo iure vitae! Obcaecati id ratione quaerat quod porro expedita nam tempora qui quibusdam similique, deleniti aperiam voluptatibus eveniet incidunt corrupti sunt odit cumque placeat voluptatem. Eius optio ipsam, vitae delectus provident aliquid officia nemo voluptatum atque aut deleniti necessitatibus. Rem mollitia perferendis ea quam, hic libero blanditiis officia? Aliquam maiores amet, explicabo adipisci cum illo?</p>
+                    <button onclick="closeModal()">close</button></div>
+            </div>
+            
+        </div>
+        <div class="container">
+        <h3>title</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat nobis deserunt quaerat, perspiciatis porro nesciunt minus quod harum eius blanditiis voluptatum magni natus itaque fugiat voluptates odio dignissimos ea.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate eius ipsum quos facere possimus aliquam deleniti incidunt aut ad neque iusto ipsa fugiat a, modi, vero dolores tenetur asperiores facilis.</p>
+        <hr>
+        <h3>title</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quaerat repellendus dolorum libero maxime ullam vitae eius nisi neque debitis officia magni error asperiores corporis, illo aut ratione excepturi laborum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi incidunt architecto animi corrupti qui illum repellat placeat quis voluptatum. Quaerat inventore sapiente architecto. Nihil nobis quia, excepturi veritatis nam nisi.</p>
+        <button class="btn btn-primary" onclick="openModal()">Open Modal</button>
+    </dialog>
+    <script>
+        // 1. modalinio lango valdymo variantas
+        let modalBackground = document.querySelector(".modalis-background")
+        const modal = document.querySelector('.modalis')
+        function openModal()
+        {
+            modalBackground.style.visibility = "visible";
+        }
+        function closeModal()
+        {
+            modalBackground.style.visibility = "hidden";
+        }
+        // 2. modalinio lango valdymo variantas su <dialog>
+            const dialog = document.querySelector('.half-width');
+    </script>
+</div>
+</body>
+</html>

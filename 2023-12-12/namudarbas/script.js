@@ -1,3 +1,12 @@
+window.onload = function () {
+    const storedPeople = JSON.parse(localStorage.getItem('people'));
+    if (storedPeople) {
+        people.push(...storedPeople);
+        currentNumeration = people.length + 1;
+        generateTableContent(people);
+    }
+};
+
 const people = [];
 let currentNumeration = 1;
 const possibleNationalities = ['Lithuanian', 'Latvian', 'Greek', 'Estonian', 'German']
@@ -7,6 +16,17 @@ const lastNameInput = document.getElementById("lastNameInput");
 const ageInput = document.getElementById("ageInput");
 const nationalityInput = document.getElementById("nationalityInput");
 const removeElementInput = document.querySelector("#deleteInput");
+const firstNameUpdate = document.getElementById("firstNameUpdate"),
+lastNameUpdate = document.getElementById("lastNameUpdate"),
+ageUpdate = document.getElementById("ageUpdate"),
+nationalityUpdate = document.getElementById("nationalityUpdate"),
+selectorID = document.getElementById("selectorID"),
+updateButton = document.getElementById("buttonUpdate")
+
+ function saveToLocalStorage() {
+    localStorage.setItem('people', JSON.stringify(people))
+ }
+
 
 function validateName(name)
 {
@@ -40,7 +60,7 @@ function nullifyInputValues(){
     firstNameInput.value = "";
     lastNameInput.value = "";
     ageInput.value = "";
-    nationalityInput = "";
+    nationalityInput.value = "";
 }
 const buttonElement = document.querySelector('#button');
 buttonElement.addEventListener("click", () => {
@@ -71,6 +91,7 @@ buttonElement.addEventListener("click", () => {
     console.log(person);
 
     generateTableContent(people);
+    saveToLocalStorage()
 });
 
 function generateTableContent(people)
@@ -106,6 +127,33 @@ deleteButtonElement.addEventListener("click", () => {
     people.splice(foundIndex, 1);
 
     generateTableContent(people)
+    saveToLocalStorage()
 })
 
 console.log(people)
+
+
+const nameUpdate = () => {
+    let elementID = +selectorID.value;
+    let foundIndex = people.findIndex((person) => person.number === elementID)
+
+    if (foundIndex === -1) {
+        alert("Žmogaus su tokiu numeriu nėra")
+    }
+
+    people[foundIndex].firstName = firstNameUpdate.value;
+    people[foundIndex].lastName = lastNameUpdate.value;
+    people[foundIndex].age = ageUpdate.value;
+    people[foundIndex].nationality = nationalityUpdate.value;
+
+    selectorID.value = ""
+    firstNameUpdate.value = ""
+    lastNameUpdate.value = ""
+    ageUpdate.value = ""
+    nationalityUpdate.value = ""
+
+    generateTableContent(people)
+    saveToLocalStorage()
+}
+
+updateButton.onclick = nameUpdate;
