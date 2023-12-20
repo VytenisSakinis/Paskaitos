@@ -15,6 +15,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <style></style>
   </head>
   <body>
     <div class="container">
@@ -22,35 +23,36 @@
         <div class="row">
           <div class="col-4 mt-4">
             <label>Pavadinimas:</label>
+            <input type="text" id="search" class="form-control" />
+          </div>
+          <div class="col-4 mt-4">
+            <label for="brand">Brandas:</label>
             <input
               type="text"
-              id="search"
+              id="brandFilter"
+              name="brand"
               class="form-control"
             />
           </div>
           <div class="col-4 mt-4">
-            <label for="brand">Brandas:</label>
-            <input type="text" id="brandFilter" name="brand" class="form-control" />
+            <label for="brand">Kategorija:</label>
+            <select name="category" id="categoryFilter" class="form-control">
+              <option>Smartphones</option>
+              <option>Laptops</option>
+              <option>Fragrances</option>
+              <option>Skin care</option>
+              <option>Groceries</option>
+              <option>Home-decoration</option>
+            </select>
           </div>
-            <div class="col-4 mt-4">
-              <label for="brand">Kategorija:</label>
-              <select name="category" id="categoryFilter" class="form-control">
-                <option>Smartphones</option>
-                <option>Laptops</option>
-                <option>Fragrances</option>
-                <option>Skin care</option>
-                <option>Groceries</option>
-                <option>Home-decoration</option>
-              </select>
-            </div>
-            <div class="col-4 mt-4">
-              <label>Kaina nuo:</label>
-              <input type="number" id="priceMin" class="form-control">
-            </div>
-            <div class="col-4 mt-4">
-              <label>Kaina iki:</label>
-              <input type="number" id="priceMax" class="form-control">
-            </div>
+          <div class="col-4 mt-4">
+            <label>Kaina nuo:</label>
+            <input type="number" id="priceMin" class="form-control" />
+          </div>
+          <div class="col-4 mt-4">
+            <label>Kaina iki:</label>
+            <input type="number" id="priceMax" class="form-control" />
+          </div>
         </div>
         <button class="btn btn-primary filter-btn mt-2">Submit</button>
       </form>
@@ -99,6 +101,47 @@
             </select>
           </div>
           <div class="col-4 mt-4">
+            <label for="imageUrl">Nuotrauka:</label>
+            <input
+              type="text"
+              id="imageUrl"
+              name="imageUrl"
+              class="form-control"
+            />
+          </div>
+          <div class="col-4 mt-4">
+            <label for="discount">Nuolaida:</label>
+            <input
+              type="number"
+              min="0"
+              max="100"
+              value="0"
+              id="discount"
+              name="discount"
+              class="form-control"
+            />
+          </div>
+          <div class="col-4 mt-4">
+            <label for="rating">Įvertinimas:</label>
+            <input
+              type="number"
+              min="0"
+              max="5"
+              value="0"
+              id="rating"
+              name="rating"
+              class="form-control"
+            />
+          </div>
+          <div class="col-4 mt-4">
+            <label for="describtion">Produkto aprašymas:</label>
+            <textarea
+              name="describtion"
+              id="describtion"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="col-4 mt-4">
             <button class="btn btn-primary mt-4" id="submit">Submit</button>
           </div>
         </div>
@@ -119,7 +162,31 @@
         <tbody id="dynamicData"></tbody>
       </table>
     </div>
-    <script src="script.js"></script>
+    <dialog id="productInfo" style="width: 70%">
+      <div style="max-width: 70%; margin: 0 auto;">
+      <img
+        src="https://i.dummyjson.com/data/products/27/thumbnail.webp"
+        alt="https://i.dummyjson.com/data/products/27/thumbnail.webp"
+      />
+      <div class="row gap-3">
+        <span class="col-2 fw-bold">Nuolaida:</span>
+        <span class="col-1">-10%</span>
+      </div>
+      <div class="row gap-3">
+        <span class="col-2 fw-bold">Įvertinimas:</span>
+        <span class="col-1">4,23</span>
+      </div>
+      <div class="row gap-3">
+        <span class="col-2 fw-bold">Aprašymas:</span>
+        <span class="col-6"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+          voluptatem veniam mollitia repellat qui placeat eos excepturi ipsum.
+          At placeat ab hic porro explicabo libero omnis quibusdam similique
+          sunt aliquam!</span
+        >
+      </div>
+    </div>
+    </dialog>
     <script>
       //CRUD:
       //Create - Sukurti įrašą
@@ -127,6 +194,11 @@
       //UPDATE - Atnaujinti įrašą
       //DELETE - Ištrinti įrašą
 
+      localStorage.getItem("products")
+      if (!localStorage.getItem('products')) localStorage.setItem('products', JSON.stringify([]))
+      
+      const products = JSON.parse(localStorage.getItem("products"));
+      let currentId = 1;
       let currentProduct = undefined;
       let editMode = false;
       const dynamicDataElement = document.getElementById("dynamicData"),
@@ -135,14 +207,20 @@
         stockInputElement = document.getElementById("stock"),
         brandInputElement = document.getElementById("brand"),
         categoryInputElement = document.getElementById("category"),
-        submitButtonElement = document.getElementById("submit");
+        submitButtonElement = document.getElementById("submit"),
+        modalElement = document.querySelector("#productInfo"),
+        photoElement = document.getElementById('imageUrl'),
+        discountElement = document.getElementById('discount'),
+        ratingElement = document.getElementById('rating'),
+        describtionElement = document.getElementById('describtion');
+
       //Arrow function doesnt work when it's above the function, while function .. () does
       // Automatinis funkcijos iskvietimas apskliaudus funkcija ir uz jos padejus skliaustelius
       const generateTableContents = () => {
         let dynamicHTML = ``;
         for (const product of products) {
           dynamicHTML += `<tr>
-                <td>${product.id}</td>
+                <td onclick="showModal(${product.id})">${product.id}</td>
                 <td>${product.title}</td>
                 <td>${product.price}</td>
                 <td>${product.stock}</td>
@@ -157,18 +235,30 @@
 
       generateTableContents();
 
+      const showModal = (id) => {
+        let elementIndex = products.findIndex((value) => value.id === id);
+        const product = products[elementIndex]
+        modalElement.showModal();
+
+      }
+
       const createNewRecord = (event) => {
         event.preventDefault();
         const newProduct = {
-          id: products[products.length - 1].id + 1,
+          id: currentId,
           title: titleInputElement.value,
-          price: priceInputElement.value,
-          stock: stockInputElement.value,
+          describtion: describtionElement.value,
+          price: +priceInputElement.value,
+          discountPercentage: +discountElement.value,
+          rating: +ratingElement.value,
+          stock: +stockInputElement.value,
           brand: brandInputElement.value,
           category: categoryInputElement.value,
+          thumbnail: photoElement.value,
         };
+        currentId++
         products.push(newProduct);
-
+        localStorage.setItem('products', JSON.stringify(products));
         generateTableContents();
       };
 
@@ -178,6 +268,7 @@
         let elementIndex = products.findIndex((value) => value.id === id);
         products.splice(elementIndex, 1);
         generateTableContents();
+        localStorage.setItem('products', JSON.stringify(products));
       };
 
       const updateProduct = (event) => {
@@ -200,6 +291,7 @@
         stockInputElement.value = "";
         brandInputElement.value = "";
         categoryInputElement.value = "";
+        localStorage.setItem('products', JSON.stringify(products));
       };
 
       const setEdit = (id) => {
@@ -223,10 +315,10 @@
       const filter = document.querySelector(".filter-btn");
       const filterInput = document.querySelector("#search");
       const filteredTable = document.querySelector("#filtered");
-      const categoryFilter = document.querySelector("#categoryFilter")
-      const brandFilter = document.querySelector("#brandFilter")
-      const priceMin = document.querySelector('#priceMin')
-      const priceMax = document.querySelector('#priceMax')
+      const categoryFilter = document.querySelector("#categoryFilter");
+      const brandFilter = document.querySelector("#brandFilter");
+      const priceMin = document.querySelector("#priceMin");
+      const priceMax = document.querySelector("#priceMax");
 
       const generateFilteredTableContents = (value) => {
         let dynamicHTML = ``;
@@ -251,19 +343,18 @@
         const filterPriceMin = parseFloat(priceMin.value);
         const filterPriceMax = parseFloat(priceMax.value);
 
-        const filteredProducts = products.filter((product) =>
-          product.title.toLowerCase().includes(filterValue) &&
-          product.brand.toLowerCase().includes(filterBrand) &&
-          product.category.toLowerCase().includes(filterCategory) &&
-          product.price >= filterPriceMin &&
-          product.price <= filterPriceMax
-
-      );
+        const filteredProducts = products.filter(
+          (product) =>
+            product.title.toLowerCase().includes(filterValue) &&
+            product.brand.toLowerCase().includes(filterBrand) &&
+            product.category.toLowerCase().includes(filterCategory) &&
+            product.price >= filterPriceMin &&
+            product.price <= filterPriceMax
+        );
         generateFilteredTableContents(filteredProducts);
       };
-      
-      filter.onclick = setFilter;
 
+      filter.onclick = setFilter;
     </script>
   </body>
 </html>

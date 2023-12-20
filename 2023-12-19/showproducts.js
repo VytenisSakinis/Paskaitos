@@ -1,3 +1,5 @@
+
+
 function generateStars(rating)
 {
     const fullStar = `<i class="bi bi-star-fill"></i>`, 
