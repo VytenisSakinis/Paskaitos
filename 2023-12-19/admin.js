@@ -23,6 +23,7 @@
         discountElement = document.getElementById('discount'),
         ratingElement = document.getElementById('rating'),
         describtionElement = document.getElementById('describtion');
+        closingButton = document.querySelector(".closingButton")
 
       //Arrow function doesnt work when it's above the function, while function .. () does
       // Automatinis funkcijos iskvietimas apskliaudus funkcija ir uz jos padejus skliaustelius
@@ -49,7 +50,30 @@
         let elementIndex = products.findIndex((value) => value.id === id);
         const product = products[elementIndex]
         modalElement.showModal();
+        modalElement.innerHTML = `
+        <div style="max-width: 70%; margin: 0 auto;">
+      <img
+        src="${product.thumbnail}"
+        alt="${product.thumbnail}"
+      />
+      <div class="row gap-3">
+        <span class="col-2 fw-bold">Nuolaida:</span>
+        <span class="col-1">${product.discount}</span>
+      </div>
+      <div class="row gap-3">
+        <span class="col-2 fw-bold">Įvertinimas:</span>
+        <span class="col-1">${product.rating}</span>
+      </div>
+      <div class="row gap-3">
+        <span class="col-2 fw-bold">Aprašymas:</span>
+        <span class="col-6"
+          >${product.describtion}</span>
+          <button onclick="closeModal()" class="closingButton btn btn-primary">Close</button>
+      </div>`
+      }
 
+      const closeModal = () => {
+        modalElement.close()
       }
 
       const createNewRecord = (event) => {
