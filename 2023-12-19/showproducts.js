@@ -1,5 +1,5 @@
-
-
+const products = JSON.parse(localStorage.getItem("products"));
+console.log(products)
 function generateStars(rating)
 {
     const fullStar = `<i class="bi bi-star-fill"></i>`, 
@@ -35,7 +35,7 @@ function showProducts(){
                 <h3 class="product-title">${product.title}</h3>
                 <span class="stars">${generateStars(product.rating)}</i></span>
                 <p class="product-describtion">
-                    ${product.description}
+                    ${product.describtion}
                 </p>
             </div>
             <div class="product-price">

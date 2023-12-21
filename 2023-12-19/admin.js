@@ -6,9 +6,16 @@
 
       localStorage.getItem("products")
       if (!localStorage.getItem('products')) localStorage.setItem('products', JSON.stringify([]))
+
+      const getLastProductId = () => {
+        if (products.length === 0) {
+          return 0;
+        }
+        return products[products.length - 1].id;
+      };
       
       const products = JSON.parse(localStorage.getItem("products"));
-      let currentId = 1;
+      let currentId = getLastProductId() + 1;
       let currentProduct = undefined;
       let editMode = false;
       const dynamicDataElement = document.getElementById("dynamicData"),
@@ -22,14 +29,20 @@
         photoElement = document.getElementById('imageUrl'),
         discountElement = document.getElementById('discount'),
         ratingElement = document.getElementById('rating'),
-        describtionElement = document.getElementById('describtion');
-        closingButton = document.querySelector(".closingButton")
+        describtionElement = document.getElementById('describtion'),
+        modalBackground = document.querySelector("#modalBackground"),
+        filterInput = document.querySelector("#search"),
+        categoryFilter = document.querySelector("#categoryFilter"),
+        brandFilter = document.querySelector("#brandFilter"),
+        priceMin = document.querySelector("#priceMin"),
+        priceMax = document.querySelector("#priceMax"),
+        describtionFilter = document.querySelector("#describtionFilter");
 
       //Arrow function doesnt work when it's above the function, while function .. () does
       // Automatinis funkcijos iskvietimas apskliaudus funkcija ir uz jos padejus skliaustelius
-      const generateTableContents = () => {
+      const generateTableContents = (productsArray) => {
         let dynamicHTML = ``;
-        for (const product of products) {
+        for (const product of productsArray) {
           dynamicHTML += `<tr>
                 <td onclick="showModal(${product.id})">${product.id}</td>
                 <td>${product.title}</td>
@@ -44,37 +57,44 @@
         dynamicDataElement.innerHTML = dynamicHTML;
       };
 
-      generateTableContents();
+      generateTableContents(products);
 
       const showModal = (id) => {
         let elementIndex = products.findIndex((value) => value.id === id);
         const product = products[elementIndex]
-        modalElement.showModal();
-        modalElement.innerHTML = `
+        let dynamicHTML = ``
+        dynamicHTML = `
+        <div id="modalBackground" style="width: 100%; height: 100%;">
         <div style="max-width: 70%; margin: 0 auto;">
       <img
         src="${product.thumbnail}"
         alt="${product.thumbnail}"
       />
-      <div class="row gap-3">
-        <span class="col-2 fw-bold">Nuolaida:</span>
-        <span class="col-1">${product.discount}</span>
+      <div class="row d-flex justify-content-between">
+        <span class="col-6 fw-bold">Nuolaida:</span>
+        <span class="col-6">${product.discountPercentage}</span>
       </div>
-      <div class="row gap-3">
-        <span class="col-2 fw-bold">Įvertinimas:</span>
-        <span class="col-1">${product.rating}</span>
+      <div class="row d-flex justify-content-between">
+        <span class="col-6 fw-bold">Įvertinimas:</span>
+        <span class="col-6">${product.rating}</span>
       </div>
-      <div class="row gap-3">
-        <span class="col-2 fw-bold">Aprašymas:</span>
+      <div class="row d-flex justify-content-between">
+        <span class="col-6 fw-bold">Aprašymas:</span>
         <span class="col-6"
           >${product.describtion}</span>
           <button onclick="closeModal()" class="closingButton btn btn-primary">Close</button>
+      </div>
       </div>`
+      modalElement.innerHTML = dynamicHTML
+      modalElement.showModal();
       }
 
       const closeModal = () => {
         modalElement.close()
       }
+
+      
+
 
       const createNewRecord = (event) => {
         event.preventDefault();
@@ -90,10 +110,11 @@
           category: categoryInputElement.value,
           thumbnail: photoElement.value,
         };
+        console.log(newProduct.discountPercentage)
         currentId++
         products.push(newProduct);
         localStorage.setItem('products', JSON.stringify(products));
-        generateTableContents();
+        generateTableContents(products);
       };
 
       submitButtonElement.onclick = createNewRecord;
@@ -101,19 +122,23 @@
       const deleteProduct = (id) => {
         let elementIndex = products.findIndex((value) => value.id === id);
         products.splice(elementIndex, 1);
-        generateTableContents();
+        generateTableContents(products);
         localStorage.setItem('products', JSON.stringify(products));
       };
 
       const updateProduct = (event) => {
         event.preventDefault();
         products[currentProduct].title = titleInputElement.value;
-        products[currentProduct].price = priceInputElement.value;
-        products[currentProduct].stock = stockInputElement.value;
+        products[currentProduct].price = +priceInputElement.value;
+        products[currentProduct].stock = +stockInputElement.value;
         products[currentProduct].brand = brandInputElement.value;
         products[currentProduct].category = categoryInputElement.value;
+        products[currentProduct].thumbnail = photoElement.value;
+        products[currentProduct].discountPercentage = +discountElement.value;
+        products[currentProduct].rating = +ratingElement.value;
+        products[currentProduct].describtion = describtionElement.value;
 
-        generateTableContents();
+        generateTableContents(products);
         currentProduct = undefined;
         editMode = false;
         submitButtonElement.onclick = createNewRecord;
@@ -125,6 +150,10 @@
         stockInputElement.value = "";
         brandInputElement.value = "";
         categoryInputElement.value = "";
+        describtionElement.value = "";
+        discountElement.value = "";
+        ratingElement.value = "";
+        describtionElement.value = "";
         localStorage.setItem('products', JSON.stringify(products));
       };
 
@@ -136,6 +165,10 @@
         stockInputElement.value = product.stock;
         brandInputElement.value = product.brand;
         categoryInputElement.value = product.category;
+        photoElement.value = product.thumbnail;
+        discountElement.value = product.discountPercentage;
+        ratingElement.value = product.rating;
+        describtionElement.value = product.describtion;
 
         submitButtonElement.innerText = "Update";
         submitButtonElement.classList.add("btn-success");
@@ -145,47 +178,25 @@
         currentProduct = elementIndex;
         editMode = true;
       };
+      
+      filterInput.onkeyup = filter;
+      priceMin.onkeyup = filter;
+      priceMax.onkeyup = filter;
+      brandFilter.onkeyup = filter;
 
-      const filter = document.querySelector(".filter-btn");
-      const filterInput = document.querySelector("#search");
-      const filteredTable = document.querySelector("#filtered");
-      const categoryFilter = document.querySelector("#categoryFilter");
-      const brandFilter = document.querySelector("#brandFilter");
-      const priceMin = document.querySelector("#priceMin");
-      const priceMax = document.querySelector("#priceMax");
+      function filter(){
+        let productName = filterInput.value.toLowerCase()
+        let minPrice = +priceMin.value;
+        let maxPrice = +priceMax.value;
+        let filterBrand = brandFilter.value.toLowerCase() 
 
-      const generateFilteredTableContents = (value) => {
-        let dynamicHTML = ``;
-        for (const product of value) {
-          dynamicHTML += `<tr>
-                <td>${product.id}</td>
-                <td>${product.title}</td>
-                <td>${product.price}</td>
-                <td>${product.stock}</td>
-                <td>${product.brand}</td>
-                <td>${product.category}</td>
-                </tr>`;
-        }
-        filteredTable.innerHTML = dynamicHTML;
-      };
+        let filteredArray = products.filter((product)=> 
+          product.title.toLowerCase().includes(productName)
+        )
+        filteredArray = filteredArray.filter((product) => product.price >= minPrice)
+        if(maxPrice!==0)
+          filteredArray = filteredArray.filter((product) => product.price <= maxPrice)
 
-      const setFilter = (event) => {
-        event.preventDefault();
-        const filterValue = filterInput.value.toLowerCase();
-        const filterCategory = categoryFilter.value.toLowerCase();
-        const filterBrand = brandFilter.value.toLowerCase();
-        const filterPriceMin = parseFloat(priceMin.value);
-        const filterPriceMax = parseFloat(priceMax.value);
-
-        const filteredProducts = products.filter(
-          (product) =>
-            product.title.toLowerCase().includes(filterValue) &&
-            product.brand.toLowerCase().includes(filterBrand) &&
-            product.category.toLowerCase().includes(filterCategory) &&
-            product.price >= filterPriceMin &&
-            product.price <= filterPriceMax
-        );
-        generateFilteredTableContents(filteredProducts);
-      };
-
-      filter.onclick = setFilter;
+          filteredArray = filteredArray.filter((product) => product.brand.toLowerCase().includes(filterBrand))
+        generateTableContents(filteredArray)
+      }

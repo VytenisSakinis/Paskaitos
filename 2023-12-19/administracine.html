@@ -15,60 +15,20 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <style></style>
+    <style>
+      .modalBackground {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.089);
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <form action="">
-        <div class="row">
-          <div class="col-4 mt-4">
-            <label>Pavadinimas:</label>
-            <input type="text" id="search" class="form-control" />
-          </div>
-          <div class="col-4 mt-4">
-            <label for="brand">Brandas:</label>
-            <input
-              type="text"
-              id="brandFilter"
-              name="brand"
-              class="form-control"
-            />
-          </div>
-          <div class="col-4 mt-4">
-            <label for="brand">Kategorija:</label>
-            <select name="category" id="categoryFilter" class="form-control">
-              <option>Smartphones</option>
-              <option>Laptops</option>
-              <option>Fragrances</option>
-              <option>Skin care</option>
-              <option>Groceries</option>
-              <option>Home-decoration</option>
-            </select>
-          </div>
-          <div class="col-4 mt-4">
-            <label>Kaina nuo:</label>
-            <input type="number" id="priceMin" class="form-control" />
-          </div>
-          <div class="col-4 mt-4">
-            <label>Kaina iki:</label>
-            <input type="number" id="priceMax" class="form-control" />
-          </div>
-        </div>
-        <button class="btn btn-primary filter-btn mt-2">Submit</button>
-      </form>
-      <table class="table table-striped mt-5">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Brand</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody id="filtered"></tbody>
-      </table>
+      <nav class="mb-3 navbar">
+        <a href="./index.html" class="btn btn-primary">Produktai</a>
+        <a href="./administracine.html" class="btn btn-primary">Admin panelė</a>
+      </nav>
     </div>
     <div class="container">
       <form action="">
@@ -79,11 +39,11 @@
           </div>
           <div class="col-4 mt-4">
             <label for="price">Kaina:</label>
-            <input type="text" id="price" name="price" class="form-control" />
+            <input type="number" id="price" name="price" class="form-control" />
           </div>
           <div class="col-4 mt-4">
             <label for="stock">Sandėlyje:</label>
-            <input type="text" id="stock" name="stock" class="form-control" />
+            <input type="number" id="stock" name="stock" class="form-control" />
           </div>
           <div class="col-4 mt-4">
             <label for="brand">Brandas:</label>
@@ -146,6 +106,51 @@
           </div>
         </div>
       </form>
+      <hr>
+      <form action="">
+        <div class="row">
+          <div class="col-4 mt-4">
+            <label>Pavadinimas:</label>
+            <input type="text" id="search" class="form-control" />
+          </div>
+          <div class="col-4 mt-4">
+            <label for="brand">Brandas:</label>
+            <input
+              type="text"
+              id="brandFilter"
+              name="brand"
+              class="form-control"
+            />
+          </div>
+          <div class="col-4 mt-4">
+            <label for="brand">Kategorija:</label>
+            <select name="category" id="categoryFilter" class="form-control">
+              <option>Smartphones</option>
+              <option>Laptops</option>
+              <option>Fragrances</option>
+              <option>Skin care</option>
+              <option>Groceries</option>
+              <option>Home-decoration</option>
+            </select>
+          </div>
+          <div class="col-4 mt-4">
+            <label>Kaina nuo:</label>
+            <input type="number" id="priceMin" class="form-control" />
+          </div>
+          <div class="col-4 mt-4">
+            <label>Kaina iki:</label>
+            <input type="number" id="priceMax" class="form-control" />
+          </div>
+          <div class="col-4 mt-4">
+            <label>Aprašymas:</label>
+            <textarea
+              name="describtionFilter"
+              id="describtionFilter"
+              class="form-control"
+            ></textarea>
+          </div>
+        </div>
+      </form>
       <table class="table table-striped mt-5">
         <thead>
           <tr>
@@ -163,29 +168,7 @@
       </table>
     </div>
     <dialog id="productInfo" style="width: 70%">
-      <div style="max-width: 70%; margin: 0 auto;">
-      <img
-        src="https://i.dummyjson.com/data/products/27/thumbnail.webp"
-        alt="https://i.dummyjson.com/data/products/27/thumbnail.webp"
-      />
-      <div class="row gap-3">
-        <span class="col-2 fw-bold">Nuolaida:</span>
-        <span class="col-1">-10%</span>
-      </div>
-      <div class="row gap-3">
-        <span class="col-2 fw-bold">Įvertinimas:</span>
-        <span class="col-1">4,23</span>
-      </div>
-      <div class="row gap-3">
-        <span class="col-2 fw-bold">Aprašymas:</span>
-        <span class="col-6"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-          voluptatem veniam mollitia repellat qui placeat eos excepturi ipsum.
-          At placeat ab hic porro explicabo libero omnis quibusdam similique
-          sunt aliquam!</span
-        >
-      </div>
-    </div>
+      <div class="modalBackground"></div>
     </dialog>
     <script src="admin.js"></script>
   </body>
