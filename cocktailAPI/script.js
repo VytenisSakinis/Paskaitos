@@ -59,8 +59,6 @@ async function filter() {
     searchValue = drinkSearchElement.value;
     
     let filteredArray = [...drinksArray]
-    const categoryArray = []
-    const categoryArrayTest = []
     console.log(filteredArray)
 
     if(searchValue)
@@ -70,20 +68,28 @@ async function filter() {
     if(category !=="Pasirinkite kategoriją")
     {
         const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_")}`
-        try {
-            const response = await fetch(dynamicUrl)
-            if(response.ok) 
-                const data = await response.json()
-                categoryArray.push(data)
-                for(const value of data.drinks){
-                    categoriesArrayTest.push(value);
-                }
-            else console.error('Error fetching')
-        }
-             catch (error) {
-                console.error("Error Fetching")
-            }
-        console.log(categoryArrayTest);
+        const response = await fetch(dynamicUrl)
+        const answerFromServer = await response.json()
+        filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink)) 
+        console.log(filteredArray);
+    }
+    if(glass !== "Pasirinkite stiklinę")
+    {
+        const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass.replaceAll(" ", "_")}`
+        const response = await fetch(dynamicUrl)
+        const answerFromServer = await response.json()
+        filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink)) 
+        console.log(answerFromServer);
+    }
+    if(ingredient !== "Pasirinkite ingridientą")
+    {
+        const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient.replaceAll(" ", "_")}`
+        const dynamicContent = []
+        const response = await fetch(dynamicUrl)
+        const answerFromServer = await response.json()
+        for(const drink of answerFromServer.drinks) dynamicContent.push(drink)
+        filteredArray = dynamicContent
+        console.log(answerFromServer)
     }
     generateDrinksHTML(filteredArray)
 
@@ -104,6 +110,14 @@ function generateDrinksHTML(drinks) {
     }
     containerHTML.innerHTML = dynamicHTML
 }
+
+async function feelingLuckyFunction() {
+    const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+    const answerFromServer = await response.json()
+    generateDrinksHTML(answerFromServer.drinks)
+}
+
+feelingLuckyButtonElement.addEventListener("click", feelingLuckyFunction)
 
 async function initialization()
 {
