@@ -59,6 +59,8 @@ async function filter() {
     searchValue = drinkSearchElement.value;
     
     let filteredArray = [...drinksArray]
+    const categoryArray = []
+    const categoryArrayTest = []
     console.log(filteredArray)
 
     if(searchValue)
@@ -67,7 +69,21 @@ async function filter() {
     }
     if(category !=="Pasirinkite kategoriją")
     {
-        
+        const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_")}`
+        try {
+            const response = await fetch(dynamicUrl)
+            if(response.ok) 
+                const data = await response.json()
+                categoryArray.push(data)
+                for(const value of data.drinks){
+                    categoriesArrayTest.push(value);
+                }
+            else console.error('Error fetching')
+        }
+             catch (error) {
+                console.error("Error Fetching")
+            }
+        console.log(categoryArrayTest);
     }
     generateDrinksHTML(filteredArray)
 
