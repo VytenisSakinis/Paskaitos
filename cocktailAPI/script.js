@@ -5,43 +5,44 @@ const drinkSearchElement = document.querySelector('#filterByText')
 const searchButtonElement = document.querySelector('#searchButton')
 const feelingLuckyButtonElement = document.querySelector('#feelingLuckyButton')
 const containerHTML = document.querySelector('.drinks')
-const categoriesArray = [], drinksArray = []
+const categoriesArray = [], drinksArray = [], selectValues = {}
 
 async function fillSelectElements() {
-    await fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list")
-    .then((response) => response.json())
-    .then((response) => {
-        printDynamicOptionHTML(response, categorySelectElement, "strCategory")
-        categoriesArray.push(... response.drinks.map((value) => value.strCategory))
-})
+    const allUrls = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list",
+    "https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list",
+    "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"]
 
-    await fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list")
-    .then((response) => response.json())
-    .then((response) => {
-        printDynamicOptionHTML(response, glassSelectorElement, "strGlass")
-    })
+    const allPromises = allUrls.map(url => 
+        fetch(url).then((response) => response.json()))
+    
+    const allValues = await Promise.all(allPromises);
 
-    await fetch("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
-    .then((response) => response.json())
-    .then((response) => printDynamicOptionHTML(response, ingredientSelectorElement, "strIngredient1"))
+    const [allCategories, allGlasses ,allIngredients] = allValues
+
+    selectValues.categories = allCategories.drinks.map(categoryObj => categoryObj.strCategory);
+    selectValues.glasses = allGlasses.drinks.map(categoryObj => categoryObj.strGlass);
+    selectValues.ingredients = allIngredients.drinks.map(categoryObj => categoryObj.strIngredient1);
+
+    printDynamicOptionHTML(selectValues.categories, categorySelectElement)
+    printDynamicOptionHTML(selectValues.ingredients, ingredientSelectorElement)
+    printDynamicOptionHTML(selectValues.glasses, glassSelectorElement)
 }
 
-function printDynamicOptionHTML(response, element, str)
+function printDynamicOptionHTML(response, element)
 {
     let dynamicHTML = ''
     const categoryArray = []
-    for(let value of response.drinks)
-                categoryArray.push(value[str])
+    for(let value of response)
+                categoryArray.push(value)
 
     for(let index in categoryArray) 
                 dynamicHTML += `<option>${categoryArray[index]}</option>`
 
-    element.innerHTML = dynamicHTML
+    element.innerHTML += dynamicHTML
 }
 
 async function getAllDrinks() {
-    // https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink
-    for(const category of categoriesArray)
+    for(const category of selectValues.categories)
     {
         let dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_")}`;
         const response = await fetch(dynamicUrl);
@@ -49,6 +50,27 @@ async function getAllDrinks() {
         for(const drink of answerFromServer.drinks)
         drinksArray.push(drink)
     }
+}
+
+async function filter() {
+    const category = categorySelectElement.value,
+    glass = glassSelectorElement.value,
+    ingredient = ingredientSelectorElement.value,
+    searchValue = drinkSearchElement.value;
+    
+    let filteredArray = [...drinksArray]
+    console.log(filteredArray)
+
+    if(searchValue)
+    {
+        filteredArray = filteredArray.filter((drinkObj) => drinkObj.strDrink.toLowerCase().includes(searchValue.toLowerCase()))
+    }
+    if(category !=="Pasirinkite kategoriją")
+    {
+        
+    }
+    generateDrinksHTML(filteredArray)
+
     
 }
 
@@ -70,9 +92,11 @@ function generateDrinksHTML(drinks) {
 async function initialization()
 {
     await fillSelectElements()
-    console.log(categoriesArray);
     await getAllDrinks();
-    console.log(drinksArray)
     generateDrinksHTML(drinksArray)
+    searchButtonElement.addEventListener("click", filter);
 }
+
+
+
 initialization()
