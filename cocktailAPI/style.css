@@ -18,7 +18,7 @@ body {
 }
 
 header {
-    background: white;
+    background: rgba(255, 255, 255, 0.90);
 }
 header {
   box-shadow: 1px 2px 10px rgba(154, 154, 154, 0.644);
@@ -51,10 +51,10 @@ select:focus {
 }
 
 .headerStyle button {
-    background: #b3b3b4;
+    background: #ffe6002f;
     border-radius: 999px;
     box-sizing: border-box;
-    color: #FFFFFF;
+    color: #0000009f;
     cursor: pointer;
     font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
     font-size: 16px;
@@ -67,7 +67,7 @@ select:focus {
     touch-action: manipulation;
     width: fit-content;
     word-break: break-word;
-    border: 0;
+    border: 1px solid rgb(201, 187, 27);
   }
 
 .headerStyle button:hover {
@@ -85,7 +85,7 @@ select:focus {
     width: 80%;
     margin: 0 auto;
     margin-top: 1rem;
-    box-shadow: 1px 2px 10px rgba(154, 154, 154, 0.644);
+    box-shadow: -6px 5px 25px rgba(154, 154, 154, 0.8);
     border-radius: 1rem;
     background: white;
 
