@@ -69,7 +69,7 @@ async function filter() {
     {
         filteredArray = filteredArray.filter((drinkObj) => drinkObj.strDrink.toLowerCase().includes(searchValue.toLowerCase()))
     }
-    if(category !=="Pasirinkite kategoriją")
+    if(category !=="Choose a category")
     {
         const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_")}`
         const response = await fetch(dynamicUrl)
@@ -77,7 +77,7 @@ async function filter() {
         filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink)) 
         console.log(filteredArray);
     }
-    if(glass !== "Pasirinkite stiklinę")
+    if(glass !== "Choose a glass")
     {
         const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${glass.replaceAll(" ", "_")}`
         const response = await fetch(dynamicUrl)
@@ -85,7 +85,7 @@ async function filter() {
         filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink)) 
         console.log(answerFromServer);
     }
-    if(ingredient !== "Pasirinkite ingridientą")
+    if(ingredient !== "Choose an ingredient")
     {
         const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient.replaceAll(" ", "_")}`
         const dynamicContent = []
@@ -118,7 +118,7 @@ function generateDrinksHTML(drinks) {
 async function feelingLuckyFunction() {
     const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
     const answerFromServer = await response.json()
-    generateDrinksHTML(answerFromServer.drinks)
+    openModal(answerFromServer.drinks[0].idDrink)
 }
 
 feelingLuckyButtonElement.addEventListener("click", feelingLuckyFunction)
@@ -128,11 +128,24 @@ async function openModal(id) {
     const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
     const response = await promise.json();
     const drink = response.drinks[0]
+    let dynamicIngredients = ""
     console.log(drink);
     document.querySelector(".thumbnail").src = drink.strDrinkThumb;
+    document.querySelector("#modal-title").innerText = drink.strDrink;
     document.querySelector("#modal-category").innerText = drink.strCategory;
     document.querySelector("#modal-alcohol").innerText = drink.strAlcoholic;
-    document.querySelector("#modal-glass").innerText = drink.strGlass
+    document.querySelector("#modal-glass").innerText = drink.strGlass;
+    document.querySelector("#modal-recipe").innerText = drink.strInstructions;
+    for(let i = 1; i <= 15; i++)
+    {
+        const ingredient = drink[`strIngredient${i}`]
+        const measure = drink[`strMeasure${i}`]
+
+        if(ingredient && measure) {
+            dynamicIngredients += `<p><i><b>${ingredient}</b></i> <span>${measure}</span></p>`;
+        }
+    }
+    document.querySelector("#modal-ingredients").innerHTML = dynamicIngredients;
     // document.querySelector("#modal-ingredients").innerText = 
 }
 
@@ -140,7 +153,6 @@ function closeModal() {
     modalWindow.style.display = "none"
 }
 
-modalClosebutton.addEventListener("click", closeModal)
 
 
 
@@ -152,6 +164,9 @@ async function initialization()
     searchButtonElement.addEventListener("click", filter);
 }
 
-
+modalWindow.addEventListener("click", (event) => {
+    if (event.target === modalWindow)
+    closeModal()
+})
 
 initialization()
