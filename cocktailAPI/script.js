@@ -6,6 +6,9 @@ const searchButtonElement = document.querySelector('#searchButton')
 const feelingLuckyButtonElement = document.querySelector('#feelingLuckyButton')
 const containerHTML = document.querySelector('.drinks')
 const categoriesArray = [], drinksArray = [], selectValues = {}
+const modalWindow = document.querySelector(".modal-bg")
+const modalClosebutton = document.querySelector(".btn-modal")
+const modalOpenItem = document.querySelector(".drink")
 
 async function fillSelectElements() {
     const allUrls = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list",
@@ -42,14 +45,15 @@ function printDynamicOptionHTML(response, element)
 }
 
 async function getAllDrinks() {
+    const allDrinksUrls = []
     for(const category of selectValues.categories)
     {
         let dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_")}`;
-        const response = await fetch(dynamicUrl);
-        const answerFromServer = await response.json();
-        for(const drink of answerFromServer.drinks)
-        drinksArray.push(drink)
+        allDrinksUrls.push(dynamicUrl)
     }
+    const allPromises = allDrinksUrls.map((url) => fetch(url).then(response => response.json()))
+    const AllValues = await Promise.all(allPromises)
+    AllValues.forEach((value) => drinksArray.push(...value.drinks))
 }
 
 async function filter() {
@@ -101,7 +105,7 @@ function generateDrinksHTML(drinks) {
     for(const drink of drinks)
     {
         dynamicHTML += `
-        <div class="drink">
+        <div class="drink" onclick="openModal(${drink.idDrink})">
             <img
               src="${drink.strDrinkThumb}"
             />
@@ -118,6 +122,27 @@ async function feelingLuckyFunction() {
 }
 
 feelingLuckyButtonElement.addEventListener("click", feelingLuckyFunction)
+
+async function openModal(id) {
+    modalWindow.style.display = "flex";
+    const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const response = await promise.json();
+    const drink = response.drinks[0]
+    console.log(drink);
+    document.querySelector(".thumbnail").src = drink.strDrinkThumb;
+    document.querySelector("#modal-category").innerText = drink.strCategory;
+    document.querySelector("#modal-alcohol").innerText = drink.strAlcoholic;
+    document.querySelector("#modal-glass").innerText = drink.strGlass
+    // document.querySelector("#modal-ingredients").innerText = 
+}
+
+function closeModal() {
+    modalWindow.style.display = "none"
+}
+
+modalClosebutton.addEventListener("click", closeModal)
+
+
 
 async function initialization()
 {

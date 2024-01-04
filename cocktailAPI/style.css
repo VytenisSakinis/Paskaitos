@@ -70,3 +70,61 @@ select {
     text-align: center;
     font-weight: 500;
 }
+
+.modal-bg{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(56, 56, 56, 0.265);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal{
+  max-width: 1000px;
+  width: 60%;
+  max-height: 700px;
+  height: 60%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 1px 2px 10px rgba(154, 154, 154, 0.644);
+  overflow-y: scroll;
+}
+
+.btn-modal{
+  position: absolute;
+  left: 76%;
+  top: 73%;
+  padding: .5rem .7rem;
+  background: white;
+  border: 1px solid rgba(59, 59, 59, 0.302);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn-modal:hover{
+  background: rgba(128, 128, 128, 0.466);
+  color: white;
+}
+
+.modal img {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.modal-describtion{
+  display: block;
+  justify-content: flex-start !important;
+  flex-direction: column;
+  width: 100%;
+}
+
+.spaces{
+  display: block;
+  width: 100%;
+  justify-content: space-between;
+  text-align: left;
+}
