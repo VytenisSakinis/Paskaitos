@@ -88,7 +88,7 @@ select:focus {
     box-shadow: -6px 5px 25px rgba(154, 154, 154, 0.8);
     border-radius: 1rem;
     background: white;
-
+    overflow: hidden;
 }
 
 .drink img {
@@ -103,9 +103,15 @@ select:focus {
     font-weight: 500;
 }
 
-.drink:hover {
+.drink:hover 
+{
   width: 81%;
+  transition: all .5s;
 }
+
+/* .drink:hover {
+  width: 81%;
+} */
 
 .modal-bg{
   position: fixed;

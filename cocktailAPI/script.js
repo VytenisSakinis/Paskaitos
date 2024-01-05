@@ -8,7 +8,7 @@ const containerHTML = document.querySelector('.drinks')
 const categoriesArray = [], drinksArray = [], selectValues = {}
 const modalWindow = document.querySelector(".modal-bg")
 const modalClosebutton = document.querySelector(".btn-modal")
-const modalOpenItem = document.querySelector(".drink")
+
 
 async function fillSelectElements() {
     const allUrls = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list",
@@ -69,7 +69,7 @@ async function filter() {
     {
         filteredArray = filteredArray.filter((drinkObj) => drinkObj.strDrink.toLowerCase().includes(searchValue.toLowerCase()))
     }
-    if(category !=="Choose a category")
+    if(category !== "Choose a category")
     {
         const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category.replaceAll(" ", "_")}`
         const response = await fetch(dynamicUrl)
@@ -88,11 +88,9 @@ async function filter() {
     if(ingredient !== "Choose an ingredient")
     {
         const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient.replaceAll(" ", "_")}`
-        const dynamicContent = []
         const response = await fetch(dynamicUrl)
         const answerFromServer = await response.json()
-        for(const drink of answerFromServer.drinks) dynamicContent.push(drink)
-        filteredArray = dynamicContent
+        filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
         console.log(answerFromServer)
     }
     generateDrinksHTML(filteredArray)
@@ -106,10 +104,12 @@ function generateDrinksHTML(drinks) {
     {
         dynamicHTML += `
         <div class="drink" onclick="openModal(${drink.idDrink})">
-            <img
-              src="${drink.strDrinkThumb}"
-            />
-            <p class="title">${drink.strDrink}</p>
+            <div class="drinkContainer">
+                <img
+                    src="${drink.strDrinkThumb}"
+                />
+                <p class="title">${drink.strDrink}</p>
+            </div>
           </div>`
     }
     containerHTML.innerHTML = dynamicHTML
@@ -145,6 +145,8 @@ async function openModal(id) {
             dynamicIngredients += `<p><i><b>${ingredient}</b></i> <span>${measure}</span></p>`;
         }
     }
+    // modalOpenItem.classList.toggle("drink")
+    
     document.querySelector("#modal-ingredients").innerHTML = dynamicIngredients;
     // document.querySelector("#modal-ingredients").innerText = 
 }
