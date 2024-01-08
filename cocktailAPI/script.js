@@ -8,6 +8,7 @@ const containerHTML = document.querySelector('.drinks')
 const categoriesArray = [], drinksArray = [], selectValues = {}
 const modalWindow = document.querySelector(".modal-bg")
 const modalClosebutton = document.querySelector(".btn-modal")
+const filterByLettersElement = document.querySelector(".filtersByLetters")
 
 function saveToLocalStorage() {
     localStorage.setItem('filteredArray', JSON.stringify(filteredArray))
@@ -63,6 +64,23 @@ async function getAllDrinks() {
     AllValues.forEach((value) => drinksArray.push(...value.drinks))
 }
 
+function generateLettersForFiltrationByLetter() 
+{
+    let dynamicHTML = ""
+    let unicodeNumber = 65
+
+    for(let i = 65; i <= 90; i++)
+    {
+        let character = String.fromCharCode(unicodeNumber)
+        dynamicHTML += `<p>${character}</p>`
+        unicodeNumber++
+    }
+
+    filterByLettersElement.innerHTML = dynamicHTML;
+}
+
+generateLettersForFiltrationByLetter()
+
 // function for item filtration
 async function filter() {
     const category = categorySelectElement.value,
@@ -73,14 +91,14 @@ async function filter() {
     let filteredArray = [...drinksArray]
     console.log(filteredArray)
 
-    if(searchValue.length === 1)
-    {
-        const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchValue.toLowerCase()}`
-        const response = await fetch(dynamicUrl)
-        const answerFromServer = await response.json();
-        filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
-        console.log(filteredArray);
-    }
+    // if(searchValue.length === 1)
+    // {
+    //     const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchValue.toLowerCase()}`
+    //     const response = await fetch(dynamicUrl)
+    //     const answerFromServer = await response.json();
+    //     filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
+    //     console.log(filteredArray);
+    // }
     if(searchValue)
     {
         filteredArray = filteredArray.filter((drinkObj) => drinkObj.strDrink.toLowerCase().includes(searchValue.toLowerCase()))

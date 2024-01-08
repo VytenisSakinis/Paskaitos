@@ -17,6 +17,8 @@ body {
   background-attachment: fixed;
 }
 
+
+
 header {
     background: rgba(255, 255, 255, 0.90);
 }
@@ -195,4 +197,10 @@ select:focus {
 
 .spaces b {
   margin-bottom: .3rem;
+}
+
+.filtersByLetters{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
