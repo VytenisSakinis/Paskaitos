@@ -204,3 +204,12 @@ select:focus {
   justify-content: space-between;
   align-items: center;
 }
+
+.filtersByLetters p {
+  margin-right: 1rem;
+
+}
+
+.filtersByLetters p:hover{
+  cursor: pointer;
+}

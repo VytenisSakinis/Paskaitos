@@ -72,14 +72,16 @@ function generateLettersForFiltrationByLetter()
     for(let i = 65; i <= 90; i++)
     {
         let character = String.fromCharCode(unicodeNumber)
-        dynamicHTML += `<p>${character}</p>`
+        dynamicHTML += `<p class="charactersForFilter">${character}</p>`
         unicodeNumber++
     }
 
     filterByLettersElement.innerHTML = dynamicHTML;
+
 }
 
 generateLettersForFiltrationByLetter()
+
 
 // function for item filtration
 async function filter() {
@@ -87,18 +89,18 @@ async function filter() {
     glass = glassSelectorElement.value,
     ingredient = ingredientSelectorElement.value,
     searchValue = drinkSearchElement.value;
-    
     let filteredArray = [...drinksArray]
     console.log(filteredArray)
 
-    // if(searchValue.length === 1)
-    // {
-    //     const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchValue.toLowerCase()}`
-    //     const response = await fetch(dynamicUrl)
-    //     const answerFromServer = await response.json();
-    //     filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
-    //     console.log(filteredArray);
-    // }
+    
+    if(searchValue.length === 1)
+    {
+        const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchValue.toLowerCase()}`
+        const response = await fetch(dynamicUrl)
+        const answerFromServer = await response.json();
+        filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
+        console.log(filteredArray);
+    }
     if(searchValue)
     {
         filteredArray = filteredArray.filter((drinkObj) => drinkObj.strDrink.toLowerCase().includes(searchValue.toLowerCase()))
@@ -202,7 +204,8 @@ async function initialization()
     await fillSelectElements();
     await getAllDrinks();
     if(!localStorage.getItem('filteredArray')) generateDrinksHTML(drinksArray); // loads items from drinks array if there's no items in Local Storage
-    searchButtonElement.addEventListener("click", filter);
+    searchButtonElement.addEventListener("click", filter)
+
 }
 
 modalWindow.addEventListener("click", (event) => {
