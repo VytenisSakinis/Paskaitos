@@ -9,7 +9,12 @@ const categoriesArray = [], drinksArray = [], selectValues = {}
 const modalWindow = document.querySelector(".modal-bg")
 const modalClosebutton = document.querySelector(".btn-modal")
 
+function saveToLocalStorage() {
+    localStorage.setItem('filteredArray', JSON.stringify(filteredArray))
+}
 
+
+// function to collect the select options from within the API
 async function fillSelectElements() {
     const allUrls = ["https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list",
     "https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list",
@@ -31,6 +36,7 @@ async function fillSelectElements() {
     printDynamicOptionHTML(selectValues.glasses, glassSelectorElement)
 }
 
+// function to print the selection options within HTML
 function printDynamicOptionHTML(response, element)
 {
     let dynamicHTML = ''
@@ -44,6 +50,7 @@ function printDynamicOptionHTML(response, element)
     element.innerHTML += dynamicHTML
 }
 
+// function to get all of the items from API
 async function getAllDrinks() {
     const allDrinksUrls = []
     for(const category of selectValues.categories)
@@ -56,6 +63,7 @@ async function getAllDrinks() {
     AllValues.forEach((value) => drinksArray.push(...value.drinks))
 }
 
+// function for item filtration
 async function filter() {
     const category = categorySelectElement.value,
     glass = glassSelectorElement.value,
@@ -65,6 +73,14 @@ async function filter() {
     let filteredArray = [...drinksArray]
     console.log(filteredArray)
 
+    if(searchValue.length === 1)
+    {
+        const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchValue.toLowerCase()}`
+        const response = await fetch(dynamicUrl)
+        const answerFromServer = await response.json();
+        filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
+        console.log(filteredArray);
+    }
     if(searchValue)
     {
         filteredArray = filteredArray.filter((drinkObj) => drinkObj.strDrink.toLowerCase().includes(searchValue.toLowerCase()))
@@ -94,10 +110,10 @@ async function filter() {
         console.log(answerFromServer)
     }
     generateDrinksHTML(filteredArray)
-
-    
+    localStorage.setItem('filteredArray', JSON.stringify(filteredArray))
 }
 
+// function to generate all of the HTMLs dynamically
 function generateDrinksHTML(drinks) {
     let dynamicHTML = ''
     for(const drink of drinks)
@@ -115,6 +131,7 @@ function generateDrinksHTML(drinks) {
     containerHTML.innerHTML = dynamicHTML
 }
 
+// feeling lucky button function
 async function feelingLuckyFunction() {
     const response = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
     const answerFromServer = await response.json()
@@ -123,6 +140,7 @@ async function feelingLuckyFunction() {
 
 feelingLuckyButtonElement.addEventListener("click", feelingLuckyFunction)
 
+// modal window opening function
 async function openModal(id) {
     modalWindow.style.display = "flex";
     const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
@@ -145,24 +163,27 @@ async function openModal(id) {
             dynamicIngredients += `<p><i><b>${ingredient}</b></i> <span>${measure}</span></p>`;
         }
     }
-    // modalOpenItem.classList.toggle("drink")
     
     document.querySelector("#modal-ingredients").innerHTML = dynamicIngredients;
-    // document.querySelector("#modal-ingredients").innerText = 
 }
 
 function closeModal() {
     modalWindow.style.display = "none"
 }
 
-
+function onLoad() {
+    const storedDrinks = JSON.parse(localStorage.getItem('filteredArray'));
+    if (storedDrinks) {
+        generateDrinksHTML(storedDrinks);
+    }
+};
 
 
 async function initialization()
 {
-    await fillSelectElements()
+    await fillSelectElements();
     await getAllDrinks();
-    generateDrinksHTML(drinksArray)
+    if(!localStorage.getItem('filteredArray')) generateDrinksHTML(drinksArray); // loads items from drinks array if there's no items in Local Storage
     searchButtonElement.addEventListener("click", filter);
 }
 
@@ -171,4 +192,6 @@ modalWindow.addEventListener("click", (event) => {
     closeModal()
 })
 
-initialization()
+// loads items from Local Storage
+window.addEventListener('load', initialization)
+window.addEventListener('load', onLoad())
