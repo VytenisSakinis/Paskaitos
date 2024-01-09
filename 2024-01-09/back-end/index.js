@@ -20,8 +20,39 @@ server.post("/register", (req,res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
+    users.push({
+        id: users.length + 1,
+        username: username,
+        email: email,
+        password: password,
+    })
     res.send("Atsakymas is serverio")
+})
 
+server.get("/users", (req, res) => {
+    res.send(users)
+})
+
+server.get("/users/:id", (req, res) => {
+
+    if(isNaN(+req.params.id)) {
+        res.send("ID privalo buti skaicius")
+    }
+
+    const selectedUser = users.find((user) => user.id === +req.params.id)
+    if(!selectedUser)
+        res.send('Tokio vartotojo nėra')
+    else
+        res.send(selectedUser)
+})
+
+server.post('/login', (req, res) => {
+    //1 validuojame ar turi req.body loginName password
+    //2 patikrinti ar vartotojas su tokiu username egzistuoja, jeigu neegzistuoja
+        //a jei ne tada siusti atsakyma "vartotojas neegzistuoja"
+        //b toliau daromas tikrinimas
+    //3 ar slaptazodis atitinka
+    // jei atitinka tada siunciame atsakyma is serverio "sekmingai prisijungete prie sistemos"
 })
 
 server.listen(3000, () => {
