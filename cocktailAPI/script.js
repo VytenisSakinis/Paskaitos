@@ -89,17 +89,10 @@ async function filter() {
     console.log(filteredArray)
 
     
-    if(searchValue.length === 1)
-    {
-        const dynamicUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchValue.toLowerCase()}`
-        const response = await fetch(dynamicUrl)
-        const answerFromServer = await response.json();
-        filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
-        console.log(filteredArray);
-    }
     if(searchValue)
     {
         filteredArray = filteredArray.filter((drinkObj) => drinkObj.strDrink.toLowerCase().includes(searchValue.toLowerCase()))
+
     }
     if(category !== "Choose a category")
     {
@@ -125,6 +118,11 @@ async function filter() {
         filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
         console.log(answerFromServer)
     }
+    if(filteredArray.length === 0){
+        alert("We couldn't find any drinks that'd fit your requested filter")
+        filteredArray = [...drinksArray]
+    } // Validates if there is any options, if none it sets you back to a full array of drinks
+
     generateDrinksHTML(filteredArray)
     localStorage.setItem('filteredArray', JSON.stringify(filteredArray))
 }
@@ -167,7 +165,28 @@ async function openModal(id) {
     document.querySelector(".thumbnail").src = drink.strDrinkThumb;
     document.querySelector("#modal-title").innerText = drink.strDrink;
     document.querySelector("#modal-category").innerText = drink.strCategory;
-    document.querySelector("#modal-alcohol").innerText = drink.strAlcoholic;
+    const alcoholicDrink = document.querySelector("#modal-alcohol")
+    alcoholicDrink.innerText = drink.strAlcoholic
+    document.querySelector("#modal-alcohol").onclick = async() => {
+        let filteredArray = [... drinksArray]
+        if(alcoholicDrink.innerText === "Alcoholic")
+            {
+                
+                const promise = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic')
+                const answerFromServer = await promise.json()
+                console.log(answerFromServer)
+                filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
+                generateDrinksHTML(filteredArray)
+            }
+        if(alcoholicDrink.innerText === "Non alcoholic")
+            {
+                const promise = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic')
+                const answerFromServer = await promise.json()
+                console.log(answerFromServer)
+                filteredArray = filteredArray.filter((drink) => answerFromServer.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
+                generateDrinksHTML(filteredArray)
+            }
+    }
     document.querySelector("#modal-glass").innerText = drink.strGlass;
     document.querySelector("#modal-recipe").innerText = drink.strInstructions;
     for(let i = 1; i <= 15; i++)
@@ -199,17 +218,20 @@ async function initialization()
 {
     await fillSelectElements();
     await getAllDrinks();
-    if(!localStorage.getItem('filteredArray')) generateDrinksHTML(drinksArray); // loads items from drinks array if there's no items in Local Storage
     searchButtonElement.addEventListener("click", filter)
-    for(let i = 65; i <= 90; i++)
+    if(!localStorage.getItem('filteredArray')) generateDrinksHTML(drinksArray); // loads items from drinks array if there's no items in Local Storage
+    
+    for(let i = 65; i <= 90; i++)    
     {
-        let character = String.fromCharCode(i)
-        // console.log(character);
+    let character = String.fromCharCode(i)
         document.querySelector(`.character-${character.toLowerCase()}`).onclick = async() => {
-            // console.log('a')
+            console.log(character)
             const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${character.toLowerCase()}`)
             const value = await promise.json()
             console.log(value);
+            if(!value.drinks || value.drinks.length === "null") alert(`There's no options that'd start with letter ${character.toUpperCase()}`)
+            else filteredArray = filteredArray.filter((drink) => value.drinks.some((drinkFromCategory) => drinkFromCategory.strDrink === drink.strDrink))
+            generateDrinksHTML(filteredArray)
         }
     }
 

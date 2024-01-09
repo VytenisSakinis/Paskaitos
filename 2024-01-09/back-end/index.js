@@ -2,8 +2,12 @@ const express = require("express")
 const cors = require("cors")
 const server = express()
 server.use(cors())
-server.use(express.json);
+server.use(express.json());
 const users = [];
+
+server.get("/", (req, res) => {
+    res.send("Sigis")
+})
 
 server.get("/user/:id", (req, res) => {
     console.log('Method: ' + req.method);
