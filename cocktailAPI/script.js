@@ -37,6 +37,8 @@ async function fillSelectElements() {
     printDynamicOptionHTML(selectValues.glasses, glassSelectorElement)
 }
 
+
+
 // function to print the selection options within HTML
 function printDynamicOptionHTML(response, element)
 {
@@ -64,23 +66,17 @@ async function getAllDrinks() {
     AllValues.forEach((value) => drinksArray.push(...value.drinks))
 }
 
-function generateLettersForFiltrationByLetter() 
+function generateLettersForFiltrationByNumbers() 
 {
-    let dynamicHTML = ""
-    let unicodeNumber = 65
 
     for(let i = 65; i <= 90; i++)
     {
-        let character = String.fromCharCode(unicodeNumber)
-        dynamicHTML += `<p class="charactersForFilter">${character}</p>`
-        unicodeNumber++
+        let character = String.fromCharCode(i)
+        filterByLettersElement.innerHTML += `<p class="charactersForFilter character-${character.toLowerCase()}">${character}</p>`
     }
-
-    filterByLettersElement.innerHTML = dynamicHTML;
-
 }
 
-generateLettersForFiltrationByLetter()
+generateLettersForFiltrationByNumbers()
 
 
 // function for item filtration
@@ -205,6 +201,17 @@ async function initialization()
     await getAllDrinks();
     if(!localStorage.getItem('filteredArray')) generateDrinksHTML(drinksArray); // loads items from drinks array if there's no items in Local Storage
     searchButtonElement.addEventListener("click", filter)
+    for(let i = 65; i <= 90; i++)
+    {
+        let character = String.fromCharCode(i)
+        // console.log(character);
+        document.querySelector(`.character-${character.toLowerCase()}`).onclick = async() => {
+            // console.log('a')
+            const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${character.toLowerCase()}`)
+            const value = await promise.json()
+            console.log(value);
+        }
+    }
 
 }
 
