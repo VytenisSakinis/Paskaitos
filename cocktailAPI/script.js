@@ -226,6 +226,7 @@ async function initialization()
     let character = String.fromCharCode(i)
         document.querySelector(`.character-${character.toLowerCase()}`).onclick = async() => {
             console.log(character)
+            let filteredArray = [... drinksArray]
             const promise = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${character.toLowerCase()}`)
             const value = await promise.json()
             console.log(value);
