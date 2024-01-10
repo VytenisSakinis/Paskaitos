@@ -1,7 +1,10 @@
 const registerUsernameElemenet = document.querySelector("#registerUsername"),
-registeEmailElemenet = document.querySelector("#registerEmail"),
-registerPasswordElemenet = document.querySelector("#registerPasswrod"),
-sendRegisterElement = document.querySelector("#sendRegister");
+registerEmailElemenet = document.querySelector("#registerEmail"),
+registerPasswordElemenet = document.querySelector("#registerPassword"),
+sendRegisterElement = document.querySelector("#sendRegister"),
+loginUsernameElement = document.querySelector("#loginUsername"),
+loginPasswordElement = document.querySelector("#loginPassword"),
+loginSubmitButtonElement = document.querySelector("#loginButton")
 
 async function register()
 {
@@ -11,9 +14,9 @@ async function register()
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            username: "Justinas",
-            email: "justinas@bit.lt",
-            password: "123321"
+            username: registerUsernameElemenet.value,
+            email: registerEmailElemenet.value,
+            password: registerPasswordElemenet.value
         })
     })
 
@@ -22,4 +25,27 @@ async function register()
     
 }
 
-register();
+sendRegisterElement.onclick = register;
+
+async function login()
+{
+
+        fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: loginUsernameElement.value, 
+            password: loginPasswordElement.value
+        })
+
+    })
+        .then(response => response.json())
+        .then(response => (window.location.href = response.url))
+        .catch(err => console.log(err))
+        
+
+}
+
+loginSubmitButtonElement.onclick = login;
