@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-do page</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -15,8 +15,116 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-</head>
-<body>
-    <h3>To-do's</h3>
-</body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      body {
+        background: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+      }
+
+      .todo-list {
+        width: 40%;
+        min-height: 60vh;
+        background-color: rgb(36, 36, 36);
+      }
+
+      .done-list {
+        width: 40%;
+        min-height: 60vh;
+        background-color: rgb(36, 36, 36);
+        padding: 1rem;
+      }
+
+      .todo {
+        background-color: rgba(3, 63, 50, 0.627);
+        margin-bottom: 0.5rem;
+        text-align: center;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .dropdown {
+        color: white;
+      }
+
+      .todo:hover {
+        background-color: rgba(3, 63, 50, 0.401);
+      }
+
+      .dropdown li a {
+        color: white;
+      }
+
+      .dropdown li:hover a {
+        background-color: #343a40;
+        color: white;
+      }
+
+      .actions {
+        font-size: 2rem;
+      }
+
+      .dragover {
+        background-color: rgba(13, 54, 45, 0.56);
+      }
+
+      .all-todos {
+        height: 100%;
+        padding: 1rem;
+      }
+      .inputs {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>To-do's</h3>
+      <hr />
+      <div class="lists d-flex justify-content-between">
+        <div class="todo-list d-flex flex-column">
+          <div class="all-todos dropzone">
+            <div class="todo draggable" draggable="true" todoid="1">
+              <input type="checkbox" name="todo" />
+              <span>Go to work</span>
+              <div class="dropdown">
+                <i
+                  class="bi bi-three-dots"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                ></i>
+                <ul class="dropdown-menu bg-dark">
+                  <li><a class="dropdown-item todo-move" href="#" todomove="1">Done</a></li>
+                  <li><a class="dropdown-item todo-delete" href="#" tododelete="1">Delete</a></li>
+                  <li><a class="dropdown-item todo-update" href="#" todoupdate="1">Update</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-flex input-group justify-content-center mt-auto inputs"
+            style="width: 100%"
+          >
+            <input type="text" class="form-control" style="width: 70%" />
+            <button class="btn btn-secondary" style="width: 30%">Add</button>
+          </div>
+        </div>
+        <div class="actions d-flex flex-column justify-content-center">
+          <i class="bi bi-arrow-right-square-fill"></i>
+          <i class="bi bi-arrow-left-square-fill"></i>
+          <i class="bi bi-trash3 text-danger"></i>
+        </div>
+        <div class="done-list dropzone"></div>
+      </div>
+    </div>
+    <script src="dropdown.js"></script>
+    <script src="drag.js"></script>
+  </body>
 </html>
