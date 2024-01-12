@@ -1,0 +1,129 @@
+*{
+    margin:10;
+    box-sizing: border-box;
+}
+body{
+background-color:#a0d7ff;
+font-family: 'Poppins', sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+overflow: hidden;
+}
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 50vh;
+}
+.container{
+        padding: 10px;
+        width: 400px;
+        background-color: white;
+        border-radius: 15px;
+        background: linear-gradient(rgba(255, 255, 255, 0.861),rgba(255, 255, 255, 0.731));
+        position: relative;
+        z-index: 99;
+}
+h1 {
+    color: #69b3e9;
+    text-align: center;
+}
+input{
+    border:none;
+    padding: 10px;
+    background: transparent;
+    border-bottom: 1px solid #a0d7ff;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+input:focus{
+    outline: none
+}
+
+.amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tipRating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.circle {
+    background: linear-gradient(#109dff, #0862a2);
+    border-radius: 50%;
+    height: 500px;
+    width: 500px;
+    position: fixed;
+    top: 43.5%; 
+    left: 58%;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+}
+
+button{
+    border: none;
+    margin-top: 1rem;
+    background: #a0d7ff;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.selector:focus {
+    outline: none;
+}
+
+.selector{
+    border:none;
+    padding: 10px;
+    background: transparent;
+    border-bottom: 1px solid #a0d7ff;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+button:hover{
+    background: #69b3e9
+}
+
+.tips{
+    background: #a0d7ff;
+    padding: .2rem 1rem;
+    margin-top: .5rem;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+.total{
+    background: #a0d7ff;
+    padding: .2rem 1rem;
+    margin-top: .5rem;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+.thankYou{
+    padding: .2rem 1rem;
+    margin-top: .5rem;
+    border-radius: 4px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+         -webkit-appearance: none;
+      }
