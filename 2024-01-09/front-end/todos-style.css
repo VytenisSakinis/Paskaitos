@@ -1,0 +1,37 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.todo-list,
+.done-list {
+    width: 40%;
+    min-height: 60vh;
+    background-color: rgb(12, 12, 12);
+    padding: 1rem;
+}
+
+.todo {
+    background-color: rgb(26, 44, 44);
+    margin-bottom: 0.5rem;
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+}
+.todo:hover {
+    background-color: rgb(31, 52, 52);
+}
+.dropdown-menu li:hover a {
+    background-color: #343a40;
+}
+.actions {
+    font-size: 28px;
+}
+.dragover {
+    background-color: rgb(42, 53, 53);
+}
+.all-todos {
+    height: 100%;
+}

@@ -8,11 +8,14 @@ paymentButtonElement = document.querySelector('.payment')
 submitButtonElement.addEventListener('click', () => {
     
     if(billAmountElement.value === "") return alert("Please enter your bill amount")
+
     if(tipSelectorElement.value === "Select an option") return alert("Please rate us")
     
     const billAmount = +billAmountElement.value 
     const tipSelector = tipSelectorElement.value
     let tip = ""
+
+    if(billAmount < 0) return alert("Please enter a positive bill amount");
 
     
     if(tipSelector === 'Bad service 0%') tip = 0
@@ -34,7 +37,7 @@ submitButtonElement.addEventListener('click', () => {
     <button class="payment" onclick="nullifyEverything()">Payment</button>`
 
     billAmountElement.value = ""
-    tipSelectorElement.value = "-- Select an option --"
+    tipSelectorElement.value = "Select an option"
 
     
 });

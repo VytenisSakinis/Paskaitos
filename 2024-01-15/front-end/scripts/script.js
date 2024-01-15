@@ -4,7 +4,7 @@ const usernameField = document.querySelector("#register-username"),
 	registerButton = document.querySelector("#send-registration");
 
 async function register() {
-	const promise = await fetch("http://localhost:3000/register", {
+	const promise = await fetch("http://localhost:3000/user/register", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -23,9 +23,9 @@ registerButton.onclick = register;
 
 const loginUsernameElement = document.querySelector("#login-username"),
 	loginPasswordElement = document.querySelector("#login-password"),
-	loginButton = document.querySelector("#buttonLogin");
+	loginButton = document.querySelector("#login-button");
 async function login() {
-	fetch("http://localhost:3000/prisijungimas", {
+	fetch("http://localhost:3000/user/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -36,9 +36,9 @@ async function login() {
 		}),
 	})
 		.then((response) => response.json())
-		.then((response) => console.log(response))
+		.then((response) => (window.location.href = response.url))
 		.catch((err) => console.log(err));
-        // (window.location.href = response.url)
+
 	// window.location.href = "http://127.0.0.1:5500/front-end/todos.html";
 }
 loginButton.onclick = login;

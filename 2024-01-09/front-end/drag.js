@@ -1,14 +1,18 @@
 let dragElement;
 
-const allDraggableElements = document.querySelectorAll(".draggable")
+
 const dropZones = document.querySelectorAll('.dropzone')
-for(const element of allDraggableElements)
+
+function addDragFunctionalityToAllEmenents()
 {
+    const allDraggableElements = document.querySelectorAll(".draggable")
+    for(const element of allDraggableElements){
     element.addEventListener('dragstart', (event) => {
         dragElement = event.target;
     });
-
+    }
 }
+
 
 for(const dropZone of dropZones)
 {

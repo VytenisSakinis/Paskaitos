@@ -93,7 +93,7 @@
           <div class="all-todos dropzone">
             <div class="todo draggable" draggable="true" todoid="1">
               <input type="checkbox" name="todo" />
-              <span>Go to work</span>
+              <span class="todoText">Go to work</span>
               <div class="dropdown">
                 <i
                   class="bi bi-three-dots"
@@ -112,19 +112,20 @@
             class="d-flex input-group justify-content-center mt-auto inputs"
             style="width: 100%"
           >
-            <input type="text" class="form-control" style="width: 70%" />
-            <button class="btn btn-secondary" style="width: 30%">Add</button>
+            <input type="text" class="form-control" style="width: 70%" id="todoInput"/>
+            <button class="btn btn-secondary" style="width: 30%" id="todoSubmit">Add</button>
           </div>
         </div>
         <div class="actions d-flex flex-column justify-content-center">
-          <i class="bi bi-arrow-right-square-fill"></i>
-          <i class="bi bi-arrow-left-square-fill"></i>
-          <i class="bi bi-trash3 text-danger"></i>
+          <i class="bi bi-arrow-right-square-fill moveToDone"></i>
+          <i class="bi bi-arrow-left-square-fill moveToToDo"></i>
+          <i class="bi bi-trash3 text-danger deleteToDo"></i>
         </div>
         <div class="done-list dropzone"></div>
       </div>
     </div>
-    <script src="dropdown.js"></script>
     <script src="drag.js"></script>
+    <script src="todoDialogActions.js"></script>
+    <script src="buttonActions.js"></script>
   </body>
 </html>
