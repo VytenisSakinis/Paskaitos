@@ -76,7 +76,7 @@ async function addNewTodo() {
 	todoInputElement.value = "";
 
 	const response = await postNewTodo({
-		username: "Justelio19",
+		username: "Vytenis",
 		todo: inputValue,
 	});
 	const newTodoObject = response.newTodo;

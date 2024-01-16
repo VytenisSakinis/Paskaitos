@@ -19,8 +19,15 @@ server.use(
 		cookie: { secure: false },
 	})
 );
-const users = [];
+const users = [
+	{
+		username: "Vytenis",
+		email: "vytenis@gmail.com",
+		password: "123321"
+	}
+];
 const todos = [{ id: 1, todo: "Nueiti i darba" }];
+
 
 server.get("/user/:id", (req, res) => {
 	console.log("Method: " + req.method);
