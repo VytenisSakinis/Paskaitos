@@ -6,6 +6,7 @@ const usernameField = document.querySelector("#register-username"),
 async function register() {
 	const promise = await fetch("http://localhost:3000/user/register", {
 		method: "POST",
+		credentials: "include",
 		headers: {
 			"Content-Type": "application/json",
 		},
