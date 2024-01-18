@@ -69,9 +69,7 @@ server.get("/check-if-user-exists/:userid", (req, res) => {
 }
 })
 
-server.listen(3000, () => {
-    console.log("serveris pasileido");
-} )
+
 
 server.get("/multiply/:num1/:num2", (req, res) => {
     const num1 = req.params.num1
@@ -87,7 +85,7 @@ server.get("/multiply/:num1/:num2", (req, res) => {
 server.post("/register-new-user/", (req, res) => {
     const username = req.body.username
     const password = req.body.password
-    if(!username || !password){ res.status(400).json({ message: "Enter username and/or password"})
+    if(!username || !password){ return res.status(400).json({ message: "Enter username and/or password"})
     }else{ user.push({
         username: username,
         password: password
@@ -118,10 +116,19 @@ server.get("/products", (req, res) => {
     const priceLessThan = +req.query.priceLess
 
     let filteredProducts = [... products]
-    if(isNaN(priceLessThan)) res.status(400).json( { message: "Price must be a number" } )
 
-    if(!isNaN(priceLessThan)) filteredProducts = filteredProducts.filter(product => product.productPrice < priceLessThan)
-    if(name) filteredProducts = filteredProducts.filter(product => product.productName === name)
+    if(name && !priceLessThan)
+    filteredProducts = filteredProducts.filter(product => product.productName === name)
+    if(!name && priceLessThan){
+        if(isNaN(priceLessThan)) res.status(400).json( { message: "Price must be a number" } )
+        filteredProducts = filteredProducts.filter(product => product.productPrice <= priceLessThan)
+    }
+    if(name && priceLessThan)
+    {
+        if(isNaN(priceLessThan)) res.status(400).json( { message: "Price must be a number" } )
+        filteredProducts = filteredProducts.filter(product => product.productPrice <= priceLessThan)
+        filteredProducts = filteredProducts.filter(product => product.productName === name)
+    }
 
     if(filteredProducts.length > 0) {
         res.status(200).json( filteredProducts )
@@ -129,3 +136,7 @@ server.get("/products", (req, res) => {
         res.status(404).json( { message: "Item doesn't exist" })
     }
 })
+
+server.listen(3000, () => {
+    console.log("serveris pasileido");
+} )
