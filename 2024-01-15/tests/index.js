@@ -50,8 +50,8 @@ server.use(
 );
 
 server.get("/addition/:num1/:num2", (req, res) => {
-    const num1 = parseFloat(req.params.num1);
-    const num2 = parseFloat(req.params.num2);
+    const num1 = +req.params.num1;
+    const num2 = +req.params.num2;
 
     if(isNaN(num1) || isNaN(num2)) {res.status(400).json( { message: "Invalid input. Please provide numbers."} );
     }else{const result = num1 + num2;
@@ -78,7 +78,7 @@ server.get("/multiply/:num1/:num2", (req, res) => {
     if(isNaN(num1) || isNaN(num2)){ res.status(400).json({ message: "Enter a valid number" })
 }else{ 
     const multiply = num1 * num2
-    res.status(200).json({ multiply})}
+    res.status(200).json({ multiply })}
 
 })
 
