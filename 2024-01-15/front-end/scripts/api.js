@@ -1,7 +1,7 @@
 async function sessionCheck()
 {
 	try {
-		const promise = await fetch('http://localhost/server/user/session-check', { 
+		const promise = await fetch('http://localhost/server/users/session-check', { 
 			credentials: "include"})
 		const answer = await promise.json()
 		if(!answer.sessionValid){
@@ -41,7 +41,9 @@ async function getAllTodos() {
 }
 
 async function updateTodoState(todo){
+	console.log("Siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu...");
 	const promise = await fetch(`http://localhost/server/todos/${todo.id}`, {
+		method: "put",
 		credentials: "include",
 		headers: {
 			"Content-Type": "application/json",
@@ -54,5 +56,20 @@ async function updateTodoState(todo){
 		console.error("Atsakymas iš endpoint /todos/id buvo nesėkmingas");
 	}else{
 		return result;
+	}
+}
+
+async function deleteTodoElements(id) {
+	const promise = await fetch(`http://localhost/server/todos/${id}`, {
+		method: "delete",
+	})
+	const response = await promise.json();
+
+	if(!promise.ok)
+	{
+		console.error("Nepavyko ištrinti");
+	}
+	else {
+		return response;
 	}
 }

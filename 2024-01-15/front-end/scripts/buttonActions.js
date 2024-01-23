@@ -16,6 +16,9 @@ const moveTodoToDone = () => {
 		document.querySelector(`[todomove="${parentId}"]`).innerText = "Move back";
 		inputElement.checked = false;
 		doneListElement.append(inputElement.parentElement);
+		updateTodoState({ 
+			id: parentId,
+			done: true })
 	}
 
 	console.log(allTodosCheckedInputs);
@@ -32,6 +35,9 @@ const moveTodoToTodoList = () => {
 		console.log(parentId);
 		inputElement.checked = false;
 		todoListElement.append(parent);
+		updateTodoState({ 
+			id: parentId,
+			done: false })
 	}
 };
 
@@ -40,6 +46,7 @@ const deleteTodoElement = () => {
 		".todo input:checked"
 	);
 	for (const inputElement of allTodosCheckedInputs) {
+		deleteTodoElements(inputElement.parentElement.attributes["todo-id"].value);
 		inputElement.parentElement.remove();
 	}
 };

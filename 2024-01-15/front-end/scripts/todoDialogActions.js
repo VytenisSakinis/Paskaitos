@@ -15,6 +15,11 @@ function moveFromTodoToDone(event) {
 	const targetId = event.target.attributes.todomove.value;
 	const moveTarget = document.querySelector(`[todo-id="${targetId}"]`);
 	doneListElement.appendChild(moveTarget);
+	moveFromDoneToTodoToDoneTextUpdate(event)
+	updateTodoState({ id: targetId, done: true})
+}
+
+function moveFromTodoToDoneTextUpdate(event) {
 	event.target.innerText = texts.moveElementText.done;
 	event.target.onclick = moveFromDoneToTodo;
 }
@@ -23,9 +28,15 @@ function moveFromDoneToTodo(event) {
 	const targetId = event.target.attributes.todomove.value;
 	const moveTarget = document.querySelector(`[todo-id="${targetId}"]`);
 	todoListElement.appendChild(moveTarget);
+	moveFromTodoToDoneTextUpdate(event)
+	updateTodoState({ id: targetId, done: false})
+}
+
+function moveFromDoneToTodoToDoneTextUpdate(event) {
 	event.target.innerText = texts.moveElementText.todo;
 	event.target.onclick = moveFromTodoToDone;
 }
+
 
 function updateTodo(event) {
 	const targetId = event.target.attributes.todoupdate.value;
@@ -36,6 +47,11 @@ function updateTodo(event) {
 		"Iveskite nauja todo reiksme:",
 		updateTarget.innerText
 	);
+
+	updateTodoState({
+		id: targetId,
+		todo: updateTarget.innerText,
+	})
 	//Siusti uzklausa i serveri
 }
 
@@ -65,6 +81,7 @@ function addClickListenersToTodoDialogButtons(a) {
 		deleteButton.onclick = (event) => {
 			const targetId = event.target.attributes.tododelete.value;
 			const deleteTarget = document.querySelector(`[todo-id="${targetId}"]`);
+			deleteTodoElements(targetId)
 			deleteTarget.remove();
 		};
 	}
