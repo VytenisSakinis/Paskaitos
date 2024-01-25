@@ -3,18 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Forum</title>
     <link rel="stylesheet" href="../public/style.css">
-    <title><%= title %></title>
 </head>
 <body>
-    <%- include('./components/nav-bar.ejs') %>
-    <div class="container">
-        <ul>
-            <% for(const product of list){ %>
-                <li><%= product %></li>
-            <% } %>
-        </ul>
-    </div>
-    <script src="index.js"></script>
+    <header class="headerStyling">
+    <nav class="navigationForumsMain">
+        <a href="#">Home</a><a href="#">Categories</a><a href="register.ejs">Login</a>
+    </nav>
+    </header>
+    <section>
+        <article>
+            <h2>Thread Title</h2>
+            <p>Posted by: John Doe | Date: January 24, 2024</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi...</p>
+            <a href="#">Read more</a>
+        </article>
+        <article>
+            <h2>Thread Title</h2>
+            <p>Posted by: John Doe | Date: January 24, 2024</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi...</p>
+            <a href="#">Read more</a>
+        </article>
+        <article>
+            <h2>Thread Title</h2>
+            <p>Posted by: John Doe | Date: January 24, 2024</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi...</p>
+            <a href="#">Read more</a>
+        </article>
+        <article>
+            <h2>Thread Title</h2>
+            <p>Posted by: John Doe | Date: January 24, 2024</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi...</p>
+            <a href="#">Read more</a>
+        </article>
+        <article>
+            <h2>Thread Title</h2>
+            <p>Posted by: John Doe | Date: January 24, 2024</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi...</p>
+            <a href="#">Read more</a>
+        </article>
+    </section>
+    <footer>
+        <p>&copy; 2024 Simple Forum. All rights reserved.</p>
+    </footer>
 </body>
 </html>
