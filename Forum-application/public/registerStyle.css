@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     padding: 0;
-    background: url('../images/wallpaperflare.com_wallpaper.jpg');
+    background: url('../public/images/wallpaperflare.com_wallpaper.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
