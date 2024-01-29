@@ -7,6 +7,7 @@ require("./config/express-middleware").config(app);
 require('./config/db-connect').config();
 
 
+
 app.listen(3000, () => {
     console.log("Server has started");
 })

@@ -13,6 +13,39 @@ const userSchema = new mongoose.Schema({
         required: true,
         minLength: 8,
         maxLength: 120
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    salt: {
+        type: String
+    },
+    birthDate: {
+        type: String,
+        required: true
+    },
+    profilePicture: {
+        type: String,
+        required: true
+    },
+    postsCount: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+    commentsCount: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+    likes: {
+        type: Number,
+        default: 0,
+    },
+    dislikes: {
+        type: Number,
+        default: 0
     }
 })
 
