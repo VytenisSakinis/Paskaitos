@@ -26,4 +26,20 @@ router.get('/login', (req, res) => {
         loggedIn: !!req.session.user?.loggedIn
     })
 })
+
+router.get('/profile', (req, res) => {
+    res.render('profile.ejs', {
+        title: 'Forumo aplikacija',
+        activeTab: "Home",
+        loggedIn: !!req.session.user?.loggedIn
+    })
+})
+
+router.get('/thread', (req, res) => {
+    res.render('thread.ejs', {
+        title: 'Forumo aplikacija',
+        activeTab: "Home",
+        loggedIn:!!req.session.user?.loggedIn
+    })
+})
 module.exports = router;

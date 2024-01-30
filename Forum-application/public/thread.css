@@ -1,0 +1,44 @@
+li img {
+    width: 150px;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+}
+
+aside {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.gridItemThread {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0px;
+}
+
+.userInformationThread{
+    padding: 2rem;
+}
+
+.top {
+    background: rgba(0, 0, 0, 0.885);
+    color: white;
+    margin: 0;
+    height: 2rem;
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content {
+    padding: 2rem 2rem;
+    border-radius: 5px;
+}
