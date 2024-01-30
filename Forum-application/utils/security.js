@@ -16,9 +16,9 @@ function generateSalt()
     return crypto.randomBytes(16).toString('hex');
 }
 
-function isValidCredentials(providedPassword, salt, hashPassword)
+function isValidCredentials(providedPassword, salt, hashedPassword)
 {
-    return hashPassword(providedPassword, salt) === hashPassword;
+    return hashPassword(providedPassword, salt) === hashedPassword;
 }
 
 module.exports = { hashPassword, generateSalt, isValidCredentials };

@@ -17,30 +17,15 @@
       <div class="dashboardWindow">
         <h1>Login</h1>
         <hr>
+        <form action="/api/user/login" method="post">
         <div class="form">
-          <input type="text" name="username" placeholder="Username / Email" />
+          <input type="text" name="loginName" placeholder="Username / Email" />
           <input type="password" name="password" placeholder="Password" />
           <button class="loginButtonSubmit">Login</button>
           <a href="http://http://localhost:3000/pages/register">Don't have an account?</a>
         </div>
+        </form>
       </div>
-      <!-- <div class="dashboardWindow">
-        <h1>Register</h1>
-        <hr>
-        <div class="form">
-          <input type="text" class="username" placeholder="Username" />
-          <input type="email" class="email" placeholder="Email" />
-          <input type="date" class="ageVerify" placeholder="Cal" />
-          <input type="password" class="password" placeholder="Password" />
-          <input type="password" class="confirmPassword" placeholder="Confirm Password" />
-          <div class="custom-file-input">
-            <label for="profilePicture">Choose Profile Picture</label>
-            <input type="file" id="profilePicture" class="profilePicture" accept=".png, .jpg, .svg, .gif, .jpeg" />
-          </div>
-          <button class="registerButtonSubmit" id="register">Register</button>
-          <a href="">Already have an account?</a>
-      </div>
-    </div> -->
     <script src="../public/register.js"></script>
   </body>
 </html>

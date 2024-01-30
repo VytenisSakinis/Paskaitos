@@ -46,6 +46,11 @@ const userSchema = new mongoose.Schema({
     dislikes: {
         type: Number,
         default: 0
+    },
+    admin: {
+        type: Boolean,
+        default: false,
+        required: true
     }
 })
 

@@ -2,16 +2,28 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/home', (req, res) => {
+
     res.render('index.ejs', {
         title: 'Forumo aplikacija',
-        username: "Vytenis",
-        list: ['Product1', 'Product2', 'Milk', 'Chocolate']
+        activeTab: "Home",
+        loggedIn: !!req.session.user?.loggedIn
     });
 })
 
 router.get('/register', (req, res) => {
-    res.render('register.ejs', {})
+    res.render('register.ejs', {
+        title: 'Forumo aplikacija',
+        activeTab: "Home",
+        loggedIn: !!req.session.user?.loggedIn
+})
 })
 
+router.get('/login', (req, res) => {
+    res.render('login.ejs', {
+        title: 'Forumo aplikacija',
+        activeTab: "Home",
+        loggedIn: !!req.session.user?.loggedIn
+    })
+})
 module.exports = router;

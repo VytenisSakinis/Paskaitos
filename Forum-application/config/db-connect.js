@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
+const mongoUrl = process.env.MONGO_CONNECTION
+.replace("__DB_USER", process.env.DB_USER)
+.replace("__DB_PASSWORD", process.env.DB_PASSWORD)
+.replace("__DB_HOST", process.env.DB_HOST)
+.replace("__DB_NAME", process.env.DB_NAME);
+
 
 function config() {
 
 
-mongoose.connect(process.env.MONGO_CONNECTION
-    .replace("__DB_USER", process.env.DB_USER)
-    .replace("__DB_PASSWORD", process.env.DB_PASSWORD)
-    .replace("__DB_HOST", process.env.DB_HOST)
-    .replace("__DB_NAME", process.env.DB_NAME))
+mongoose.connect(mongoUrl)
 const db = mongoose.connection;
 
 // DB listeners, providing information wether we've connected or not
@@ -22,4 +24,4 @@ db.once('open', () => {
 )
 }
 
-module.exports = { config };
+module.exports = { config, mongoUrl };
