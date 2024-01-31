@@ -3,6 +3,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const pagesRouter = require('../routes/pages')
 const userRouter = require('../routes/user-router')
+const postsRouter = require('../routes/posts-router')
 require("dotenv").config();
 const bodyParser = require('body-parser')
 
@@ -31,6 +32,7 @@ function config(app) {
     app.use('/public', publicRouter);
     app.use('/pages', pagesRouter);
     app.use('/api/user', userRouter)
+    app.use('/api/post', postsRouter)
 }
 
 module.exports = { config }

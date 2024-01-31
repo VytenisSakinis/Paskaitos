@@ -3,33 +3,48 @@ const router = express.Router();
 const UserModel = require('../models/user');
 const upload = require('../config/multer').upload;
 const security = require('../utils/security');
+const validate = require('../utils/validation')
 
 
 router.post('/register', upload.single('img'), async (req, res) => {
-    console.log(req.body);
+    try {
     const { username, password, birthDate, email } = req.body
     const fileName = require('../config/multer').lastFileName
 
     if(!username || !email || !password || !birthDate) {
-        return res.status(400).json({
-            message: 'Please fill all fields'
-        })
+        return res.redirect('/pages/register?error=Fill all the fields');
     }
+
+    // await UserModel.find({_id: id})
+    // await UserModel.findOne({_id: id})
+
 
     const salt = security.generateSalt();
 
     const hashedPassword = security.hashPassword(password, salt);
 
-   
+    const newUserObj = 
+        {
+            username, 
+            email,
+            password: hashedPassword,
+            salt,
+            birthDate, 
+            profilePicture: `/public/images/${fileName}`
+           
+        }
 
-    const newUser = new UserModel({
-        username, 
-        email,
-        password: hashedPassword,
-        salt,
-        birthDate, 
-        profilePicture: `http://localhost:3000/public/images/${fileName}`
-    });
+    const validationResults = validate(newUserObj)
+
+    console.log(validationResults);
+
+    if(validationResults !== "Success")
+    {
+        console.log("Whatever");
+       return res.redirect("/pages/register?error="+ validationResults)
+    }
+
+    const newUser = new UserModel(newUserObj);
 
     await newUser.save();
     req.session.user = {
@@ -37,7 +52,11 @@ router.post('/register', upload.single('img'), async (req, res) => {
         loggedIn: true,
         admin: newUser.username === "Sigimonas",
     }
-    res.status(200).json(newUser);
+    res.redirect('/pages/home?message=registration was successful')
+} catch (err) {
+    console.log(err);
+    res.redirect('/pages/register?error=Something%20went%20wrong%20check%20your%20information');
+}
 })
 
 router.get('/users', async (req, res) => {

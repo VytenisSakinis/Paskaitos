@@ -3,7 +3,7 @@ const app = express();
 
 // Express configuration
 require("./config/express-middleware").config(app);
-// DB configuration
+// DB configurations
 require('./config/db-connect').config();
 
 

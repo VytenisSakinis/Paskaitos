@@ -51,6 +51,11 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
         required: true
+    },
+    registrationDate: {
+        type: Date,
+        default: new Date(),
+        required: true,
     }
 })
 

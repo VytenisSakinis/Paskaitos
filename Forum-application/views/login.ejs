@@ -17,6 +17,7 @@
       <div class="dashboardWindow">
         <h1>Login</h1>
         <hr>
+        <%- include('./components/errorMessage.ejs') %>
         <form action="/api/user/login" method="post">
         <div class="form">
           <input type="text" name="loginName" placeholder="Username / Email" />
@@ -27,5 +28,6 @@
         </form>
       </div>
     <script src="../public/register.js"></script>
+    <script src="../public/index.js"></script>
   </body>
 </html>

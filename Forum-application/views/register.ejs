@@ -15,22 +15,25 @@
   <body>
     <div class="container">
       <div class="dashboardWindow">
+        <form action="/api/user/register" method="post">
         <h1>Register</h1>
         <hr>
+        <%- include('./components/errorMessage.ejs') %>
         <div class="form">
-          <input type="text" class="username" placeholder="Username" />
-          <input type="email" class="email" placeholder="Email" />
-          <input type="date" class="ageVerify" placeholder="Cal" />
-          <input type="password" class="password" placeholder="Password" />
+          <input type="text" name="username" class="username" placeholder="Username" />
+          <input type="email" name="email" class="email" placeholder="Email" />
+          <input type="date" name="birthDate" class="ageVerify" placeholder="Cal" />
+          <input type="password" name="password" class="password" placeholder="Password" />
           <input type="password" class="confirmPassword" placeholder="Confirm Password" />
           <div class="custom-file-input">
             <label for="profilePicture">Choose Profile Picture</label>
-            <input type="file" id="profilePicture" class="profilePicture" accept=".png, .jpg, .svg, .gif, .jpeg" />
+            <input type="file" name="img" id="profilePicture" class="profilePicture" accept=".png, .jpg, .svg, .gif, .jpeg" />
           </div>
           <button class="registerButtonSubmit" id="register">Register</button>
+        </form>
           <a href="http://localhost:3000/pages/login">Already have an account?</a>
       </div>
     </div>
-    <script src="../public/register.js"></script>
+    <!-- <script src="../public/register.js"></script> -->
   </body>
 </html>

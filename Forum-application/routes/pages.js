@@ -2,36 +2,64 @@ const express = require('express');
 
 const router = express.Router();
 
+const UserModel = require('../models/user');
+
 router.get('/home', (req, res) => {
 
     res.render('index.ejs', {
         title: 'Forumo aplikacija',
         activeTab: "Home",
-        loggedIn: !!req.session.user?.loggedIn
+        loggedIn: !!req.session.user?.loggedIn,
+        message: req.query.message 
     });
 })
 
 router.get('/register', (req, res) => {
+    if(!!req.session.user?.loggedIn)
+    {
+        return res.redirect('/pages/home')
+    }
     res.render('register.ejs', {
         title: 'Forumo aplikacija',
-        activeTab: "Home",
-        loggedIn: !!req.session.user?.loggedIn
+        activeTab: "Register",
+        loggedIn: !!req.session.user?.loggedIn,
+        error: req.query.error,
 })
 })
 
 router.get('/login', (req, res) => {
+    if(!!req.session.user?.loggedIn)
+    {
+        return res.redirect('/pages/home')
+    }
     res.render('login.ejs', {
         title: 'Forumo aplikacija',
-        activeTab: "Home",
-        loggedIn: !!req.session.user?.loggedIn
+        activeTab: "Login",
+        loggedIn: !!req.session.user?.loggedIn,
+        error: req.query.error,
     })
 })
 
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
+    if(!req.session.user?.loggedIn)
+    {
+        return res.redirect('/pages/login?error=Please%20login%20to%20forum')
+    } 
+
+    const userData = await UserModel.findOne({ _id: req.session.user.id })
+
     res.render('profile.ejs', {
         title: 'Forumo aplikacija',
-        activeTab: "Home",
-        loggedIn: !!req.session.user?.loggedIn
+        activeTab: "Profile",
+        profilePicture: userData.profilePicture,
+        loggedIn: !!req.session.user?.loggedIn,
+        username: userData.username,
+        email: userData.email,
+        birthDate: userData.birthDate,
+        likes: userData.likes,
+        dislikes: userData.dislikes,
+        postsCount: userData.postsCount,
+        commentsCount: userData.commentsCount
     })
 })
 

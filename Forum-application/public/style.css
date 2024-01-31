@@ -146,3 +146,40 @@ a:hover{
 .threadLink {
     color: black !important;
 }
+
+.flex-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-chg-psw {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btn-chg-psw:hover {
+    background-color: #000000c8
+}
+
+.message {
+    background: rgb(2, 120, 18);
+    color: white;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.error {
+    background: tomato;
+    color: white;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
