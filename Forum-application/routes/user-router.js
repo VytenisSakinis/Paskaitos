@@ -23,6 +23,8 @@ router.post('/register', upload.single('img'), async (req, res) => {
 
     const hashedPassword = security.hashPassword(password, salt);
 
+    
+
     const newUserObj = 
         {
             username, 
@@ -31,12 +33,9 @@ router.post('/register', upload.single('img'), async (req, res) => {
             salt,
             birthDate, 
             profilePicture: `/public/images/${fileName}`
-           
         }
 
-    const validationResults = validate(newUserObj)
-
-    console.log(validationResults);
+    const validationResults = validate(req.body)
 
     if(validationResults !== "Success")
     {
