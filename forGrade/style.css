@@ -104,16 +104,14 @@ body {
   font-weight: bold;
 }
 
-/* Style the "Sign Up" link in the modal */
 .modal .newToNetflix b {
   color: #ffffff;
   cursor: pointer;
 }
 
-/* Ensure the modal content is scrollable if it exceeds the screen height */
 .modal {
   overflow-y: auto;
-  max-height: calc(100% - 40px); /* Subtract padding top and bottom */
+  max-height: calc(100% - 40px);
 }
 
 .backgroundElement {
