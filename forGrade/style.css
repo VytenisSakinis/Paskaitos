@@ -375,6 +375,10 @@ body {
   display: inline-block;
 }
 
+.footerContent select {
+  cursor: pointer;
+}
+
 .footerContent select.with-icon {
   background: rgba(0, 0, 0, 0.195);
   border: 1px solid white;
