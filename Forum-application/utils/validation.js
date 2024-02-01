@@ -41,10 +41,10 @@ function validate(user)
     if ( userBirthDate > new Date() || userBirthDate < new Date("1850-01-01")) {
         return "Use a valid birth date";
     }
-    if(!user.profilePicture)
-    {
-        return "Upload a profile picture please"
-    }
+    // if(!user.profilePicture)
+    // {
+    //     return "Upload a profile picture please"
+    // }
 
     
     return "Success"

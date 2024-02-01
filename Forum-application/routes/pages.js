@@ -1,16 +1,17 @@
 const express = require('express');
 
 const router = express.Router();
-
+const PostModel = require('../models/post');
 const UserModel = require('../models/user');
 
-router.get('/home', (req, res) => {
+router.get('/home', async (req, res) => {
 
     res.render('index.ejs', {
         title: 'Forumo aplikacija',
         activeTab: "Home",
         loggedIn: !!req.session.user?.loggedIn,
-        message: req.query.message 
+        message: req.query.message,
+        posts: await PostModel.find({}),
     });
 })
 
@@ -69,5 +70,19 @@ router.get('/thread', (req, res) => {
         activeTab: "Home",
         loggedIn:!!req.session.user?.loggedIn
     })
+})
+
+router.get('/new-post', (req, res) => {
+    if(!req.session.user?.loggedIn)
+    {
+        return res.redirect('/pages/login?error=Please%20login%20to%20forum')
+    } 
+
+    res.render('newPost.ejs', {
+        title: 'Forumo aplikacija',
+        activeTab: "New Post",
+        loggedIn: !!req.session.user?.loggedIn,
+
+    });
 })
 module.exports = router;

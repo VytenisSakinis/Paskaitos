@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <div class="dashboardWindow">
-        <form action="/api/user/register" method="post">
+        <form action="/api/user/register" method="post" enctype="multipart/form-data">
         <h1>Register</h1>
         <hr>
         <%- include('./components/errorMessage.ejs') %>

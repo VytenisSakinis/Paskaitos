@@ -14,16 +14,23 @@ router.post('/register', upload.single('img'), async (req, res) => {
     if(!username || !email || !password || !birthDate) {
         return res.redirect('/pages/register?error=Fill all the fields');
     }
+    
+    const existingUser = await UserModel.findOne({ $or: [{email}, {username}]})
 
-    // await UserModel.find({_id: id})
-    // await UserModel.findOne({_id: id})
-
+    if(existingUser)
+    {
+        if(username === existingUser.username)
+        {
+            return res.redirect('/pages/register?error=User with such username already exists')
+        }
+        if(email === existingUser.email)
+        {
+            return res.redirect('/pages/register?error=User with such email already exists')
+        }
+    }
 
     const salt = security.generateSalt();
-
     const hashedPassword = security.hashPassword(password, salt);
-
-    
 
     const newUserObj = 
         {

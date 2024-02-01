@@ -30,6 +30,7 @@ function config(app) {
         }
     }))
     app.use('/public', publicRouter);
+    app.use('/tinymce', express.static('node_modules/tinymce'))
     app.use('/pages', pagesRouter);
     app.use('/api/user', userRouter)
     app.use('/api/post', postsRouter)

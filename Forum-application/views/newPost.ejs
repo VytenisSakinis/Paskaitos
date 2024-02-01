@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/style.css" />
+    <link rel="stylesheet" href="../public/thread.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <%- include('./components/nav-bar-logged.ejs') %>
+    <div class="container">
+        <section>
+            <form action="/api/post" method="post">
+                <input type="text" name="title" placeholder="Post title" class="inline-block my-4 outline-none w-full rounded py-2 px-1"/>
+                <textarea name="content" id="text-editor"></textarea>
+                <button class="my-1 btn">Submit</button>
+            </form>
+        </section>
+        <fieldset class="border border-gray-400 rounded p-4 bg-white">
+            <legend>
+                Preview
+            </legend>
+            <div id="previw-content">
+
+            </div>
+        </fieldset>
+    </div>
+    <script type="application/javascript" src= "/tinymce/tinymce.min.js"></script>
+    <script src="/public/tinymce-config.js"></script>
+</script>
+</body>
+</html>

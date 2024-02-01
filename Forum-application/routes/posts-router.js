@@ -26,17 +26,15 @@ router.post('/', async (req, res) => {//naujo iraso sukurimas
         })
     }
 
-    const newPost = 
-    {
+    const newPost = new PostModel({
         title,
         content,
         authorId: req.session.user.userId,
-    }
+    })
     
-    const post = new PostModel(newPost)
 
-    await post.save()
-    res.status(200).json(post)
+    await newPost.save()
+    res.redirect('/?message=New post has been added')
 })
 
 router.put('/:id', async (req, res) => {//iraso atnaujinimas
