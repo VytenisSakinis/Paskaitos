@@ -233,7 +233,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
 }
 
 .emailInputAndButton input {
@@ -256,6 +255,7 @@ body {
   font-weight: bold;
   margin-right: 2rem;
   font-size: 1.3rem;
+  cursor: pointer;
 }
 
 ::placeholder {
