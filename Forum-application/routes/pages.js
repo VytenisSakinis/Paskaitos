@@ -3,15 +3,20 @@ const express = require('express');
 const router = express.Router();
 const PostModel = require('../models/post');
 const UserModel = require('../models/user');
+const postModifications = require('../utils/postAuthor')
 
 router.get('/home', async (req, res) => {
 
+
+    const posts = await postModifications.getPostsWithAuthor()
+    console.log(posts);
     res.render('index.ejs', {
         title: 'Forumo aplikacija',
         activeTab: "Home",
         loggedIn: !!req.session.user?.loggedIn,
         message: req.query.message,
-        posts: await PostModel.find({}),
+        error: req.query.error,
+        posts: posts,
     });
 })
 
@@ -84,5 +89,23 @@ router.get('/new-post', (req, res) => {
         loggedIn: !!req.session.user?.loggedIn,
 
     });
+})
+
+router.get('/post/:id', async (req, res) => {
+    try {
+        const post = await PostModel.findOne({ _id: req.params.id})
+        const user = await UserModel.findOne({ _id: "65c07b9716a89b2a501d5920" })
+
+    res.render("thread.ejs", {
+        title: 'Forumo aplikacija',
+        activeTab: "",
+        loggedIn: !!req.session.user?.loggedIn,
+        post,
+        user
+    })
+    }catch(err) {
+        res.redirect('/pages/?error=Post not found')
+    }
+    
 })
 module.exports = router;

@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Forum</title>
-    <link rel="stylesheet" href="../public/style.css" />
-    <link rel="stylesheet" href="../public/thread.css" />
+    <link rel="stylesheet" href="/public/style.css" />
+    <link rel="stylesheet" href="/public/thread.css" />
   </head>
   <body>
     <%- include('./components/header.ejs') %>
-    <section>
+    <section class="container">
+      <%- include('./components/errorMessage.ejs') %>
       <article class="grid">
         <aside class="gridItemThread userInformationThread">
           <ul>
             <li class="nameThread">
-                <b>Vadim</b> <span class="dot"></span>
+                <b><%= user.username %></b> <span class="dot"></span>
             </li>
             <li>
               <img
@@ -59,23 +60,24 @@
         </aside>
         <div class="gridItemThread">
             <div class="top">
-                <p><b>Lorem ipsum dolor sit amet.</b></p>
+                <p><b><%= post.title %></b></p>
                 <p>Posted: <span>Jan 8 19:42</span></p>
             </div>
           <div class="content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-            minima facere cumque id vero aliquam, maiores saepe ipsam ipsum
-            mollitia quis, magnam beatae inventore distinctio pariatur. Omnis et
-            natus, consequuntur labore sed dolorem ut magnam atque voluptate,
-            autem esse provident iste sequi obcaecati quaerat odio ex.
-            Doloremque ut magnam nam saepe delectus vel. Minima inventore
-            tempore impedit, id modi harum!
+            <%= post.content %>
           </div>
         </div>
       </article>
+
+      <textarea name="content" id="text-editor"></textarea>
+      <button class="submitButton">Submit Response</button>
     </section>
+
+
     <footer>
       <p>&copy; 2024 Simple Forum. All rights reserved.</p>
     </footer>
+    <script type="application/javascript" src= "/tinymce/tinymce.min.js"></script>
+    <script src="/public/tinymce-config.js"></script>
   </body>
 </html>

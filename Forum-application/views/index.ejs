@@ -12,9 +12,10 @@
     
     <section>
         <%- include('./components/infomessage.ejs') %>
-        <% for( const postas of posts) {%>
-            <%- include('./components/post.ejs') %>
+        <% for( const post of posts) {%>
+            <%- include('./components/post.ejs', {post}) %>
         <%}%>
+        <? console.log(posts) ?>
     </section>
     <footer>
         <p>&copy; 2024 Simple Forum. All rights reserved.</p>

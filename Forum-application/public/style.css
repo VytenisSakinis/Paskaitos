@@ -17,6 +17,37 @@ article {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.containerForNewPost {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.submitButton {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #888;
+    border: 1px solid #666;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .submitButton:hover {
+    background-color: #666;
+    border-color: #444;
+  }
+
 footer {
     background-color: #333;
     color: #fff;
@@ -66,6 +97,14 @@ footer {
     bottom: 0;
     right: 0;
     width: 100%;
+}
+
+.preview-content {
+    word-break: break-all;
+}
+
+.container {
+    word-break: break-all;
 }
 
 a{

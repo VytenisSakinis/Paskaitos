@@ -18,23 +18,25 @@ router.get('/:id', async (req, res) => {//vieno konkretaus iraso gavimas
 })
 
 router.post('/', async (req, res) => {//naujo iraso sukurimas
-    const validationResults = validate(req.body)
-    if(validationResults!== "Success")
-    {
-        return res.status(404).json({
-            message: "Bad information"
-        })
-    }
+    const { title, content } = req.body
+
+    // const validationResults = validate(req.body)
+    // if(validationResults!== "Success")
+    // {
+    //     return res.status(404).json({
+    //         message: "Bad information"
+    //     })
+    // }
 
     const newPost = new PostModel({
         title,
         content,
-        authorId: req.session.user.userId,
+        authorId: req.session.user.id,
     })
     
 
     await newPost.save()
-    res.redirect('/?message=New post has been added')
+    res.redirect('/pages/home?message=New post has been added')
 })
 
 router.put('/:id', async (req, res) => {//iraso atnaujinimas

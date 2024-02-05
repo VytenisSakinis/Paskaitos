@@ -10,20 +10,19 @@
 </head>
 <body>
     <%- include('./components/nav-bar-logged.ejs') %>
-    <div class="container">
+    <div class="containerForNewPost">
         <section>
             <form action="/api/post" method="post">
                 <input type="text" name="title" placeholder="Post title" class="inline-block my-4 outline-none w-full rounded py-2 px-1"/>
                 <textarea name="content" id="text-editor"></textarea>
-                <button class="my-1 btn">Submit</button>
+                <button class="my-1 submitButton">Submit</button>
             </form>
         </section>
         <fieldset class="border border-gray-400 rounded p-4 bg-white">
             <legend>
                 Preview
             </legend>
-            <div id="previw-content">
-
+            <div id="previw-content" class="preview-content">
             </div>
         </fieldset>
     </div>
