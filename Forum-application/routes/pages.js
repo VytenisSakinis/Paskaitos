@@ -93,18 +93,17 @@ router.get('/new-post', (req, res) => {
 
 router.get('/post/:id', async (req, res) => {
     try {
-        const post = await PostModel.findOne({ _id: req.params.id})
-        const user = await UserModel.findOne({ _id: "65c07b9716a89b2a501d5920" })
+        const post = await PostModel.findOne({ _id: req.params.id }).populate("authorId")
 
     res.render("thread.ejs", {
         title: 'Forumo aplikacija',
         activeTab: "",
         loggedIn: !!req.session.user?.loggedIn,
         post,
-        user
+        user: post.authorId
     })
     }catch(err) {
-        res.redirect('/pages/?error=Post not found')
+        res.redirect('/pages/home?error=Post not found')
     }
     
 })
