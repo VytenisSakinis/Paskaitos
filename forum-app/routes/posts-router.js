@@ -39,6 +39,7 @@ router.post("/", async (req, res) => {
 	const { title, content } = req.body;
 	const author = req.session.user.id;
 
+	
 	// Validacija
 
 	// Išsaugojimas duombazėje
@@ -55,5 +56,7 @@ router.post("/", async (req, res) => {
 router.put("/", async (req, res) => {
 	//Įrašo atnaujinimas
 });
+
+
 
 module.exports = router;

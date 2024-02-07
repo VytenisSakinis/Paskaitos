@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/user");
 const PostModel = require("../models/post");
+const CommentModel = require("../models/comment")
 
 router.get("/", async (req, res) => {
 	//index.ejs failo atvaizdavimas iš views aplanko
@@ -9,10 +10,13 @@ router.get("/", async (req, res) => {
 	const posts = await PostModel.find({}).populate({
 		path: "author",
 		select: "username email",
+	}).populate({
+		path: "lastCommentBy",
+		select: "username",
 	});
 	console.log(posts[0]);
 	const config = {
-		title: "Fortra - best forum in the world!",
+		title: "Test forum",
 		username: "Justelio19",
 		list: ["Product1", "Product2", "Milk", "Choclate"],
 		activeTab: "Home",
@@ -31,7 +35,7 @@ router.get("/register", (req, res) => {
 	}
 	const config = {
 		activeTab: "Register",
-		title: "Fortra - Registration",
+		title: "Test forum",
 		loggedIn: !!req.session.user?.loggedIn,
 		error: req.query.error,
 	};
@@ -44,7 +48,7 @@ router.get("/login", (req, res) => {
 	}
 	const config = {
 		activeTab: "Login",
-		title: "Fortra - Authentication",
+		title: "Test forum - authentication",
 		loggedIn: !!req.session.user?.loggedIn,
 		error: req.query.error,
 	};
@@ -61,7 +65,7 @@ router.get("/my-profile", async (req, res) => {
 	console.log(userData);
 	const config = {
 		activeTab: "Profile",
-		title: "Fortra - My profile",
+		title: "Test forum",
 		profilePhoto: userData.profilePicture,
 		loggedIn: !!req.session.user?.loggedIn,
 		username: userData.username,
@@ -79,7 +83,7 @@ router.get("/new-post", (req, res) => {
 		return res.redirect("/login?error=Jums reikia prisijungti prie paskyros");
 	}
 	const config = {
-		title: "Fortra - best forum in the world!",
+		title: "Test forum",
 		activeTab: "",
 		loggedIn: !!req.session.user?.loggedIn,
 	};
@@ -112,13 +116,18 @@ router.get("/post/:id", async (req, res) => {
 		const post = await PostModel.findOne({ _id: req.params.id }).populate(
 			"author"
 		);
-
+		const comments = await CommentModel.find({ post: req.params.id })
+		post.viewsCount++
+		post.save()
 		const config = {
-			title: "Fortra - best forum in the world!",
+			title: "Test forum",
 			activeTab: "",
 			loggedIn: !!req.session.user?.loggedIn,
 			post,
 			user: post.author,
+			message: req.query.message,
+			error: req.query.error,
+			comments,
 		};
 		res.render("post", config);
 	} catch (err) {
