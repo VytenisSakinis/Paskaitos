@@ -8,7 +8,7 @@
 					href="/post/<%= post._id %>"
 					><%= post.title %></a
 				>
-				<p class="author">Author: <a href=""></a></p>
+				<p class="author">Author: <a href="/profile/<%= post.author._id %>"><%= post.author.username %></a></p>
 			</div>
 		</div>
 	</td>
@@ -24,9 +24,9 @@
 				<span>by&nbsp</span>
 				<span class="author">
 					<a
-						href=""
+						href="/profile/<%= post.lastCommentBy?.id || "" %>"
 						class="author-outline"
-						>Sigis</a
+						><%= post.lastCommentBy?.username || "No one" %></a
 					>
 				</span>
 			</div>

@@ -117,6 +117,63 @@ router.get("/logout", async (req, res) => {
 	}
 });
 
+router.get("/like/:profileid", async (req, res) => {
+	if(!req.session.user?.loggedIn)
+	{
+		return res.status(403).json({ message: "You should log in" })
+	}
+	
+	const user = await UserModel.findOne({ _id: req.params.profileid })
+
+	console.log(user);
+
+	if(user.profileLikedUsers.includes(req.session.user.id))
+	{
+		return res.status(403).json({ message: "User already liked" })
+	}
+
+	if(user.profileDislikedUsers.includes(req.params.profileid))
+	{
+		user.profileDislikedUsers.splice(user.profileDislikedUsers
+			.findIndex((dislikedUser) => 
+				req.session.user._id === dislikedUser), 1)
+		user.dislikes--;
+	}
+
+	user.profileLikedUsers.push(req.session.user.id)
+	user.likes++;
+	await user.save()
+	res.status(200).json({ message: "Successfully rated profile!" })
+})
+
+router.get("/dislike/:profileid", async (req, res) => {
+	if(!req.session.user?.loggedIn)
+	{
+		return res.status(403).json({ message: "You should log in" })
+	}
+	
+	const user = await UserModel.findOne({ _id: req.params.profileid })
+
+	if(user.profileLikedUsers.includes(req.session.user.id))
+	{
+		return res.status(403).json({ message: "User already liked" })
+	}
+
+	if(user.profileLikedUsers.includes(req.params.profileid))
+	{
+		user.profileLikedUsers.splice(user.profileLikedUsers
+			.findIndex((dislikedUser) => 
+				req.session.user._id === dislikedUser), 1)
+		
+		user.likes--;
+	}
+
+	user.profileDislikedUsers.push(req.session.user.id)
+	user.dislikes++;
+	await user.save()
+	res.status(200).json({ message: "Successfully rated profile!" })
+})
+
 // router.get("/check-session", async (req, res) => {
 // 	res.json({ message: "will implement in future" });
 // });

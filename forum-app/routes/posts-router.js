@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const PostModel = require("../models/post");
+const UserModel = require("../models/user")
 
 router.get("/", async (req, res) => {
 	//Visu irasu gavimas
@@ -48,7 +49,7 @@ router.post("/", async (req, res) => {
 		content,
 		author,
 	});
-
+	UserModel.findOneAndUpdate({ _id: author}, { $inc: { postsCount: 1 } }).exec
 	await newPost.save();
 	res.redirect("/?message=Naujas postas buvo sėkmingai sukurtas");
 });
@@ -56,6 +57,8 @@ router.post("/", async (req, res) => {
 router.put("/", async (req, res) => {
 	//Įrašo atnaujinimas
 });
+
+
 
 
 
