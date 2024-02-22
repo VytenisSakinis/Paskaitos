@@ -68,7 +68,6 @@ router.post("/register", upload.single("img"), async (req, res) => {
 router.get("/users", async (req, res) => {
 	if (!req.session.user?.admin)
 		return res.status(403).json({ message: "neturite tam teisiu" });
-	console.log(req.session.user);
 	const users = await UserModel.find({});
 
 	res.status(200).json(users);
@@ -105,11 +104,8 @@ router.get("/logout", async (req, res) => {
 	} else {
 		req.session.destroy((err) => {
 			if (err) {
-				console.log("klaida ištrinant sesiją");
-				console.error(err);
 				return res.redirect("/");
 			} else {
-				console.log("sėkmingas atjungimo atvejis");
 				res.clearCookie("connect.sid");
 				return res.redirect("/login");
 			}
@@ -124,8 +120,6 @@ router.get("/like/:profileid", async (req, res) => {
 	}
 	
 	const user = await UserModel.findOne({ _id: req.params.profileid })
-
-	console.log(user);
 
 	if(user.profileLikedUsers.includes(req.session.user.id))
 	{
