@@ -1,20 +1,88 @@
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: rgb(65,77,126);background: linear-gradient(90deg, rgba(65,77,126,1) 0%, rgba(44,186,191,1) 48%, rgba(50,162,113,1) 100%, rgba(0,212,255,1) 100%);
+    background-size: 150%;
+}
+
+input {
+    border: none;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    text-align: center;
+}
+
+select {
+    border: none;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    width: 35%;
+}
+
+input:focus {
+    outline: none;
 }
 
 .container {
-    background: rgba(0, 90, 234, 0.532);
+    background: rgba(255, 255, 255, 0.3);
     width: 22rem;
     color: white;
     text-align: center;
-}
-div {
-    margin-top: 20px;
-}
-button {
-    margin-top: 20px;
+    padding: 2rem;
+    border-radius: 2rem;
 }
 
+.inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+.calculate {
+    margin-top: 1.2rem;
+    outline: none;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.304);
+    border: none;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.reset {
+    outline: none;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.304);
+    border: none;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.results {
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.perfectWeight {
+    background-color: green;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
